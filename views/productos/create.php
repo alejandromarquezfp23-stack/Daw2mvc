@@ -10,7 +10,7 @@
     <label>
         Talla
         <select name="talla" required>
-            <option value="XXL">XXL</option>
+            <option value="XXL">XXL o Ser Gordo</option>
             <option value="XL">XL</option>
             <option value="L">L</option>
             <option value="M" selected>M</option>
