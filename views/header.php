@@ -6,7 +6,7 @@
     <title>Appletito</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/style.css">
+    <link rel="stylesheet" href="/Daw2mvc/css/header.css">
 </head>
 <body>
 
