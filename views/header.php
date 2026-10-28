@@ -6,6 +6,7 @@
     <title>Appletito</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Daw2mvc/css/header.css?v=3">
+    <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 <body>
 
@@ -41,7 +42,7 @@
     </nav>
 
     <div class="barra-promocion text-center py-2 px-3">
-        <p class="m-0">Última oportunidad para llevarte una tarjeta de regalo de nuestro restaurante de hasta 120€, por simplemente tener menos de 25 años y ser estudiante. Hasta el 22/11.</p>
+        <p class="m-0">Oportunidad para llevarte una tarjeta de regalo de nuestro restaurante de hasta 120€, por tener menos de 25 años y ser estudiante. Hasta el 22/11.</p>
     </div>
 </header>
 

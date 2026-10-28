@@ -53,3 +53,7 @@ body {
 .nav-item .nav-link:hover {
     color: white;
 }
+
+.navbar-toggler-icon {
+    color: white;
+}

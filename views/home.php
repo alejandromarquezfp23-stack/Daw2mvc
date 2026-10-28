@@ -6,6 +6,7 @@
     <title>Appletito</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Daw2mvc/css/home.css?v=3">
+    <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 <body>
     <?php
@@ -23,14 +24,14 @@
     </div>
 
     <div class="container-fluid mt-1  banner2">
-        <h1 class="text-center fw-bold titulos-h1">Appletito</h1>
-        <h3 class="text-center">Disfruta de la mejor comida</h3>
+        <h1 class="text-center fw-bold titulos-h1">Disfruta de nuestra carne estrella</h1>
+        <h3 class="text-center">Wagyu A5</h3>
         <p class="text-center text-secondary">Explora nuestro menú y disfruta de una experiencia culinaria única.</p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/Espaguetis.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="/Daw2mvc/imagenes/Wagyu A5.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid mt-1  banner3">
@@ -66,7 +67,7 @@
         </div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-center gap-3 mt-3">
+    <div class="container-fluid d-flex justify-content-center gap-3 mt-1">
         <div class="contenedores3 container-fluid mb-3 p-5">
             <h2 class="text-center fw-bold titulos-h1">Appletito</h2>
             <h5 class="text-center">Disfruta de la mejor comida</h5>
@@ -88,7 +89,7 @@
         </div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-center gap-3 mt-3">
+    <div class="container-fluid d-flex justify-content-center gap-3 mt-1">
         <div class="contenedores4 container-fluid mb-3 p-5">
             <h2 class="text-center fw-bold titulos-h1">Appletito</h2>
             <h5 class="text-center">Disfruta de la mejor comida</h5>
@@ -96,7 +97,7 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Shushi.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-100 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores3 container-fluid mb-3 p-5">
