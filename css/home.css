@@ -1,0 +1,27 @@
+.banner {
+    padding: 20px;
+    background-color: black;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.titulos-h1 {
+    font-size: 3rem;
+}
+
+.banner2, .banner3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #F5F5F7;
+    width: 100%;
+    color: #1D1D1F;
+}
+
+.contenedores2 {
+    background-color: black;
+}
+
+#footer {
+    background-color: #F5F5F7;
+}

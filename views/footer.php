@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appletito</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/footer.css">
+    <link rel="stylesheet" href="/Daw2mvc/css/footer.css?v=2">
 </head>
 <body>
     <footer class="p-4 p-md-5 fs-7 text-body">

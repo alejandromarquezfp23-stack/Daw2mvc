@@ -6,7 +6,6 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: white;
     color: #1D1D1F;
 }
 
@@ -34,7 +33,7 @@ body {
 }
 
 .custom-navbar .nav-link {
-    color: black;
+    color: #1D1D1F;
     font-size: 12px;
     font-weight: 400;
     padding: 6px 0;

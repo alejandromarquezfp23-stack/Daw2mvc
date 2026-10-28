@@ -22,21 +22,17 @@
             </button>
 
             <div class="collapse navbar-collapse" id="menuNavegacion">
-                <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4"><li class="nav-item"><a class="nav-link" href="#">Restaurante</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Carta de la casa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Restaurante</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Entretenimiento</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Reservas</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Soporte</a></li>
                 </ul>
 
                 <div class="d-flex justify-content-center align-items-center gap-3 py-2 py-md-0">
                     <a href="#" aria-label="Buscar" class="icono-link">
-                        <img src="/Daw2mvc/iconos/buscar.svg" alt="Buscar" class="icono-img">
+                        <img src="/Daw2mvc/iconos/LupaClara.svg" alt="Buscar" class="icono-img">
                     </a>
-                    <a href="#" aria-label="Reservas" class="icono-link">
-                        <img src="/Daw2mvc/iconos/Reserva.png" alt="Reserva" class="icono-img">
+                    <a href="#" aria-label="Bolsas" class="icono-link">
+                        <img src="/Daw2mvc/iconos/BolsaClara.svg" alt="Bolsa" class="icono-img">
                     </a>
                 </div>
             </div>
