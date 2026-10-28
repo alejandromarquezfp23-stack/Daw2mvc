@@ -3,7 +3,7 @@
 class DataBase {
     private const DB_HOST = '127.0.0.1';
     private const DB_USER = 'root';
-    private const DB_PASS = 'root'; // <-- pon aquí tu contraseña de root
+    private const DB_PASS = 'root';
     private const DB_NAME = 'daw2mvc';
     private const DB_PORT = 3308;
 
