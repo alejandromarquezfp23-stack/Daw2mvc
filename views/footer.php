@@ -10,7 +10,7 @@
 <body>
     <footer class="p-4 p-md-5 fs-7 text-body">
         <div class="d-flex align-items-center gap-2 mb-4">
-            <img src="/Daw2mvc/imagenes/Logo.svg" alt="Appletito Logo" style="width: 45px; height: 45px;">
+            <img src="/Daw2mvc/iconos/Logo.svg" alt="Appletito Logo" style="width: 45px; height: 45px;">
             <span class="fw-semibold">Appletito</span>
         </div>
 

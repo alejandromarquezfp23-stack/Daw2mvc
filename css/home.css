@@ -25,3 +25,11 @@
 #footer {
     background-color: #F5F5F7;
 }
+
+.contenedores3 {
+    background-color: #F5F5F7;
+}
+
+.contenedores4 {
+    background: linear-gradient(180deg, #bce3f7 0%, #edf8fc 50%, #F5F5F7 100%);
+}
