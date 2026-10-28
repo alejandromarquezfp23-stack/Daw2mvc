@@ -29,10 +29,6 @@ body {
     object-fit: contain;
 }
 
-.barra-promocion {
-    background-color: white;
-}
-
 .barra-promocion p {
     font-size: 12px;
     line-height: 1.4;

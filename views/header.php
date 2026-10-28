@@ -41,7 +41,7 @@
         </div>
     </nav>
 
-    <div class="barra-promocion text-center py-2 px-3">
+    <div class="barra-promocion text-center py-3 px-3">
         <p class="m-0">Oportunidad para llevarte una tarjeta de regalo de nuestro restaurante de hasta 120€, por tener menos de 25 años y ser estudiante. Hasta el 22/11.</p>
     </div>
 </header>
