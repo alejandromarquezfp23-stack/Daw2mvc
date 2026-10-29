@@ -5,6 +5,10 @@
     margin-bottom: 10px;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 .titulos-h1 {
     font-size: 3rem;
 }

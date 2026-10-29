@@ -12,6 +12,37 @@
     margin-right: auto;
 }
 
+.h2-segundo {
+    padding: 0 62.5px;
+}
+
 .div-carta {
     padding: 75px;
+}
+
+.divProducto {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 500px;
+}
+
+.divProducto:hover {
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.divProducto img, .divProducto h5, .divProducto p, .divProducto div{
+    background-color: white;
+}
+
+.divProductos {
+    padding: 0 62.5px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
