@@ -14,13 +14,13 @@
     ?>
     <div class="container-fluid mt-1 text-white banner">
         <h1 class="text-center fw-bold titulos-h1">Appletito</h1>
-        <h3 class="text-center">Disfruta de la mejor comida</h3>
-        <p class="text-center text-secondary">Explora nuestro menú y disfruta de una experiencia culinaria única.</p>
+        <h3 class="text-center">Disfruta de la mejor comida del mundo</h3>
+        <p class="text-center text-secondary">Nuestra Hamburguesa Gourmet la mejor de todas.</p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="/Daw2mvc/imagenes/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4" style="width: 21%;">
     </div>
 
     <div class="container-fluid mt-1  banner2">
@@ -79,13 +79,13 @@
         </div>
 
         <div class="contenedores3 container-fluid mb-3 p-5">
-            <h2 class="text-center fw-bold titulos-h1">Appletito</h2>
-            <h5 class="text-center">Disfruta de la mejor comida</h5>
+            <h2 class="text-center fw-bold titulos-h1">Rico y placer</h2>
+            <h5 class="text-center">Bombos de chocolate</h5>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Shushi.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/Postres.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
     
