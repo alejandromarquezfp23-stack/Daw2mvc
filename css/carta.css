@@ -1,3 +1,4 @@
+
 * {
     background-color: #F5F5F7;
 }
@@ -27,6 +28,7 @@
     border-radius: 20px;
     width: 400px;
     height: 500px;
+    flex: 0 0 400px;
 }
 
 .divProducto:hover {
@@ -35,12 +37,17 @@
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.divProducto img, .divProducto h5, .divProducto p, .divProducto div{
+.divProducto img,
+.divProducto h5,
+.divProducto p,
+.divProducto div {
     background-color: white;
 }
 
 .divProductos {
     padding: 0 62.5px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 body {
