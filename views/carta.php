@@ -7,7 +7,7 @@
     <title>Appletito - Carta</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/carta.css?v=4">
+    <link rel="stylesheet" href="/Daw2mvc/css/carta.css">
     <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 
@@ -108,7 +108,7 @@
                         <img
                             src="<?= htmlspecialchars($producto->getImagen()) ?>"
                             alt="<?= htmlspecialchars($producto->getNombre()) ?>"
-                            style="width: 340px; height: 264px; object-fit: contain;"
+                            style="width: 300px; height: 200px; object-fit: contain;"
                             class="d-block mx-auto"
                         >
 
