@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-md custom-navbar">
             <div class="container-fluid max-w-apple">
                 
-                <a class="navbar-brand me-0" href="home.php">
+                <a class="navbar-brand me-0" href="/Daw2mvc/index.php?controller=home">
                     <img src="/Daw2mvc/imagenes/Logo.svg" alt="Appletito Logo" class="logo-img">
                 </a>
 
@@ -23,7 +23,7 @@
 
                 <div class="collapse navbar-collapse" id="menuNavegacion">
                     <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4"><li class="nav-item"><a class="nav-link" href="#">Restaurante</a></li>
-                        <li class="nav-item"><a class="nav-link" href="carta.php">Carta de la casa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Daw2mvc/index.php?controller=carta">Carta de la casa</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Soporte</a></li>
                     </ul>
 

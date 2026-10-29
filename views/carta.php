@@ -12,35 +12,9 @@
 </head>
 
 <body>
-
     <?php
         include __DIR__ . '/header.php';
-
-        require_once __DIR__ . '/../config/DataBase.php';
-        require_once __DIR__ . '/../models/Categorias.php';
-        require_once __DIR__ . '/../dao/CategoriasDAO.php';
-
-        $categoriasDAO = new CategoriasDAO(DataBase::connect());
-        $categorias = $categoriasDAO->selectAll();
-
-        require_once __DIR__ . '/../models/productos.php';
-        require_once __DIR__ . '/../dao/productosDAO.php';
-
-        $productosDAO = new productosDAO(DataBase::connect());
-        $productos = $productosDAO->selectAll();
-
-        $categoriaActivaId = isset($_GET['id'])
-            ? $_GET['id']
-            : (isset($categorias[0]) ? $categorias[0]->getId() : 0);
-
-        $nombreCategoria = '';
-
-        foreach ($categorias as $categoria) {
-            if ($categoria->getId() == $categoriaActivaId) {
-                $nombreCategoria = $categoria->getNombre();
-                break;
-            }
-        }
+        require_once __DIR__ . '/../controllers/cartaController.php';
     ?>
 
     <div class="mt-1 container-fluid div-carta">
@@ -59,8 +33,7 @@
             <?php foreach ($categorias as $categoria) { ?>
 
                 <div class="text-center">
-                    <a href="carta.php?id=<?= $categoria->getId() ?>"
-                       class="text-decoration-none text-dark">
+                    <a href="index.php?controller=carta&id=<?php echo $categoria->getId(); ?>" class="text-decoration-none text-dark">
 
                         <img
                             src="<?= htmlspecialchars($categoria->getImagenes()) ?>"
@@ -74,7 +47,6 @@
 
                     </a>
                 </div>
-
             <?php } ?>
         </div>
 
