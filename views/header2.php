@@ -23,9 +23,8 @@
 
                 <div class="collapse navbar-collapse" id="menuNavegacion">
                     <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4 text-white">
-                        <li class="nav-item"><a class="nav-link" href="#">Restaurante</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Daw2mvc/index.php?controller=home">Restaurante</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Daw2mvc/index.php?controller=carta">Carta de la casa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Soporte</a></li>
                     </ul>
 
                     <div class="d-flex justify-content-center align-items-center gap-4 py-2 py-md-0">
