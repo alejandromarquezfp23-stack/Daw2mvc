@@ -75,7 +75,7 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-100 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores3 container-fluid mb-3 p-5">

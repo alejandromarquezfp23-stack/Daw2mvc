@@ -19,20 +19,26 @@
             <h2 class="text-end fw-bold mx-5 mt-5 mb-5 h2-primero">La mejor forma de elegir tus platos</h2>
         </div>
         
-        <div class="d-flex justify-content-center mx-5 mb-5 mt-3">
+        <div class="d-flex justify-content-center mx-5 mb-5 mt-5 gap-5">
             <?php
                 require_once __DIR__ . '/../config/DataBase.php';
-                $con = DataBase::connect();
-                $stm = $con->prepare("SELECT * FROM categorias");
-                $stm->execute();
-                $resultado = $stm->get_result();
-                $categorias = $resultado->fetch_all(MYSQLI_ASSOC);
+                require_once __DIR__ . '/../models/Categorias.php'; 
+                require_once __DIR__ . '/../dao/CategoriasDAO.php'; 
+
+                $categoriasDAO = new CategoriasDAO(DataBase::connect());
+                $categorias = $categoriasDAO->selectAll();
+
             ?>
 
             <?php foreach ($categorias as $categoria) { ?>
                 <div class="text-center">
-                    <img src="<?= $categoria['imagenes'] ?>" alt="Logo de Appletito" class="card-logo w-50">
-                    <p class="fw-bold"><?= $categoria['nombre'] ?></p>
+                    <a href="#" class="text-decoration-none text-dark">
+                        <img src="<?= $categoria->getImagenes() ?>" 
+                            alt="Logo de Appletito" 
+                            class="card-logo" 
+                            style="width: 125px; height: 125px; object-fit: contain;">
+                        <p class="fw-bold mt-2"><?= $categoria->getNombre() ?></p>
+                    </a>
                 </div>
             <?php } ?>
         </div>
