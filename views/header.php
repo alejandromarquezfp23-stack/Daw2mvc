@@ -14,7 +14,7 @@
             <div class="container-fluid max-w-apple">
                 
                 <a class="navbar-brand me-0" href="/Daw2mvc/index.php?controller=home">
-                    <img src="/Daw2mvc/imagenes/Logo.svg" alt="Appletito Logo" class="logo-img">
+                    <img src="/Daw2mvc/iconos/Logo.svg" alt="Appletito Logo" class="logo-img">
                 </a>
 
                 <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Abrir menú">
