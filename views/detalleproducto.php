@@ -15,46 +15,45 @@
 
     <?php
         include __DIR__ . '/header3.php';
-
-        require_once __DIR__ . '/../config/DataBase.php';
-        require_once __DIR__ . '/../models/productos.php';
-        require_once __DIR__ . '/../dao/productosDAO.php';
-
-        $productosDAO = new productosDAO(DataBase::connect());
-        $productos = $productosDAO->selectAll();
     ?>
 
     <div class="d-block divTituloP">
-        <h1 class="tituloh1 fw-bold">Nombre Producto</h1>
-        <p class="fw-semibold">Desde el precio€</p>
+        <h1 class="tituloh1 fw-bold"><?php echo $productoActivo->getNombre(); ?></h1>
+        <p class="fw-semibold">Desde <?php echo $productoActivo->getPrecio(); ?> €</p>
     </div>
 
     <div class="divProducto m-5 d-flex">
-        <div class="d-flex justify-content-center align-items-center w-50 m-5 divImagen"
-             style="height: 400px;">
-
-            <img
-                src="/Daw2mvc/imagenes/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png"
-                alt="Hamburguesa gourmet"
-                class="w-25"
-            >
-
+        <div class="d-flex justify-content-center align-items-center w-50 m-5 divImagen">
+            <img src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
+                alt="<?php echo $productoActivo->getNombre(); ?>"
+                class="w-50">
         </div>
 
         <div class="d-block justify-content-center align-items-center divElementos">
             <h2 class="fw-semibold">
-                Nombre.
+                Solo tu.
                 <span class="text-secondary fw-semibold">
                     ¿Como lo prefieres?
                 </span>
             </h2>
 
-            <div class="border border-black rounded-3 p-4 mb-5 mt-5">
-                <h5 class="fw-bold">Con patatas</h5>
-            </div>
+            <div class="p-5 mb-5 mt-5" style="max-height: 300px; overflow-y: auto;">
+                <?php foreach ($ingredientesActivos as $ingrediente) { ?>
 
-            <div class="border border-black rounded-3 p-4 mb-5">
-                <h5 class="fw-bold">Sin patatas</h5>
+                    <div class="border border-black rounded-3 p-4 mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">
+                                <?php echo $ingrediente->getNombre(); ?>
+                            </span>
+
+                            <span>
+                                +<?php echo number_format($ingrediente->getPrecioExtra(), 2); ?> €
+                            </span>
+                        </div>
+                    </div>
+
+                <?php } ?>
+
             </div>
         </div>
     </div>
@@ -63,11 +62,11 @@
         <div class="row align-items-center g-5 m-5">
             <div class="col-12 col-md-4">
                 <h2 class="fw-bold mb-5">
-                    Nombre del producto
+                    <?php echo $productoActivo->getNombre(); ?>
                 </h2>
                 <img
-                    src="/Daw2mvc/imagenes/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png"
-                    alt="Hamburguesa gourmet"
+                    src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
+                    alt="<?php echo $productoActivo->getNombre(); ?>"
                     class="img-fluid w-50"
                 >
             </div>

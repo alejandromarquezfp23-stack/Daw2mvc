@@ -85,7 +85,7 @@
                         >
 
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary rounded-pill m-3" onclick="window.location.href='/Daw2mvc/views/detalleproducto.php'">Comprar</button>
+                            <button class="btn btn-primary rounded-pill m-3" onclick="window.location.href='/Daw2mvc/index.php?controller=detalleProducto&action=index&id=<?php echo $producto->getId(); ?>'">Comprar</button>
                         </div>
 
                         <p class="m-1">
