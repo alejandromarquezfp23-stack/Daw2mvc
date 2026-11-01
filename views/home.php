@@ -20,7 +20,7 @@
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4" style="width: 21%;">
+        <img src="/Daw2mvc/imagenes/otros/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4" style="width: 21%;">
     </div>
 
     <div class="container-fluid mt-1  banner2">
@@ -31,7 +31,7 @@
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/Wagyu A5.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="/Daw2mvc/imagenes/otros/Wagyu A5.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid mt-1  banner3">
@@ -42,7 +42,7 @@
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/Salmón_gourmet_con_verduras_y_microbrotes-removebg-preview.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="/Daw2mvc/imagenes/otros/Salmón_gourmet_con_verduras_y_microbrotes-removebg-preview.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid d-flex justify-content-center gap-3 mt-3 text-white">
@@ -53,7 +53,7 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Filete a la parrilla con guarnición de verduras.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/otros/Filete a la parrilla con guarnición de verduras.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores2 container-fluid mb-3 p-5">
@@ -63,7 +63,7 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Pasta cremosa con gambas y perejil.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/otros/Pasta cremosa con gambas y perejil.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
 
@@ -75,7 +75,7 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/otros/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores3 container-fluid mb-3 p-5">
@@ -85,12 +85,12 @@
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/Postres.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="/Daw2mvc/imagenes/otros/Postres.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
     
     <div class="align-items-center container-fluid mt-1  banner2">
-        <img src="/Daw2mvc/imagenes/BannerFinal.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-75 d-block  rounded-3">
+        <img src="/Daw2mvc/imagenes/otros/BannerFinal.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-75 d-block  rounded-3">
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Conoce más</a>
         </div>
