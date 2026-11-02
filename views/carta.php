@@ -61,7 +61,7 @@
 
         <?php } ?>
 
-        <div class="d-flex flex-column flex-md-row flex-nowrap overflow-auto divProductos">
+        <div class="d-flex flex-column flex-md-row flex-nowrap overflow-auto divProductos m-5">
 
             <?php foreach ($productos as $producto) { ?>
 
