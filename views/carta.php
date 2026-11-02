@@ -7,7 +7,7 @@
     <title>Appletito - Carta</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/carta.css">
+    <link rel="stylesheet" href="/Daw2mvc/css/carta.css?v=5">
     <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 
@@ -17,22 +17,22 @@
         require_once __DIR__ . '/../controllers/cartaController.php';
     ?>
 
-    <div class="mt-1 container-fluid div-carta">
+    <div class="mt-1 container-fluid div-carta p-3">
 
-        <div class="d-flex justify-content-between mx-5">
-            <h1 class="text-center fw-semibold mx-5 mt-5 mb-5 display-2">
+        <div class="d-flex flex-column flex-md-row justify-content-between mx-0 mx-md-5">
+            <h1 class="text-start text-md-center fw-semibold mx-0 mx-md-5 mt-3 mt-md-5 mb-3 mb-md-5 display-2">
                 Carta
             </h1>
 
-            <h2 class="text-end fw-semibold mx-5 mt-5 mb-5 h2-primero">
+            <h2 class="text-end fw-semibold ms-auto mt-3 mt-md-5 mb-3 mb-md-5 h2-primero">
                 La mejor forma de elegir tus platos
             </h2>
         </div>
 
-        <div class="d-flex justify-content-center mx-5 mb-5 mt-5 gap-5">
+        <div class="d-flex flex-wrap flex-md-nowrap justify-content-center mx-0 mx-md-5 mb-3 mb-md-5 mt-3 mt-md-5 gap-0 gap-md-5">
             <?php foreach ($categorias as $categoria) { ?>
 
-                <div class="text-center">
+                <div class="col-6 col-md-auto text-center px-md-0">
                     <a href="index.php?controller=carta&id=<?php echo $categoria->getId(); ?>" class="text-decoration-none text-dark">
 
                         <img
@@ -52,7 +52,7 @@
 
         <?php if ($nombreCategoria !== '') { ?>
 
-            <h2 class="fw-semibold mx-5 mt-5 mb-5 h2-segundo">
+            <h2 class="fw-semibold mx-0 mx-md-5 mt-4 mt-md-5 mb-4 mb-md-5 h2-segundo">
                 <?= htmlspecialchars($nombreCategoria) ?>.
                 <span class="text-secondary fw-semibold">
                     Elige el plato que más te guste.
@@ -61,13 +61,13 @@
 
         <?php } ?>
 
-        <div class="d-flex divProductos">
+        <div class="d-flex flex-column flex-md-row flex-nowrap overflow-auto divProductos">
 
             <?php foreach ($productos as $producto) { ?>
 
                 <?php if ($producto->getCategoriaId() == $categoriaActivaId) { ?>
 
-                    <div class="divProducto m-5">
+                    <div class="divProducto m-3 m-md-5">
 
                         <h5 class="fw-bold mt-2">
                             <?= htmlspecialchars($producto->getNombre()) ?>
@@ -77,12 +77,13 @@
                             <?= htmlspecialchars($producto->getDescripcion()) ?>
                         </p>
 
-                        <img
-                            src="<?= htmlspecialchars($producto->getImagen()) ?>"
-                            alt="<?= htmlspecialchars($producto->getNombre()) ?>"
-                            style="width: 300px; height: 200px; object-fit: contain;"
-                            class="d-block mx-auto"
-                        >
+                        <div class="ratio ratio-3x2 mx-auto w-100">
+                            <img
+                                src="<?= htmlspecialchars($producto->getImagen()) ?>"
+                                alt="<?= htmlspecialchars($producto->getNombre()) ?>"
+                                class="object-fit-contain"
+                            >
+                        </div>
 
                         <div class="d-flex justify-content-center">
                             <button class="btn btn-primary rounded-pill m-3" onclick="window.location.href='/Daw2mvc/index.php?controller=detalleProducto&action=index&id=<?php echo $producto->getId(); ?>'">Comprar</button>

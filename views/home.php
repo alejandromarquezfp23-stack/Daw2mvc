@@ -45,7 +45,7 @@
         <img src="/Daw2mvc/imagenes/otros/Salmón_gourmet_con_verduras_y_microbrotes-removebg-preview.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
-    <div class="container-fluid d-flex justify-content-center gap-3 mt-3 text-white">
+    <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-3 text-white">
         <div class="contenedores2 container-fluid mb-3 p-5">
             <h2 class="text-center fw-bold titulos-h1">Filete Pro</h2>
             <h5 class="text-center">Mucho Pro</h5>
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-center gap-3 mt-1">
+    <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-1">
         <div class="contenedores4 container-fluid mb-3 p-5">
             <h2 class="text-center fw-bold titulos-h1">Aurora te da alas</h2>
             <h5 class="text-center">El vino con mas calidad</h5>
