@@ -89,12 +89,12 @@
         </div>
     </div>
     
-    <div class="align-items-center container-fluid mt-1  banner2">
+    <!-- <div class="align-items-center container-fluid mt-1  banner2">
         <img src="/Daw2mvc/imagenes/otros/BannerFinal.jpg" alt="Imagen del restaurante" class="img-fluid mx-auto w-75 d-block  rounded-3">
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Conoce más</a>
         </div>
-    </div>
+    </div> -->
 
     <div id="footer">
         <?php
