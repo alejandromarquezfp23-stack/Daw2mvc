@@ -7,7 +7,7 @@
     <title>Appletito - Producto</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/detalleproducto.css">
+    <link rel="stylesheet" href="/Daw2mvc/css/detalleproducto.css?v=2">
     <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 
@@ -42,7 +42,8 @@
 
                     <div class="border border-black rounded-3 p-4 mb-3">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-semibold">
+                            <img src="/Daw2mvc/<?php echo $ingrediente->getImagen(); ?>" alt="" class="imagenIngrediente">
+                            <span class="fw-semibold me-1">
                                 <?php echo $ingrediente->getNombre(); ?>
                             </span>
 

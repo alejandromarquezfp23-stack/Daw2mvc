@@ -9,7 +9,7 @@ class ingredientesDAO {
     }
 
     public function selectAll() {
-        $sql = 'SELECT id, nombre, precio_extra, activo FROM ingredientes ORDER BY id';
+        $sql = 'SELECT id, nombre, imagen,precio_extra, activo FROM ingredientes ORDER BY id';
         $consulta = $this->conexion->query($sql);
         $resultados = $consulta->fetch_all(MYSQLI_ASSOC);
 
@@ -18,6 +18,7 @@ class ingredientesDAO {
             $ingrediente = new ingredientes();
             $ingrediente->setId($fila['id']);
             $ingrediente->setNombre($fila['nombre']);
+            $ingrediente->setImagen($fila['imagen']);
             $ingrediente->setPrecioExtra($fila['precio_extra']);
             $ingrediente->setActivo($fila['activo']);
             $listaIngredientes[] = $ingrediente;
@@ -27,7 +28,7 @@ class ingredientesDAO {
     }
 
     public function selectByID($id) {
-        $sql = 'SELECT id, nombre, precio_extra, activo FROM ingredientes WHERE id = ?';
+        $sql = 'SELECT id, nombre, imagen, precio_extra, activo FROM ingredientes WHERE id = ?';
         $consulta = $this->conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
@@ -40,12 +41,13 @@ class ingredientesDAO {
     }
 
     public function insert(ingredientes $ingrediente) {
-        $sql = 'INSERT INTO ingredientes (nombre, precio_extra, activo) VALUES (?, ?, ?)';
+        $sql = 'INSERT INTO ingredientes (nombre, imagen, precio_extra, activo) VALUES (?, ?, ?, ?)';
         $consulta = $this->conexion->prepare($sql);
         $nombre = $ingrediente->getNombre();
+        $imagen = $ingrediente->getImagen();
         $precioExtra = $ingrediente->getPrecioExtra();
         $activo = $ingrediente->getActivo();
-        $consulta->bind_param('sdi', $nombre, $precioExtra, $activo);
+        $consulta->bind_param('ssdi', $nombre, $imagen, $precioExtra, $activo);
         $consulta->execute();
         $id = $this->conexion->insert_id;
         $consulta->close();
@@ -53,13 +55,14 @@ class ingredientesDAO {
     }
 
     public function update(ingredientes $ingrediente) {
-        $sql = 'UPDATE ingredientes SET nombre = ?, precio_extra = ?, activo = ? WHERE id = ?';
+        $sql = 'UPDATE ingredientes SET nombre = ?, imagen = ?, precio_extra = ?, activo = ? WHERE id = ?';
         $consulta = $this->conexion->prepare($sql);
         $nombre = $ingrediente->getNombre();
+        $imagen = $ingrediente->getImagen();
         $precioExtra = $ingrediente->getPrecioExtra();
         $activo = $ingrediente->getActivo();
         $id = $ingrediente->getId();
-        $consulta->bind_param('sdii', $nombre, $precioExtra, $activo, $id);
+        $consulta->bind_param('ssdi', $nombre, $imagen, $precioExtra, $activo, $id);
         $resultado = $consulta->execute();
         $consulta->close();
         return $resultado;

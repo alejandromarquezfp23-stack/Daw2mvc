@@ -39,3 +39,9 @@
 .img-fluid {
     margin-left: 60px;
 }
+
+.imagenIngrediente {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}

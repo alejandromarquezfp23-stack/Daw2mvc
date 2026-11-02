@@ -2,16 +2,21 @@
 class Ingredientes {
     protected $id;
     protected $nombre;
+    protected $imagen;
     protected $precio_extra;
     protected $activo;
 
-    public function __construct($id = null, $nombre = null, $precio_extra = null, $activo = null) {
+    public function __construct($id = null, $nombre = null, $imagen = null, $precio_extra = null, $activo = null) {
         if ($id !== null) {
             $this->id = $id;
         }
 
         if($nombre !== null) {
             $this->nombre = $nombre;
+        }
+
+        if($imagen !== null) {
+            $this->imagen = $imagen;
         }
 
         if ($precio_extra !== null) {
@@ -24,32 +29,40 @@ class Ingredientes {
     }
 
     public function getId() {
-            return $this->id;
-        }
+        return $this->id;
+    }
 
     public function setId($id) {
         $this->id = $id;
     }
 
     public function getNombre() {
-            return $this->nombre;
-        }
+        return $this->nombre;
+    }
 
     public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
 
+    public function getImagen() {
+        return $this->imagen;
+    }
+
+    public function setImagen($imagen) {
+        $this->imagen = $imagen;
+    }
+
     public function getPrecioExtra() {
-            return $this->precio_extra;
-        }
+        return $this->precio_extra;
+    }
 
     public function setPrecioExtra($precio_extra) {
         $this->precio_extra = $precio_extra;
     }
 
     public function getActivo() {
-            return $this->activo;
-        }
+        return $this->activo;
+    }
 
     public function setActivo($activo) {
         $this->activo = $activo;
