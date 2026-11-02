@@ -24,7 +24,7 @@
                 Carta
             </h1>
 
-            <h2 class="text-end fw-semibold ms-auto mt-3 mt-md-5 mb-3 mb-md-5 h2-primero">
+            <h2 class="text-end fw-semibold mt-5 mt-md-5 mb-5 mb-md-5 me-5 h2-primero">
                 La mejor forma de elegir tus platos
             </h2>
         </div>
