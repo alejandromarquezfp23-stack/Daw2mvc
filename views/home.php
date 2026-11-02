@@ -15,77 +15,77 @@
     <div class="container-fluid mt-1 text-white banner">
         <h1 class="text-center fw-bold titulos-h1">Appletito</h1>
         <h3 class="text-center">Disfruta de la mejor comida del mundo</h3>
-        <p class="text-center text-secondary">Nuestra Hamburguesa Gourmet la mejor de todas.</p>
+        <p class="text-center text-secondary"><?php echo $productosMasPedidos[0]['nombre'] . ' - ' . 'Lo mas pedido de nosotros' ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/otros/Hamburguesa gourmet con queso fundido y cebolla caramelizada.png" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4" style="width: 21%;">
+        <img src="<?php echo $productosMasPedidos[0]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4 w-25">
     </div>
 
     <div class="container-fluid mt-1  banner2">
-        <h1 class="text-center fw-bold titulos-h1">Disfruta de nuestra carne estrella</h1>
-        <h3 class="text-center">Wagyu A5</h3>
-        <p class="text-center text-secondary">Carne de alta calidad con un sabor excepcional.</p>
+        <h1 class="text-center fw-bold titulos-h1">Nuestra mejor tapa</h1>
+        <h3 class="text-center"><?php echo $productosMasPedidos[1]['nombre'] ?></h3>
+        <p class="text-center text-secondary"><?php echo $productosMasPedidos[1]['descripcion'] ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/otros/Wagyu A5.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="<?php echo $productosMasPedidos[1]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid mt-1  banner3">
         <h1 class="text-center fw-bold titulos-h1">Otros de nuestros exitos</h1>
-        <h3 class="text-center">Salmón Gourmet</h3>
-        <p class="text-center text-secondary">Salmón gourment con verduras y microbrotes.</p>
+        <h3 class="text-center"><?php echo $productosMasPedidos[2]['nombre'] ?></h3>
+        <p class="text-center text-secondary"><?php echo $productosMasPedidos[2]['descripcion'] ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="/Daw2mvc/imagenes/otros/Salmón_gourmet_con_verduras_y_microbrotes-removebg-preview.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="<?php echo $productosMasPedidos[2]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-3 text-white">
-        <div class="contenedores2 container-fluid mb-3 p-5">
-            <h2 class="text-center fw-bold titulos-h1">Filete Pro</h2>
-            <h5 class="text-center">Mucho Pro</h5>
+        <div class="contenedores2 container-fluid mb-3 p-5 rounded-3">
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[3]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosMasPedidos[3]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/otros/Filete a la parrilla con guarnición de verduras.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosMasPedidos[3]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
 
-        <div class="contenedores2 container-fluid mb-3 p-5">
-            <h2 class="text-center fw-bold titulos-h1">Muy cremosa</h2>
-            <h5 class="text-center">Pasta cremosa con gambas y perejil</h5>
+        <div class="contenedores2 container-fluid mb-3 p-5 rounded-3">
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[4]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosMasPedidos[4]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/otros/Pasta cremosa con gambas y perejil.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosMasPedidos[4]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
 
     <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-1">
-        <div class="contenedores4 container-fluid mb-3 p-5">
-            <h2 class="text-center fw-bold titulos-h1">Aurora te da alas</h2>
-            <h5 class="text-center">El vino con mas calidad</h5>
+        <div class="contenedores4 container-fluid mb-3 p-5 rounded-3">
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[5]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosMasPedidos[5]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/otros/Aurora.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosMasPedidos[5]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
 
-        <div class="contenedores3 container-fluid mb-3 p-5">
-            <h2 class="text-center fw-bold titulos-h1">Rico y placer</h2>
-            <h5 class="text-center">Bombos de chocolate</h5>
+        <div class="contenedores3 container-fluid mb-3 p-5 rounded-3">
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[6]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosMasPedidos[6]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="/Daw2mvc/imagenes/otros/Postres.png" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosMasPedidos[6]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
     

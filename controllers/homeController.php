@@ -15,6 +15,7 @@ class homeController {
         // 2. Traemos datos para la portada (ejemplo: productos y categorías)
         $productos = $productosDAO->selectAll();
         $categorias = $categoriasDAO->selectAll();
+        $productosMasPedidos = $productosDAO->selectMasPedidos();
 
         // 3. Cargamos la vista de la portada
         require_once __DIR__ . '/../views/home.php';
