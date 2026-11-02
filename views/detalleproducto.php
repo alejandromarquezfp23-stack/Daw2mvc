@@ -31,15 +31,18 @@
 
         <div class="d-block justify-content-center align-items-center divElementos">
             <h2 class="fw-semibold">
-                Solo tu.
+                Solo tú.
                 <span class="text-secondary fw-semibold">
-                    ¿Como lo prefieres?
+                    ¿Cómo lo prefieres?
                 </span>
             </h2>
 
             <div class="p-5 mb-5 mt-5" style="max-height: 300px; overflow-y: auto;">
-                <?php foreach ($ingredientesActivos as $ingrediente) { ?>
+                <?php if (empty($ingredientesActivos)) { ?>
+                    <p class="text-secondary">Este producto no tiene extras disponibles.</p>
+                <?php } ?>
 
+                <?php foreach ($ingredientesActivos as $ingrediente) { ?>
                     <div class="border border-black rounded-3 p-4 mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <img src="/Daw2mvc/<?php echo $ingrediente->getImagen(); ?>" alt="" class="imagenIngrediente">
@@ -68,14 +71,11 @@
                 <img
                     src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
                     alt="<?php echo $productoActivo->getNombre(); ?>"
-                    class="img-fluid w-50"
-                >
+                    class="img-fluid w-50">
             </div>
 
             <div class="col-12 col-md-5">
-                <h3 class="fs-5 fw-semibold mb-4">
-                    Desde precio€
-                </h3>
+                <h3 class="fs-5 fw-semibold mb-4"> Desde <?php echo $productoActivo->getPrecio(); ?> € </h3>
                 <hr>
                 <h4 class="fs-6 fw-semibold">
                     ¿Necesitas un momento?
