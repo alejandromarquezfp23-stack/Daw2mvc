@@ -32,23 +32,3 @@ function desplazarProductos(direccion) {
 
     animacionActual = requestAnimationFrame(animar);
 }
-
-const productos = document.querySelector('.divProductos');
-const izquierda = document.querySelector('.flecha-izquierda');
-const derecha = document.querySelector('.flecha-derecha');
-
-function actualizarFlechas() {
-    const posicion = productos.scrollLeft;
-    const maximo = productos.scrollWidth - productos.clientWidth;
-
-    izquierda.classList.toggle('flecha-oculta', posicion < maximo - 1);
-    derecha.classList.toggle('flecha-oculta', posicion >= maximo - 1);
-}
-
-productos.addEventListener('scroll', actualizarFlechas);
-window.addEventListener('resize', actualizarFlechas);
-
-const observador = new ResizeObserver(actualizarFlechas);
-observador.observe(productos);
-
-actualizarFlechas();
