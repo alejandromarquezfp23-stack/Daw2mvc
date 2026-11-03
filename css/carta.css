@@ -1,9 +1,4 @@
-
-* {
-    background-color: #F5F5F7;
-}
-
-.footer {
+body, .div-carta, .footer {
     background-color: #F5F5F7;
 }
 
@@ -21,22 +16,21 @@
 }
 
 .divProducto:hover {
-    transform: scale(1.01);
+    transform: scale(1.03);
     transition: all 0.3s ease;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.divProducto img,
-.divProducto h5,
-.divProducto p,
-.divProducto div {
+.divCategoria:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.divProducto img, .divProducto h5, .divProducto p, .divProducto div {
     background-color: white;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro",
-        "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
+body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Mostrar correctamente las imágenes */
@@ -66,16 +60,6 @@ body {
     }
 }
 
-/* CARRUSEL */
-
-.divProductos {
-    flex: 1 1 auto;
-    min-width: 0;
-    width: 100%;
-    scroll-behavior: auto;
-    scrollbar-width: none;
-}
-
 .divProductos::-webkit-scrollbar {
     display: none;
 }
@@ -83,7 +67,7 @@ body {
 .flecha-carrusel {
     position: absolute;
     z-index: 1;
-    width: 70px;
+    width: 90px;
 }
 
 .flecha-izquierda {

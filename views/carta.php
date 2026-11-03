@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appletito - Carta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Daw2mvc/css/carta.css?v=3">
+    <link rel="stylesheet" href="/Daw2mvc/css/carta.css?v=<?= time() ?>">
     <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
 </head>
 
@@ -31,7 +31,7 @@
 
             <?php foreach ($categorias as $categoria) { ?>
 
-                <div class="col-6 col-md-auto text-center px-md-0">
+                <div class="col-6 col-md-auto text-center px-md-0 divCategoria">
                     <a href="index.php?controller=carta&id=<?php echo $categoria->getId(); ?>" class="text-decoration-none text-dark">
 
                         <img
@@ -62,9 +62,9 @@
 
         <?php } ?>
 
-        <div class="d-flex align-items-center p-5 m-md-4 position-relative">
+        <div class="d-flex align-items-center">
 
-            <button class="btn flecha-carrusel flecha-izquierda m-0 p-0" type="button" onclick="desplazarProductos(-1)">
+            <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(-1)">
                 <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="Flecha izquierda">
             </button>
 
@@ -111,8 +111,8 @@
 
             </div>
 
-            <button class="btn flecha-carrusel flecha-derecha m-0 p-0" type="button" onclick="desplazarProductos(1)">
-                <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="Flecha derecha" class="w-100">
+            <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(1)">
+                <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="Flecha derecha">
             </button>
 
         </div>
