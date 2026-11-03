@@ -15,7 +15,7 @@
         require_once __DIR__ . '/../controllers/cartaController.php';
     ?>
 
-    <div class="mt-1 container-fluid div-carta p-3">
+    <div class="div-carta">
 
         <div class="d-flex flex-column flex-md-row justify-content-between mx-0 mx-md-5">
             <h1 class="text-start text-md-center fw-semibold mx-0 mx-md-5 mt-3 mt-md-5 mb-3 mb-md-5 display-2">
@@ -62,13 +62,13 @@
 
         <?php } ?>
 
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center container-fluid">
 
             <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(-1)">
                 <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="Flecha izquierda">
             </button>
 
-            <div class="d-flex flex-md-row overflow-auto divProductos">
+            <div class="d-flex divProductos overflow-scroll">
 
                 <?php foreach ($productos as $producto) { ?>
 
