@@ -62,7 +62,7 @@
 
         <?php } ?>
 
-        <div class="d-flex align-items-center container-fluid">
+        <div class="d-flex align-items-center">
 
             <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(-1)">
                 <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="Flecha izquierda">
