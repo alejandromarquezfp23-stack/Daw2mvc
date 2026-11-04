@@ -1,5 +1,5 @@
 -- Volcado completo de daw2mvc: esquema y datos actuales.
--- Incluye las tablas y todas sus filas; al importarlo, reemplaza las tablas existentes.
+-- Incluye todas las tablas y sus filas; al importarlo, reemplaza las tablas existentes.
 -- Importar con: mysql -u root -p < sql/init.sql
 
 CREATE DATABASE IF NOT EXISTS `daw2mvc` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -42,7 +42,6 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `activa`, `imagenes`) V
   ('2', 'Platos principales', 'Platos principales de cocina mediterránea con ingredientes seleccionados.', '1', 'imagenes/categorias/platos-principales.png'),
   ('3', 'Postres', 'Postres artesanales para terminar la experiencia.', '1', 'imagenes/categorias/postres.png'),
   ('4', 'Bebidas', 'Bebidas refrescantes, cafés y una selección para acompañar la carta.', '1', 'imagenes/categorias/bebidas.png'),
-  ('5', 'Tapas', 'Tapas para compartir, inspiradas en la cocina española.', '1', 'imagenes/categorias/tapas.png'),
   ('6', 'Menús especiales', 'Menús completos pensados para disfrutar de una experiencia gastronómica.', '1', 'imagenes/categorias/menus-especiales.png');
 
 CREATE TABLE `ingredientes` (
@@ -94,8 +93,7 @@ CREATE TABLE `ofertas` (
 INSERT INTO `ofertas` (`id`, `nombre`, `descripcion`, `tipo`, `valor`, `codigo`, `fecha_inicio`, `fecha_fin`, `activa`) VALUES
   ('1', 'Bienvenida Appletito', 'Descuento de bienvenida para nuevos clientes.', 'descuento', '10.00', 'BIENVENIDA10', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
   ('2', 'Noche para dos', 'Menú especial para compartir en pareja.', 'combo', '2.00', 'NOCHE2', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
-  ('3', 'Dulce final', 'Descuento en una selección de postres.', 'descuento', '15.00', 'DULCE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
-  ('4', 'Tapa extra', 'Promoción 2x1 en tapas seleccionadas.', '2x1', '2.00', 'TAPA2X1', '2026-11-01 11:58:50', '2027-05-01 11:58:50', '1');
+  ('3', 'Dulce final', 'Descuento en una selección de postres.', 'descuento', '15.00', 'DULCE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1');
 
 CREATE TABLE `productos` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -141,14 +139,6 @@ INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `descripcion`, `precio`
   ('28', '4', 'Té verde aromático', 'Infusión de té verde con notas vegetales suaves.', '5.00', 'imagenes/productos/te-verde.png', '1'),
   ('29', '4', 'Cóctel cítrico de la casa', 'Cóctel de autor con cítricos, hierbas frescas y hielo.', '12.00', 'imagenes/productos/coctel-citrico-de-la-casa.png', '1'),
   ('30', '4', 'Mocktail frutos rojos', 'Bebida sin alcohol con frutos rojos, lima y soda.', '9.00', 'imagenes/productos/mocktail-frutos-rojos.png', '1'),
-  ('31', '5', 'Patatas bravas de la casa', 'Patatas doradas con salsa brava casera y alioli suave.', '11.50', 'imagenes/productos/patatas-bravas.png', '1'),
-  ('32', '5', 'Croquetas cremosas de jamón', 'Croquetas caseras de jamón ibérico con rebozado crujiente.', '12.00', 'imagenes/productos/croquetas-de-jamon.png', '1'),
-  ('33', '5', 'Pulpo a la gallega', 'Pulpo tierno con patata, pimentón ahumado y aceite de oliva.', '18.50', 'imagenes/productos/pulpo-a-la-gallega.png', '1'),
-  ('34', '5', 'Jamón ibérico de bellota', 'Selección de jamón ibérico cortado a cuchillo.', '22.00', 'imagenes/productos/jamon-iberico-de-bellota.png', '1'),
-  ('35', '5', 'Gildas tradicionales', 'Gildas de anchoa, aceituna y piparra.', '10.50', 'imagenes/productos/gildas-tradicionales.png', '1'),
-  ('36', '5', 'Pimientos de padrón', 'Pimientos de padrón salteados con sal en escamas.', '11.00', 'imagenes/productos/pimientos-de-padron.png', '1'),
-  ('37', '5', 'Tortilla española cremosa', 'Tortilla de patata poco cuajada con cebolla caramelizada.', '13.00', 'imagenes/productos/tortilla-espanola.png', '1'),
-  ('38', '5', 'Tabla de quesos seleccionados', 'Selección de quesos nacionales con fruta, frutos secos y pan.', '19.50', 'imagenes/productos/tabla-de-quesos.png', '1'),
   ('39', '6', 'Menú Degustación Esencia', 'Recorrido de cinco pases con productos de temporada y postre del chef.', '68.00', 'imagenes/productos/menu-degustacion-esencia.png', '1'),
   ('40', '6', 'Menú Mediterráneo', 'Entrante, pescado del día, postre artesanal y bebida.', '49.00', 'imagenes/productos/menu-mediterraneo.png', '1'),
   ('41', '6', 'Menú Tierra y Mar', 'Selección de carne y marisco con acompañamientos y postre.', '62.00', 'imagenes/productos/menu-tierra-y-mar.png', '1'),
@@ -170,9 +160,6 @@ INSERT INTO `oferta_producto` (`oferta_id`, `producto_id`) VALUES
   ('1', '18'),
   ('3', '18'),
   ('3', '19'),
-  ('4', '31'),
-  ('4', '32'),
-  ('4', '35'),
   ('2', '41'),
   ('2', '42');
 
@@ -201,12 +188,7 @@ INSERT INTO `producto_ingrediente` (`producto_id`, `ingrediente_id`, `cantidad`)
   ('15', '45', '1.00'),
   ('15', '46', '1.00'),
   ('22', '31', '1.00'),
-  ('22', '34', '1.00'),
-  ('31', '11', '1.00'),
-  ('31', '41', '1.00'),
-  ('34', '44', '1.00'),
-  ('38', '39', '1.00'),
-  ('38', '43', '1.00');
+  ('22', '34', '1.00');
 
 CREATE TABLE `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -250,16 +232,16 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `pedidos` (`id`, `usuario_id`, `estado`, `fecha_pedido`, `subtotal`, `descuento`, `total`, `metodo_pago`, `estado_pago`) VALUES
-  ('1', '1', 'entregado', '2026-11-01 18:47:45', '60.00', '0.00', '60.00', 'demo', 'pagado'),
-  ('2', '2', 'entregado', '2026-10-31 18:47:45', '84.50', '0.00', '84.50', 'demo', 'pagado'),
-  ('3', '3', 'entregado', '2026-10-30 18:47:45', '47.00', '0.00', '47.00', 'demo', 'pagado'),
-  ('4', '4', 'entregado', '2026-10-29 18:47:45', '61.00', '0.00', '61.00', 'demo', 'pagado'),
-  ('5', '5', 'entregado', '2026-10-28 18:47:45', '48.00', '0.00', '48.00', 'demo', 'pagado'),
-  ('6', '6', 'entregado', '2026-10-27 18:47:45', '59.50', '0.00', '59.50', 'demo', 'pagado'),
-  ('7', '7', 'entregado', '2026-10-26 18:47:45', '35.50', '0.00', '35.50', 'demo', 'pagado'),
-  ('8', '8', 'entregado', '2026-10-25 18:47:45', '90.50', '0.00', '90.50', 'demo', 'pagado'),
-  ('9', '9', 'entregado', '2026-10-24 18:47:45', '36.00', '0.00', '36.00', 'demo', 'pagado'),
-  ('10', '10', 'entregado', '2026-10-23 18:47:45', '71.00', '0.00', '71.00', 'demo', 'pagado');
+  ('1', '1', 'entregado', '2026-11-01 18:47:45', '55.00', '0.00', '55.00', 'demo', 'pagado'),
+  ('2', '2', 'entregado', '2026-10-31 18:47:45', '89.50', '0.00', '89.50', 'demo', 'pagado'),
+  ('3', '3', 'entregado', '2026-10-30 18:47:45', '59.50', '0.00', '59.50', 'demo', 'pagado'),
+  ('4', '4', 'entregado', '2026-10-29 18:47:45', '90.00', '0.00', '90.00', 'demo', 'pagado'),
+  ('5', '5', 'entregado', '2026-10-28 18:47:45', '60.50', '0.00', '60.50', 'demo', 'pagado'),
+  ('6', '6', 'entregado', '2026-10-27 18:47:45', '88.50', '0.00', '88.50', 'demo', 'pagado'),
+  ('7', '7', 'entregado', '2026-10-26 18:47:45', '58.00', '0.00', '58.00', 'demo', 'pagado'),
+  ('8', '8', 'entregado', '2026-10-25 18:47:45', '137.50', '0.00', '137.50', 'demo', 'pagado'),
+  ('9', '9', 'entregado', '2026-10-24 18:47:45', '56.50', '0.00', '56.50', 'demo', 'pagado'),
+  ('10', '10', 'entregado', '2026-10-23 18:47:45', '99.00', '0.00', '99.00', 'demo', 'pagado');
 
 CREATE TABLE `pedido_detalle` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -277,26 +259,26 @@ CREATE TABLE `pedido_detalle` (
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `pedido_detalle` (`id`, `pedido_id`, `producto_id`, `nombre_producto`, `precio_unitario`, `cantidad`, `subtotal`) VALUES
-  ('1', '1', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
-  ('2', '1', '32', 'Croquetas cremosas de jamón', '12.00', '1', '12.00'),
-  ('3', '2', '15', 'Hamburguesa gourmet de vacuno', '24.00', '3', '72.00'),
+  ('1', '1', '7', 'Solomillo de ternera premium', '38.50', '1', '38.50'),
+  ('2', '1', '1', 'Burrata con tomate confitado', '16.50', '1', '16.50'),
+  ('3', '2', '7', 'Solomillo de ternera premium', '38.50', '2', '77.00'),
   ('4', '2', '17', 'Coulant de chocolate', '12.50', '1', '12.50'),
-  ('5', '3', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
-  ('6', '3', '31', 'Patatas bravas de la casa', '11.50', '2', '23.00'),
-  ('7', '4', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('5', '3', '7', 'Solomillo de ternera premium', '38.50', '1', '38.50'),
+  ('6', '3', '3', 'Tartar de atún rojo', '21.00', '1', '21.00'),
+  ('7', '4', '7', 'Solomillo de ternera premium', '38.50', '2', '77.00'),
   ('8', '4', '24', 'Limonada natural', '6.50', '2', '13.00'),
-  ('9', '5', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
-  ('10', '5', '32', 'Croquetas cremosas de jamón', '12.00', '2', '24.00'),
-  ('11', '6', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('9', '5', '7', 'Solomillo de ternera premium', '38.50', '1', '38.50'),
+  ('10', '5', '6', 'Vieiras a la plancha', '22.00', '1', '22.00'),
+  ('11', '6', '7', 'Solomillo de ternera premium', '38.50', '2', '77.00'),
   ('12', '6', '19', 'Tiramisú artesanal', '11.50', '1', '11.50'),
-  ('13', '7', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
-  ('14', '7', '31', 'Patatas bravas de la casa', '11.50', '1', '11.50'),
-  ('15', '8', '15', 'Hamburguesa gourmet de vacuno', '24.00', '3', '72.00'),
-  ('16', '8', '33', 'Pulpo a la gallega', '18.50', '1', '18.50'),
-  ('17', '9', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
-  ('18', '9', '32', 'Croquetas cremosas de jamón', '12.00', '1', '12.00'),
-  ('19', '10', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
-  ('20', '10', '31', 'Patatas bravas de la casa', '11.50', '2', '23.00');
+  ('13', '7', '7', 'Solomillo de ternera premium', '38.50', '1', '38.50'),
+  ('14', '7', '2', 'Carpaccio de solomillo', '19.50', '1', '19.50'),
+  ('15', '8', '7', 'Solomillo de ternera premium', '38.50', '3', '115.50'),
+  ('16', '8', '6', 'Vieiras a la plancha', '22.00', '1', '22.00'),
+  ('17', '9', '7', 'Solomillo de ternera premium', '38.50', '1', '38.50'),
+  ('18', '9', '4', 'Gambas al ajillo', '18.00', '1', '18.00'),
+  ('19', '10', '7', 'Solomillo de ternera premium', '38.50', '2', '77.00'),
+  ('20', '10', '6', 'Vieiras a la plancha', '22.00', '1', '22.00');
 
 CREATE TABLE `pedido_detalle_ingrediente` (
   `id` int NOT NULL AUTO_INCREMENT,

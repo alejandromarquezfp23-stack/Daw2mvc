@@ -28,23 +28,7 @@ require_once __DIR__ . '/../models/productos.php';
 
             return $listaProductos;
         }
-
-        public function selectMasPedidos() {
-            $sql = "SELECT p.id, p.nombre, p.descripcion, p.precio, p.imagen, SUM(pd.cantidad) AS unidades_vendidas
-                    FROM productos p
-                    INNER JOIN pedido_detalle pd ON pd.producto_id = p.id
-                    INNER JOIN pedidos pe ON pe.id = pd.pedido_id
-                    WHERE p.activo = 1 AND pe.estado_pago = 'pagado' AND pe.estado <> 'cancelado'
-                    GROUP BY p.id, p.nombre, p.descripcion, p.precio, p.imagen
-                    ORDER BY unidades_vendidas DESC, p.id ASC";
-            $consulta = $this->conexion->prepare($sql);
-            $consulta->execute();
-            $resultados = $consulta->get_result()->fetch_all(MYSQLI_ASSOC);
-            $consulta->close();
-
-            return $resultados;
-        }
-
+        
         public function selectByID($id) {
             $sql = 'SELECT id, categoria_id, nombre, descripcion, precio, imagen, activo FROM productos WHERE id = ?';
             $consulta = $this->conexion->prepare($sql);
@@ -104,6 +88,34 @@ require_once __DIR__ . '/../models/productos.php';
             $consulta = $this->conexion->prepare($sql);
             $consulta->bind_param("i", $id);
             return $consulta->execute();
+        }
+
+        public function selectMasPedido() {
+            $sql = "SELECT p.id, p.nombre, p.descripcion, p.precio, p.imagen, SUM(pd.cantidad) AS unidades_vendidas
+                FROM productos p
+                INNER JOIN pedido_detalle pd ON pd.producto_id = p.id
+                INNER JOIN pedidos pe ON pe.id = pd.pedido_id
+                WHERE p.activo = 1 AND pe.estado_pago = 'pagado' AND pe.estado <> 'cancelado'
+                GROUP BY p.id, p.nombre, p.descripcion, p.precio, p.imagen
+                ORDER BY unidades_vendidas DESC, p.id ASC
+                LIMIT 1";
+
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute();
+            $resultado = $consulta->get_result()->fetch_assoc();
+            $consulta->close();
+
+            return $resultado;
+        }
+
+        public function selectRandom() {
+            $sql = "SELECT * from productos WHERE activo = 1 ORDER BY RAND()";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute();
+            $resultados = $consulta->get_result()->fetch_all(MYSQLI_ASSOC);
+            $consulta->close();
+
+            return $resultados;
         }
     } 
 ?>

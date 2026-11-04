@@ -7,17 +7,14 @@ class homeController {
 
     public function index() {
         $conexion = DataBase::connect();
-
-        // 1. Instanciamos los DAOs que necesitemos
         $productosDAO = new productosDAO($conexion);
         $categoriasDAO = new CategoriasDAO($conexion);
 
-        // 2. Traemos datos para la portada (ejemplo: productos y categorías)
         $productos = $productosDAO->selectAll();
         $categorias = $categoriasDAO->selectAll();
-        $productosMasPedidos = $productosDAO->selectMasPedidos();
+        $productoMasPedido = $productosDAO->selectMasPedido();
+        $productosRandom = $productosDAO->selectRandom();
 
-        // 3. Cargamos la vista de la portada
         require_once __DIR__ . '/../views/home.php';
     }
 }

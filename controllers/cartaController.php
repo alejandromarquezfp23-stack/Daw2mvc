@@ -10,20 +10,16 @@ class CartaController {
     public function index() {
         $conexion = DataBase::connect();
 
-        // 1. Obtener categorías desde la BD
         $categoriasDAO = new CategoriasDAO($conexion);
         $categorias = $categoriasDAO->selectAll();
 
-        // 2. Obtener productos desde la BD
         $productosDAO = new productosDAO($conexion);
         $productos = $productosDAO->selectAll();
 
-        // 3. Obtener ID de la categoría activa
         $categoriaActivaId = isset($_GET['id'])
             ? $_GET['id']
             : (isset($categorias[0]) ? $categorias[0]->getId() : 0);
 
-        // 4. Buscar el nombre de la categoría activa
         $nombreCategoria = '';
         foreach ($categorias as $categoria) {
             if ($categoria->getId() == $categoriaActivaId) {
@@ -32,7 +28,6 @@ class CartaController {
             }
         }
 
-        // 5. Cargar la vista HTML (tendrá acceso a $categorias, $productos, $categoriaActivaId y $nombreCategoria)
         require_once __DIR__ . '/../views/carta.php';
     }
 }

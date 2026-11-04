@@ -13,79 +13,79 @@
         include __DIR__ . '/header2.php';
     ?>
     <div class="container-fluid mt-1 text-white banner">
-        <h1 class="text-center fw-bold titulos-h1">Appletito</h1>
-        <h3 class="text-center">Disfruta de la mejor comida del mundo</h3>
-        <p class="text-center text-secondary"><?php echo $productosMasPedidos[0]['nombre'] . ' - ' . 'Lo mas pedido de nosotros' ?></p>
+        <h1 class="text-center fw-bold titulos-h1">NUESTRO PRODUCTO MAS VENDIDO DE TODOS</h1>
+        <h3 class="text-center"><?php echo $productoMasPedido['nombre'] ?></h3>
+        <p class="text-center text-secondary"><?php echo $productoMasPedido['descripcion'] ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="<?php echo $productosMasPedidos[0]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4 w-25">
+        <img src="<?php echo $productoMasPedido['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto d-block mt-4 w-25">
     </div>
 
     <div class="container-fluid mt-1  banner2">
-        <h1 class="text-center fw-bold titulos-h1">Nuestra mejor tapa</h1>
-        <h3 class="text-center"><?php echo $productosMasPedidos[1]['nombre'] ?></h3>
-        <p class="text-center text-secondary"><?php echo $productosMasPedidos[1]['descripcion'] ?></p>
+        <h1 class="text-center fw-bold titulos-h1"><?php echo $productosRandom[1]['nombre'] ?></h1>
+        <h3 class="text-center"><?php echo $productosRandom[1]['nombre'] ?></h3>
+        <p class="text-center text-secondary"><?php echo $productosRandom[1]['descripcion'] ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="<?php echo $productosMasPedidos[1]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="<?php echo $productosRandom[1]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid mt-1  banner3">
         <h1 class="text-center fw-bold titulos-h1">Otros de nuestros exitos</h1>
-        <h3 class="text-center"><?php echo $productosMasPedidos[2]['nombre'] ?></h3>
-        <p class="text-center text-secondary"><?php echo $productosMasPedidos[2]['descripcion'] ?></p>
+        <h3 class="text-center"><?php echo $productosRandom[2]['nombre'] ?></h3>
+        <p class="text-center text-secondary"><?php echo $productosRandom[2]['descripcion'] ?></p>
         <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="" class="btn btn-primary rounded-pill px-4">Más información</a>
             <a href="" class="btn btn-outline-primary rounded-pill px-4">Comprar</a>
         </div>
-        <img src="<?php echo $productosMasPedidos[2]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
+        <img src="<?php echo $productosRandom[2]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-25 d-block mt-4">
     </div>
 
     <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-3 text-white">
         <div class="contenedores2 container-fluid mb-3 p-5 rounded-3">
-            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[3]['nombre'] ?></h2>
-            <p class="text-center"><?php echo $productosMasPedidos[3]['descripcion'] ?></p>
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosRandom[3]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosRandom[3]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="<?php echo $productosMasPedidos[3]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosRandom[3]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores2 container-fluid mb-3 p-5 rounded-3">
-            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[4]['nombre'] ?></h2>
-            <p class="text-center"><?php echo $productosMasPedidos[4]['descripcion'] ?></p>
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosRandom[4]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosRandom[4]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="<?php echo $productosMasPedidos[4]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosRandom[4]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
 
     <div class="container-fluid d-flex flex-column flex-md-row justify-content-center gap-3 mt-1">
         <div class="contenedores4 container-fluid mb-3 p-5 rounded-3">
-            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[5]['nombre'] ?></h2>
-            <p class="text-center"><?php echo $productosMasPedidos[5]['descripcion'] ?></p>
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosRandom[5]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosRandom[5]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="<?php echo $productosMasPedidos[5]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosRandom[5]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
 
         <div class="contenedores3 container-fluid mb-3 p-5 rounded-3">
-            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosMasPedidos[6]['nombre'] ?></h2>
-            <p class="text-center"><?php echo $productosMasPedidos[6]['descripcion'] ?></p>
+            <h2 class="text-center fw-bold titulos-h1"><?php echo $productosRandom[6]['nombre'] ?></h2>
+            <p class="text-center"><?php echo $productosRandom[6]['descripcion'] ?></p>
             <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="" class="btn btn-primary rounded-pill px-3">Más información</a>
                 <a href="" class="btn btn-outline-primary rounded-pill px-3">Comprar</a>
             </div>
-            <img src="<?php echo $productosMasPedidos[6]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
+            <img src="<?php echo $productosRandom[6]['imagen'] ?>" alt="Imagen del restaurante" class="img-fluid mx-auto w-50 d-block mt-4 rounded-2">
         </div>
     </div>
     
