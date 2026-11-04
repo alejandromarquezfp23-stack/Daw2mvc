@@ -1,25 +1,315 @@
--- Daw2mvc — script de inicialización
--- Uso (MySQL/MariaDB):
---   mysql -u root < sql/init.sql
--- O desde phpMyAdmin: Importar este archivo.
+-- Volcado completo de daw2mvc: esquema y datos actuales.
+-- Incluye las tablas y todas sus filas; al importarlo, reemplaza las tablas existentes.
+-- Importar con: mysql -u root -p < sql/init.sql
 
-CREATE DATABASE IF NOT EXISTS daw2mvc
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `daw2mvc` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `daw2mvc`;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
-USE daw2mvc;
+DROP TABLE IF EXISTS `pedido_detalle_ingrediente`;
+DROP TABLE IF EXISTS `pedido_detalle`;
+DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `usuarios`;
+DROP TABLE IF EXISTS `producto_ingrediente`;
+DROP TABLE IF EXISTS `oferta_producto`;
+DROP TABLE IF EXISTS `productos`;
+DROP TABLE IF EXISTS `ofertas`;
+DROP TABLE IF EXISTS `ingredientes`;
+DROP TABLE IF EXISTS `categorias`;
+DROP TABLE IF EXISTS `camisetas`;
 
-DROP TABLE IF EXISTS camisetas;
-
-CREATE TABLE camisetas (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(100) NOT NULL,
-  talla ENUM('XXL', 'XL', 'L', 'M', 'S') NOT NULL,
-  precio DECIMAL(8, 2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (id)
+CREATE TABLE `camisetas` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `talla` enum('XXL','XL','L','M','S') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `precio` decimal(8,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO camisetas (nombre, talla, precio) VALUES
-  ('Camiseta básica negra', 'M', 19.99),
-  ('Camiseta técnica running', 'L', 29.50),
-  ('Camiseta oversize', 'XL', 24.00);
+CREATE TABLE `categorias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `activa` tinyint(1) NOT NULL DEFAULT '1',
+  `imagenes` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `activa`, `imagenes`) VALUES
+  ('1', 'Entrantes', 'Pequeños comienzos elaborados con producto fresco y de temporada.', '1', 'imagenes/categorias/entrantes.png'),
+  ('2', 'Platos principales', 'Platos principales de cocina mediterránea con ingredientes seleccionados.', '1', 'imagenes/categorias/platos-principales.png'),
+  ('3', 'Postres', 'Postres artesanales para terminar la experiencia.', '1', 'imagenes/categorias/postres.png'),
+  ('4', 'Bebidas', 'Bebidas refrescantes, cafés y una selección para acompañar la carta.', '1', 'imagenes/categorias/bebidas.png'),
+  ('5', 'Tapas', 'Tapas para compartir, inspiradas en la cocina española.', '1', 'imagenes/categorias/tapas.png'),
+  ('6', 'Menús especiales', 'Menús completos pensados para disfrutar de una experiencia gastronómica.', '1', 'imagenes/categorias/menus-especiales.png');
+
+CREATE TABLE `ingredientes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `precio_extra` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `activo` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) VALUES
+  ('3', 'Albahaca fresca', 'imagenes/ingredientes/albahaca-fresca.png', '0.50', '1'),
+  ('5', 'Parmesano', 'imagenes/ingredientes/parmesano.png', '1.50', '1'),
+  ('6', 'Rúcula', 'imagenes/ingredientes/rucula.png', '0.50', '1'),
+  ('8', 'Aguacate', 'imagenes/ingredientes/aguacate.png', '1.50', '1'),
+  ('9', 'Sésamo', 'imagenes/ingredientes/sesamo.png', '0.50', '1'),
+  ('10', 'Gambas', 'imagenes/ingredientes/gambas.png', '3.50', '1'),
+  ('11', 'Ajo', 'imagenes/ingredientes/ajo.png', '0.00', '1'),
+  ('12', 'Boletus', 'imagenes/ingredientes/boletus.png', '2.50', '1'),
+  ('13', 'Trufa', 'imagenes/ingredientes/trufa.png', '4.00', '1'),
+  ('15', 'Coliflor', 'imagenes/ingredientes/coliflor.png', '0.00', '1'),
+  ('29', 'Queso curado', 'imagenes/ingredientes/queso-curado.png', '1.50', '1'),
+  ('31', 'Chocolate negro', 'imagenes/ingredientes/chocolate-negro.png', '1.50', '1'),
+  ('34', 'Vainilla', 'imagenes/ingredientes/vainilla.png', '0.50', '1'),
+  ('36', 'Limón', 'imagenes/ingredientes/limon.png', '0.50', '1'),
+  ('39', 'Jamón ibérico', 'imagenes/ingredientes/jamon-iberico.png', '3.00', '1'),
+  ('41', 'Pimentón', 'imagenes/ingredientes/pimenton.png', '0.00', '1'),
+  ('43', 'Aceitunas', 'imagenes/ingredientes/aceitunas.png', '0.50', '1'),
+  ('44', 'Piparras', 'imagenes/ingredientes/piparras.png', '0.50', '1'),
+  ('45', 'Huevo', 'imagenes/ingredientes/huevo.png', '0.50', '1'),
+  ('46', 'Cebolla', 'imagenes/ingredientes/cebolla.png', '0.50', '1');
+
+CREATE TABLE `ofertas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `tipo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Valores: descuento, 2x1, combo, codigo',
+  `valor` decimal(10,2) DEFAULT NULL,
+  `codigo` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `activa` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `ofertas` (`id`, `nombre`, `descripcion`, `tipo`, `valor`, `codigo`, `fecha_inicio`, `fecha_fin`, `activa`) VALUES
+  ('1', 'Bienvenida Appletito', 'Descuento de bienvenida para nuevos clientes.', 'descuento', '10.00', 'BIENVENIDA10', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
+  ('2', 'Noche para dos', 'Menú especial para compartir en pareja.', 'combo', '2.00', 'NOCHE2', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
+  ('3', 'Dulce final', 'Descuento en una selección de postres.', 'descuento', '15.00', 'DULCE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
+  ('4', 'Tapa extra', 'Promoción 2x1 en tapas seleccionadas.', '2x1', '2.00', 'TAPA2X1', '2026-11-01 11:58:50', '2027-05-01 11:58:50', '1');
+
+CREATE TABLE `productos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `categoria_id` int NOT NULL,
+  `nombre` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `precio` decimal(10,2) NOT NULL,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `categoria_id` (`categoria_id`),
+  CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `imagen`, `activo`) VALUES
+  ('1', '1', 'Burrata con tomate confitado', 'Burrata cremosa sobre tomate cherry confitado, albahaca fresca y aceite de oliva virgen extra.', '16.50', 'imagenes/productos/burrata-con-tomate-confitado.png', '1'),
+  ('2', '1', 'Carpaccio de solomillo', 'Láminas finas de solomillo con parmesano, rúcula, alcaparras y vinagreta cítrica.', '19.50', 'imagenes/productos/carpaccio-de-solomillo.png', '1'),
+  ('3', '1', 'Tartar de atún rojo', 'Atún rojo cortado a cuchillo con aguacate, sésamo tostado y aliño suave de soja.', '21.00', 'imagenes/productos/tartar-de-atun-rojo.png', '1'),
+  ('4', '1', 'Gambas al ajillo', 'Gambas salteadas con ajo, guindilla suave y aceite de oliva virgen extra.', '18.00', 'imagenes/productos/gambas-al-ajillo.png', '1'),
+  ('5', '1', 'Crema de boletus y trufa', 'Crema fina de setas con aceite de trufa y crujiente de pan artesanal.', '15.50', 'imagenes/productos/crema-de-boletus-y-trufa.png', '1'),
+  ('6', '1', 'Vieiras a la plancha', 'Vieiras doradas con crema ligera de coliflor y aceite de hierbas.', '22.00', 'imagenes/productos/vieiras-a-la-plancha.png', '1'),
+  ('7', '2', 'Solomillo de ternera premium', 'Solomillo a la parrilla con patatas confitadas, verduras baby y jugo de carne.', '38.50', 'imagenes/productos/solomillo-de-ternera-premium.png', '1'),
+  ('8', '2', 'Entrecot madurado', 'Entrecot madurado a la parrilla con mantequilla de hierbas y patatas rústicas.', '36.00', 'imagenes/productos/entrecot-madurado.png', '1'),
+  ('9', '2', 'Lomo de bacalao confitado', 'Bacalao confitado a baja temperatura con pilpil suave y espárragos verdes.', '29.50', 'imagenes/productos/lomo-de-bacalao-confitado.png', '1'),
+  ('10', '2', 'Salmón a la brasa', 'Lomo de salmón a la brasa con verduras de temporada y salsa de cítricos.', '27.50', 'imagenes/productos/salmon-a-la-brasa.png', '1'),
+  ('11', '2', 'Risotto de trufa y parmesano', 'Arroz cremoso con parmesano curado, setas y un toque de trufa.', '28.00', 'imagenes/productos/risotto-de-trufa-y-parmesano.png', '1'),
+  ('12', '2', 'Tagliatelle con bogavante', 'Pasta fresca con bogavante, tomate cherry y emulsión ligera de marisco.', '34.50', 'imagenes/productos/tagliatelle-con-bogavante-rico.png', '1'),
+  ('13', '2', 'Paletilla de cordero a baja temperatura', 'Cordero cocinado lentamente con parmentier de patata y reducción de romero.', '35.00', 'imagenes/productos/paletilla-de-cordero.png', '1'),
+  ('14', '2', 'Magret de pato con frutos rojos', 'Magret rosado con salsa de frutos rojos y milhojas de patata.', '31.50', 'imagenes/productos/magret-de-pato.png', '1'),
+  ('15', '2', 'Hamburguesa gourmet de vacuno', 'Vacuno premium, queso curado, cebolla caramelizada y pan brioche.', '24.00', 'imagenes/productos/hamburguesa-gourmet.png', '1'),
+  ('16', '2', 'Arroz meloso de marisco', 'Arroz meloso con gambas, mejillones, calamar y fumet casero.', '32.00', 'imagenes/productos/arroz-meloso-de-marisco.png', '1'),
+  ('17', '3', 'Coulant de chocolate', 'Bizcocho tibio de chocolate negro con corazón fundente y frutos rojos.', '12.50', 'imagenes/productos/coulant-de-chocolate.png', '1'),
+  ('18', '3', 'Tarta cremosa de queso', 'Tarta de queso horneada con base crujiente y coulis de frutos del bosque.', '11.50', 'imagenes/productos/tarta-de-queso.png', '1'),
+  ('19', '3', 'Tiramisú artesanal', 'Clásico tiramisú con café espresso, mascarpone y cacao.', '11.50', 'imagenes/productos/tiramisu-artesanal.png', '1'),
+  ('20', '3', 'Crème brûlée de vainilla', 'Crema de vainilla natural con una fina capa de azúcar caramelizado.', '11.00', 'imagenes/productos/creme-brulee.png', '1'),
+  ('21', '3', 'Tartaleta de frutos rojos', 'Masa sablé, crema suave y selección de frutos rojos frescos.', '11.00', 'imagenes/productos/tartaleta-de-frutos-rojos.png', '1'),
+  ('22', '3', 'Helado artesano de temporada', 'Tres bolas de helado artesano con sabores de temporada.', '10.50', 'imagenes/productos/helado-artesano.png', '1'),
+  ('23', '4', 'Agua mineral premium', 'Agua mineral natural servida fría.', '5.00', 'imagenes/productos/agua-mineral-premium.png', '1'),
+  ('24', '4', 'Limonada natural', 'Limonada recién preparada con limón natural y hierbabuena.', '6.50', 'imagenes/productos/limonada-natural.png', '1'),
+  ('25', '4', 'Zumo de naranja natural', 'Zumo exprimido al momento con naranjas frescas.', '6.50', 'imagenes/productos/zumo-de-naranja-natural.png', '1'),
+  ('26', '4', 'Café espresso', 'Café espresso de tueste seleccionado.', '4.00', 'imagenes/productos/cafe-espresso.png', '1'),
+  ('27', '4', 'Cappuccino', 'Espresso con leche emulsionada y una capa cremosa de espuma.', '5.50', 'imagenes/productos/cappuccino.png', '1'),
+  ('28', '4', 'Té verde aromático', 'Infusión de té verde con notas vegetales suaves.', '5.00', 'imagenes/productos/te-verde.png', '1'),
+  ('29', '4', 'Cóctel cítrico de la casa', 'Cóctel de autor con cítricos, hierbas frescas y hielo.', '12.00', 'imagenes/productos/coctel-citrico-de-la-casa.png', '1'),
+  ('30', '4', 'Mocktail frutos rojos', 'Bebida sin alcohol con frutos rojos, lima y soda.', '9.00', 'imagenes/productos/mocktail-frutos-rojos.png', '1'),
+  ('31', '5', 'Patatas bravas de la casa', 'Patatas doradas con salsa brava casera y alioli suave.', '11.50', 'imagenes/productos/patatas-bravas.png', '1'),
+  ('32', '5', 'Croquetas cremosas de jamón', 'Croquetas caseras de jamón ibérico con rebozado crujiente.', '12.00', 'imagenes/productos/croquetas-de-jamon.png', '1'),
+  ('33', '5', 'Pulpo a la gallega', 'Pulpo tierno con patata, pimentón ahumado y aceite de oliva.', '18.50', 'imagenes/productos/pulpo-a-la-gallega.png', '1'),
+  ('34', '5', 'Jamón ibérico de bellota', 'Selección de jamón ibérico cortado a cuchillo.', '22.00', 'imagenes/productos/jamon-iberico-de-bellota.png', '1'),
+  ('35', '5', 'Gildas tradicionales', 'Gildas de anchoa, aceituna y piparra.', '10.50', 'imagenes/productos/gildas-tradicionales.png', '1'),
+  ('36', '5', 'Pimientos de padrón', 'Pimientos de padrón salteados con sal en escamas.', '11.00', 'imagenes/productos/pimientos-de-padron.png', '1'),
+  ('37', '5', 'Tortilla española cremosa', 'Tortilla de patata poco cuajada con cebolla caramelizada.', '13.00', 'imagenes/productos/tortilla-espanola.png', '1'),
+  ('38', '5', 'Tabla de quesos seleccionados', 'Selección de quesos nacionales con fruta, frutos secos y pan.', '19.50', 'imagenes/productos/tabla-de-quesos.png', '1'),
+  ('39', '6', 'Menú Degustación Esencia', 'Recorrido de cinco pases con productos de temporada y postre del chef.', '68.00', 'imagenes/productos/menu-degustacion-esencia.png', '1'),
+  ('40', '6', 'Menú Mediterráneo', 'Entrante, pescado del día, postre artesanal y bebida.', '49.00', 'imagenes/productos/menu-mediterraneo.png', '1'),
+  ('41', '6', 'Menú Tierra y Mar', 'Selección de carne y marisco con acompañamientos y postre.', '62.00', 'imagenes/productos/menu-tierra-y-mar.png', '1'),
+  ('42', '6', 'Menú Celebración', 'Experiencia para compartir con entrantes, plato principal y postre especial.', '75.00', 'imagenes/productos/menu-celebracion.png', '1');
+
+CREATE TABLE `oferta_producto` (
+  `oferta_id` int NOT NULL,
+  `producto_id` int NOT NULL,
+  PRIMARY KEY (`oferta_id`,`producto_id`),
+  KEY `producto_id` (`producto_id`),
+  CONSTRAINT `oferta_producto_ibfk_1` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`id`),
+  CONSTRAINT `oferta_producto_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `oferta_producto` (`oferta_id`, `producto_id`) VALUES
+  ('1', '7'),
+  ('1', '17'),
+  ('3', '17'),
+  ('1', '18'),
+  ('3', '18'),
+  ('3', '19'),
+  ('4', '31'),
+  ('4', '32'),
+  ('4', '35'),
+  ('2', '41'),
+  ('2', '42');
+
+CREATE TABLE `producto_ingrediente` (
+  `producto_id` int NOT NULL,
+  `ingrediente_id` int NOT NULL,
+  `cantidad` decimal(10,2) NOT NULL DEFAULT '1.00',
+  PRIMARY KEY (`producto_id`,`ingrediente_id`),
+  KEY `ingrediente_id` (`ingrediente_id`),
+  CONSTRAINT `producto_ingrediente_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
+  CONSTRAINT `producto_ingrediente_ibfk_2` FOREIGN KEY (`ingrediente_id`) REFERENCES `ingredientes` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `producto_ingrediente` (`producto_id`, `ingrediente_id`, `cantidad`) VALUES
+  ('1', '3', '1.00'),
+  ('2', '5', '1.00'),
+  ('2', '6', '1.00'),
+  ('3', '8', '1.00'),
+  ('3', '9', '1.00'),
+  ('5', '13', '1.00'),
+  ('6', '15', '1.00'),
+  ('7', '10', '1.00'),
+  ('7', '12', '1.00'),
+  ('9', '36', '1.00'),
+  ('15', '29', '1.00'),
+  ('15', '45', '1.00'),
+  ('15', '46', '1.00'),
+  ('22', '31', '1.00'),
+  ('22', '34', '1.00'),
+  ('31', '11', '1.00'),
+  ('31', '41', '1.00'),
+  ('34', '44', '1.00'),
+  ('38', '39', '1.00'),
+  ('38', '43', '1.00');
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `rol` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'usuario' COMMENT 'Valores: usuario, admin',
+  `fecha_registro` datetime NOT NULL DEFAULT (now()),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `telefono`, `direccion`, `fecha_nacimiento`, `rol`, `fecha_registro`) VALUES
+  ('1', 'Usuario Demo 01', 'demo01@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000001', 'Calle Demo 1', '1995-01-10', 'usuario', '2026-11-02 18:47:45'),
+  ('2', 'Usuario Demo 02', 'demo02@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000002', 'Calle Demo 2', '1992-02-11', 'usuario', '2026-11-02 18:47:45'),
+  ('3', 'Usuario Demo 03', 'demo03@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000003', 'Calle Demo 3', '1998-03-12', 'usuario', '2026-11-02 18:47:45'),
+  ('4', 'Usuario Demo 04', 'demo04@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000004', 'Calle Demo 4', '1994-04-13', 'usuario', '2026-11-02 18:47:45'),
+  ('5', 'Usuario Demo 05', 'demo05@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000005', 'Calle Demo 5', '1991-05-14', 'usuario', '2026-11-02 18:47:45'),
+  ('6', 'Usuario Demo 06', 'demo06@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000006', 'Calle Demo 6', '1996-06-15', 'usuario', '2026-11-02 18:47:45'),
+  ('7', 'Usuario Demo 07', 'demo07@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000007', 'Calle Demo 7', '1993-07-16', 'usuario', '2026-11-02 18:47:45'),
+  ('8', 'Usuario Demo 08', 'demo08@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000008', 'Calle Demo 8', '1997-08-17', 'usuario', '2026-11-02 18:47:45'),
+  ('9', 'Usuario Demo 09', 'demo09@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000009', 'Calle Demo 9', '1990-09-18', 'usuario', '2026-11-02 18:47:45'),
+  ('10', 'Usuario Demo 10', 'demo10@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000010', 'Calle Demo 10', '1999-10-19', 'usuario', '2026-11-02 18:47:45');
+
+CREATE TABLE `pedidos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` int NOT NULL,
+  `estado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pendiente' COMMENT 'Valores: pendiente, confirmado, preparando, enviado, entregado, cancelado',
+  `fecha_pedido` datetime NOT NULL DEFAULT (now()),
+  `subtotal` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `total` decimal(10,2) NOT NULL,
+  `metodo_pago` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'simulado',
+  `estado_pago` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pendiente' COMMENT 'Valores: pendiente, pagado, fallido',
+  PRIMARY KEY (`id`),
+  KEY `usuario_id` (`usuario_id`),
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `pedidos` (`id`, `usuario_id`, `estado`, `fecha_pedido`, `subtotal`, `descuento`, `total`, `metodo_pago`, `estado_pago`) VALUES
+  ('1', '1', 'entregado', '2026-11-01 18:47:45', '60.00', '0.00', '60.00', 'demo', 'pagado'),
+  ('2', '2', 'entregado', '2026-10-31 18:47:45', '84.50', '0.00', '84.50', 'demo', 'pagado'),
+  ('3', '3', 'entregado', '2026-10-30 18:47:45', '47.00', '0.00', '47.00', 'demo', 'pagado'),
+  ('4', '4', 'entregado', '2026-10-29 18:47:45', '61.00', '0.00', '61.00', 'demo', 'pagado'),
+  ('5', '5', 'entregado', '2026-10-28 18:47:45', '48.00', '0.00', '48.00', 'demo', 'pagado'),
+  ('6', '6', 'entregado', '2026-10-27 18:47:45', '59.50', '0.00', '59.50', 'demo', 'pagado'),
+  ('7', '7', 'entregado', '2026-10-26 18:47:45', '35.50', '0.00', '35.50', 'demo', 'pagado'),
+  ('8', '8', 'entregado', '2026-10-25 18:47:45', '90.50', '0.00', '90.50', 'demo', 'pagado'),
+  ('9', '9', 'entregado', '2026-10-24 18:47:45', '36.00', '0.00', '36.00', 'demo', 'pagado'),
+  ('10', '10', 'entregado', '2026-10-23 18:47:45', '71.00', '0.00', '71.00', 'demo', 'pagado');
+
+CREATE TABLE `pedido_detalle` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pedido_id` int NOT NULL,
+  `producto_id` int DEFAULT NULL,
+  `nombre_producto` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL,
+  `cantidad` int NOT NULL,
+  `subtotal` decimal(10,2) NOT NULL COMMENT 'CHECK cantidad > 0 y precio_unitario >= 0',
+  PRIMARY KEY (`id`),
+  KEY `pedido_id` (`pedido_id`),
+  KEY `producto_id` (`producto_id`),
+  CONSTRAINT `pedido_detalle_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`),
+  CONSTRAINT `pedido_detalle_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `pedido_detalle` (`id`, `pedido_id`, `producto_id`, `nombre_producto`, `precio_unitario`, `cantidad`, `subtotal`) VALUES
+  ('1', '1', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('2', '1', '32', 'Croquetas cremosas de jamón', '12.00', '1', '12.00'),
+  ('3', '2', '15', 'Hamburguesa gourmet de vacuno', '24.00', '3', '72.00'),
+  ('4', '2', '17', 'Coulant de chocolate', '12.50', '1', '12.50'),
+  ('5', '3', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
+  ('6', '3', '31', 'Patatas bravas de la casa', '11.50', '2', '23.00'),
+  ('7', '4', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('8', '4', '24', 'Limonada natural', '6.50', '2', '13.00'),
+  ('9', '5', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
+  ('10', '5', '32', 'Croquetas cremosas de jamón', '12.00', '2', '24.00'),
+  ('11', '6', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('12', '6', '19', 'Tiramisú artesanal', '11.50', '1', '11.50'),
+  ('13', '7', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
+  ('14', '7', '31', 'Patatas bravas de la casa', '11.50', '1', '11.50'),
+  ('15', '8', '15', 'Hamburguesa gourmet de vacuno', '24.00', '3', '72.00'),
+  ('16', '8', '33', 'Pulpo a la gallega', '18.50', '1', '18.50'),
+  ('17', '9', '15', 'Hamburguesa gourmet de vacuno', '24.00', '1', '24.00'),
+  ('18', '9', '32', 'Croquetas cremosas de jamón', '12.00', '1', '12.00'),
+  ('19', '10', '15', 'Hamburguesa gourmet de vacuno', '24.00', '2', '48.00'),
+  ('20', '10', '31', 'Patatas bravas de la casa', '11.50', '2', '23.00');
+
+CREATE TABLE `pedido_detalle_ingrediente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pedido_detalle_id` int NOT NULL,
+  `ingrediente_id` int DEFAULT NULL,
+  `nombre_ingrediente` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `precio_extra` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `accion` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Valores: incluido, quitado, añadido',
+  PRIMARY KEY (`id`),
+  KEY `pedido_detalle_id` (`pedido_detalle_id`),
+  KEY `ingrediente_id` (`ingrediente_id`),
+  CONSTRAINT `pedido_detalle_ingrediente_ibfk_1` FOREIGN KEY (`pedido_detalle_id`) REFERENCES `pedido_detalle` (`id`),
+  CONSTRAINT `pedido_detalle_ingrediente_ibfk_2` FOREIGN KEY (`ingrediente_id`) REFERENCES `ingredientes` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+SET FOREIGN_KEY_CHECKS = 1;
