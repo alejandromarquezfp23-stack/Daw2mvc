@@ -68,7 +68,7 @@
                 <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="Flecha izquierda">
             </button>
 
-            <div class="d-flex divProductos overflow-scroll">
+            <div class="d-flex divProductos overflow-auto">
 
                 <?php foreach ($productos as $producto) { ?>
 
@@ -123,7 +123,7 @@
         <?php include __DIR__ . '/footer.php'; ?>
     </div>
 
-    <script src="/Daw2mvc/js/carta.js"></script>
+    <script src="/Daw2mvc/js/carta.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

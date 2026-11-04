@@ -99,3 +99,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display
     opacity: 0;
     pointer-events: none;
 }
+
+.d-flex.divProductos {
+    flex-direction: row !important;
+    padding-left: 86px !important;
+    padding-right: 86px !important;
+    scroll-padding-left: 86px;
+    width: 100%;
+}
