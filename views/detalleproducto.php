@@ -1,4 +1,29 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = [];
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $productoId = $_POST['producto_id'] ?? null;
+    $accion = $_POST['accion'] ?? null;
+
+    if ($productoId && $accion === 'continuar') {
+        if (isset($_SESSION['carrito'][$productoId])) {
+            $_SESSION['carrito'][$productoId]++;
+        } else {
+            $_SESSION['carrito'][$productoId] = 1;
+        }
+
+        $_SESSION['mensaje_exito'] = "¡Producto añadido al carrito correctamente!";
+        header('Location: /Daw2mvc/index.php?controller=carrito');
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -66,7 +91,7 @@
         </div>
     </section>
 
-    <section class="container-fluid bg-light py-4 py-lg-5">
+    <form class="container-fluid bg-light py-4 py-lg-5" method="POST">
         <div class="container">
             <div class="row align-items-center g-4 g-lg-5">
                 <div class="col-12 col-md-4 text-center text-md-start">
@@ -86,9 +111,10 @@
                     <p class="small text-secondary my-3">
                         Conserva todas tus selecciones guardando este dispositivo
                         en Tus favoritos. Después, podrás volver cuando quieras
-                        y retomar todo donde lo dejaste.
+                        y retomar todo donde lo deixaste.
                     </p>
-                    <button class="btn btn-primary btn-sm rounded-3">
+
+                    <button type="button" class="btn btn-primary btn-sm rounded-3">
                         Guardar en favoritos
                     </button>
                     <hr class="my-4">
@@ -98,13 +124,14 @@
                 </div>
 
                 <div class="col-12 col-md-3">
-                    <button class="btn btn-primary rounded-3 w-100">
+                    <input type="hidden" name="producto_id" value="<?php echo $productoActivo->getId(); ?>">
+                    <button class="btn btn-primary rounded-3 w-100" type="submit" name="accion" value="continuar">
                         Continuar
                     </button>
                 </div>
             </div>
         </div>
-    </section>
+    </form>
 
     <?php
         include __DIR__ . '/footer.php';

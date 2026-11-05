@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daw2mvc — Productos</title>
+    <title>Daw2mvc — Appletito</title>
     <style>
         body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.5; }
         table { border-collapse: collapse; width: 100%; max-width: 640px; }

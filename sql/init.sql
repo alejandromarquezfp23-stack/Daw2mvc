@@ -115,7 +115,7 @@ INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `descripcion`, `precio`
   ('4', '1', 'Gambas al ajillo', 'Gambas salteadas con ajo, guindilla suave y aceite de oliva virgen extra.', '18.00', 'imagenes/productos/gambas-al-ajillo.png', '1'),
   ('5', '1', 'Crema de boletus y trufa', 'Crema fina de setas con aceite de trufa y crujiente de pan artesanal.', '15.50', 'imagenes/productos/crema-de-boletus-y-trufa.png', '1'),
   ('6', '1', 'Vieiras a la plancha', 'Vieiras doradas con crema ligera de coliflor y aceite de hierbas.', '22.00', 'imagenes/productos/vieiras-a-la-plancha.png', '1'),
-  ('7', '2', 'Solomillo de ternera premium', 'Solomillo a la parrilla con patatas confitadas, verduras baby y jugo de carne.', '38.50', 'imagenes/productos/solomillo-de-ternera-premium.png', '1'),
+  ('7', '2', 'Solomillo de ternera premium', 'Solomillo a la parrilla con patatas confitadas, verduras baby y jugo de carne.', '38.50', 'imagenes/productos/solomillo-de-ternera.png', '1'),
   ('8', '2', 'Entrecot madurado', 'Entrecot madurado a la parrilla con mantequilla de hierbas y patatas rústicas.', '36.00', 'imagenes/productos/entrecot-madurado.png', '1'),
   ('9', '2', 'Lomo de bacalao confitado', 'Bacalao confitado a baja temperatura con pilpil suave y espárragos verdes.', '29.50', 'imagenes/productos/lomo-de-bacalao-confitado.png', '1'),
   ('10', '2', 'Salmón a la brasa', 'Lomo de salmón a la brasa con verduras de temporada y salsa de cítricos.', '27.50', 'imagenes/productos/salmon-a-la-brasa.png', '1'),

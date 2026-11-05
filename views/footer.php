@@ -25,28 +25,28 @@
                 <div class="col-6 col-md-3">
                     <h6 class="mb-3">Explorar</h6>
                     <ul class="list-unstyled p-0 m-0">
-                        <li class="mb-2"><a class="text-decoration-none" href="#">Carta de la casa</a></li>
+                        <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=carta">Carta de la casa</a></li>
                     </ul>
                 </div>
 
                 <div class="col-6 col-md-3">
                     <h6 class="mb-3">Appletito</h6>
                     <ul class="list-unstyled p-0 m-0">
-                        <li class="mb-2"><a class="text-decoration-none" href="#">Restaurante</a></li>
+                        <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Restaurante</a></li>
                     </ul>
                 </div>
 
                 <div class="col-6 col-md-3">
                     <h6 class="mb-3">Ayuda</h6>
                     <ul class="list-unstyled p-0 m-0">
-                        <li class="mb-2"><a class="text-decoration-none" href="#">Soporte</a></li>
+                        <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Soporte</a></li>
                     </ul>
                 </div>
 
                 <div class="col-6 col-md-3">
                     <h6 class="mb-3">Información legal</h6>
                     <ul class="list-unstyled p-0 m-0">
-                        <li class="mb-2"><a class="text-decoration-none" href="#">Política de privacidad</a></li>
+                        <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Política de privacidad</a></li>
                     </ul>
                 </div>
 
@@ -60,11 +60,11 @@
                 </p>
 
                 <div class="footer-legal d-flex flex-wrap gap-2 align-items-center">
-                    <a class="text-decoration-none" href="#">Privacidad</a>
+                    <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Privacidad</a>
                     <span>|</span>
-                    <a class="text-decoration-none" href="#">Cookies</a>
+                    <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Cookies</a>
                     <span>|</span>
-                    <a class="text-decoration-none" href="#">Avisos legales</a>
+                    <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Avisos legales</a>
                 </div>
             </div>
         </div>
