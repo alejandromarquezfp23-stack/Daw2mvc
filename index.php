@@ -7,7 +7,7 @@ function showError($code, $message)
     $errorCode = $code;
     $errorMessage = $message;
     $view = "views/error.php";
-    include_once "views/main.php";
+    include_once "views/mainError.php";
     exit;
 }
 
