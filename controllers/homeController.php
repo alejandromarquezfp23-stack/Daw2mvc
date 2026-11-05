@@ -1,20 +1,18 @@
 <?php
-require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../dao/productosDAO.php';
 require_once __DIR__ . '/../dao/CategoriasDAO.php';
 
 class homeController {
 
     public function index() {
-        $conexion = DataBase::connect();
-        $productosDAO = new productosDAO($conexion);
-        $categoriasDAO = new CategoriasDAO($conexion);
+        $productos = productosDAO::selectAll();
+        $categorias = categoriasDAO::selectAll();
+        $productoMasPedido = productosDAO::selectMasPedido();
+        $productosRandom = productosDAO::selectRandom();
 
-        $productos = $productosDAO->selectAll();
-        $categorias = $categoriasDAO->selectAll();
-        $productoMasPedido = $productosDAO->selectMasPedido();
-        $productosRandom = $productosDAO->selectRandom();
+        $view = __DIR__ . '/../views/home.php';
+        $css = 'home.css';
 
-        require_once __DIR__ . '/../views/home.php';
+        require_once __DIR__ . '/../views/main2.php';
     }
 }

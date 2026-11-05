@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../models/Categorias.php';
 require_once __DIR__ . '/../dao/CategoriasDAO.php';
 require_once __DIR__ . '/../models/productos.php';
@@ -8,13 +7,8 @@ require_once __DIR__ . '/../dao/productosDAO.php';
 class CartaController {
 
     public function index() {
-        $conexion = DataBase::connect();
-
-        $categoriasDAO = new CategoriasDAO($conexion);
-        $categorias = $categoriasDAO->selectAll();
-
-        $productosDAO = new productosDAO($conexion);
-        $productos = $productosDAO->selectAll();
+        $categorias = categoriasDAO::selectAll();
+        $productos = productosDAO::selectAll();
 
         $categoriaActivaId = isset($_GET['id'])
             ? $_GET['id']
@@ -28,6 +22,10 @@ class CartaController {
             }
         }
 
-        require_once __DIR__ . '/../views/carta.php';
+        $view = __DIR__ . '/../views/carta.php';
+        $css = 'carta.css';
+        $js = 'carta.js';
+
+        require_once __DIR__ . '/../views/main.php';
     }
 }

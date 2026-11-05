@@ -1,65 +1,50 @@
 <?php
+require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../models/ofertas.php';
 
 class ofertasDAO {
-    private $conexion;
-
-    public function __construct(mysqli $conexion) {
-        $this->conexion = $conexion;
-    }
-
-    public function selectAll() {
+    public static function selectAll() {
         $sql = 'SELECT id, nombre, descripcion, tipo, valor, codigo, fecha_inicio, fecha_fin, activa FROM ofertas ORDER BY id';
-        $consulta = $this->conexion->query($sql);
-        $resultados = $consulta->fetch_all(MYSQLI_ASSOC);
-
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
         $listaOfertas = [];
-        foreach ($resultados as $fila) {
-            $oferta = new ofertas();
-            $oferta->setId($fila['id']);
-            $oferta->setNombre($fila['nombre']);
-            $oferta->setDescripcion($fila['descripcion']);
-            $oferta->setTipo($fila['tipo']);
-            $oferta->setValor($fila['valor']);
-            $oferta->setCodigo($fila['codigo']);
-            $oferta->setFechaInicio($fila['fecha_inicio']);
-            $oferta->setFechaFin($fila['fecha_fin']);
-            $oferta->setActiva($fila['activa']);
+        while ($oferta = $consulta->fetch_object('ofertas')) {
             $listaOfertas[] = $oferta;
         }
+        $consulta->close();
+        $conexion->close();
 
         return $listaOfertas;
     }
 
-    public function selectByID($id) {
+    public static function selectByID($id) {
         $sql = 'SELECT id, nombre, descripcion, tipo, valor, codigo, fecha_inicio, fecha_fin, activa FROM ofertas WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
+        $oferta = $consulta->get_result()->fetch_object('ofertas');
         $consulta->close();
-        if (!$fila) {
-            return null;
-        }
-        return new ofertas($fila['id'], $fila['nombre'], $fila['descripcion'], $fila['tipo'], $fila['valor'], $fila['codigo'], $fila['fecha_inicio'], $fila['fecha_fin'], $fila['activa']);
+        $conexion->close();
+        return $oferta ?: null;
     }
 
-    public function selectByCodigo($codigo) {
+    public static function selectByCodigo($codigo) {
         $sql = 'SELECT id, nombre, descripcion, tipo, valor, codigo, fecha_inicio, fecha_fin, activa FROM ofertas WHERE codigo = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $consulta->bind_param('s', $codigo);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
+        $oferta = $consulta->get_result()->fetch_object('ofertas');
         $consulta->close();
-        if (!$fila) {
-            return null;
-        }
-        return new ofertas($fila['id'], $fila['nombre'], $fila['descripcion'], $fila['tipo'], $fila['valor'], $fila['codigo'], $fila['fecha_inicio'], $fila['fecha_fin'], $fila['activa']);
+        $conexion->close();
+        return $oferta ?: null;
     }
 
-    public function insert(ofertas $oferta) {
+    public static function insert(ofertas $oferta) {
         $sql = 'INSERT INTO ofertas (nombre, descripcion, tipo, valor, codigo, fecha_inicio, fecha_fin, activa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $nombre = $oferta->getNombre();
         $descripcion = $oferta->getDescripcion();
         $tipo = $oferta->getTipo();
@@ -70,14 +55,16 @@ class ofertasDAO {
         $activa = $oferta->getActiva();
         $consulta->bind_param('sssdsssi', $nombre, $descripcion, $tipo, $valor, $codigo, $fechaInicio, $fechaFin, $activa);
         $consulta->execute();
-        $id = $this->conexion->insert_id;
+        $id = $conexion->insert_id;
         $consulta->close();
+        $conexion->close();
         return $id;
     }
 
-    public function update(ofertas $oferta) {
+    public static function update(ofertas $oferta) {
         $sql = 'UPDATE ofertas SET nombre = ?, descripcion = ?, tipo = ?, valor = ?, codigo = ?, fecha_inicio = ?, fecha_fin = ?, activa = ? WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $nombre = $oferta->getNombre();
         $descripcion = $oferta->getDescripcion();
         $tipo = $oferta->getTipo();
@@ -90,15 +77,18 @@ class ofertasDAO {
         $consulta->bind_param('sssdsssii', $nombre, $descripcion, $tipo, $valor, $codigo, $fechaInicio, $fechaFin, $activa, $id);
         $resultado = $consulta->execute();
         $consulta->close();
+        $conexion->close();
         return $resultado;
     }
 
-    public function delete($id) {
+    public static function delete($id) {
         $sql = 'DELETE FROM ofertas WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $resultado = $consulta->execute();
         $consulta->close();
+        $conexion->close();
         return $resultado;
     }
 }

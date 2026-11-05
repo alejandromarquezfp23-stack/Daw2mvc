@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daw2mvc — Appletito</title>
-    <style>
-        body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.5; }
-        table { border-collapse: collapse; width: 100%; max-width: 640px; }
-        th, td { border: 1px solid #ccc; padding: 0.5rem 0.75rem; text-align: left; }
-        th { background: #f4f4f4; }
-        a { margin-right: 0.75rem; }
-        form { display: flex; flex-direction: column; gap: 0.75rem; max-width: 320px; }
-        label { display: flex; flex-direction: column; gap: 0.25rem; }
-        input, select, button { padding: 0.4rem 0.5rem; font: inherit; }
-    </style>
+    <title>Appletito</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Daw2mvc/css/header.css">
+    <link rel="stylesheet" href="/Daw2mvc/css/footer.css">
+
+    <?php if (isset($css)) : ?>
+        <link rel="stylesheet" href="/Daw2mvc/css/<?= $css ?>">
+    <?php endif; ?>
+
+    <?php if (isset($js)) : ?>
+        <script src="/Daw2mvc/js/<?= $js ?>"></script>
+    <?php endif; ?>
 </head>
 
 <body>
-    <?php include_once $view; ?>
-</body>
+    <?php
+        include __DIR__ . '/header.php';
+    ?>
 
+    <?php include_once $view; ?>
+
+    <?php
+        include __DIR__ . '/footer.php';
+    ?>
+</body>
 </html>

@@ -1,60 +1,40 @@
 <?php
+require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../models/productos.php';
 
     class productosDAO {
-        private $conexion;
-
-        public function __construct(mysqli $conexion) {
-            $this->conexion = $conexion;
-        }
-
-        public function selectAll() {
-            $sql = 'SELECT id, categoria_id, nombre, descripcion, precio, imagen, activo FROM productos ORDER BY id';
-            $consulta = $this->conexion->query($sql);
-            $resultados = $consulta->fetch_all(MYSQLI_ASSOC);
-
-            $listaProductos = [];
-            foreach ($resultados as $fila) {
-                $prod = new productos();
-                $prod->setId($fila['id']);
-                $prod->setCategoriaId($fila['categoria_id']);
-                $prod->setNombre($fila['nombre']);
-                $prod->setDescripcion($fila['descripcion']);
-                $prod->setPrecio($fila['precio']);
-                $prod->setImagen($fila['imagen']);
-                $prod->setActivo($fila['activo']);
-                $listaProductos[] = $prod;
+        public static function selectAll() {
+            $sql = 'SELECT * FROM productos ORDER BY id';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $productos = [];
+            while ($producto = $consulta->fetch_object('productos')) {
+                $productos[] = $producto;
             }
+            $consulta->close();
+            $conexion->close();
 
-            return $listaProductos;
+            return $productos;
         }
         
-        public function selectByID($id) {
+        public static function selectByID($id) {
             $sql = 'SELECT id, categoria_id, nombre, descripcion, precio, imagen, activo FROM productos WHERE id = ?';
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $consulta->bind_param("i", $id);
             $consulta->execute();
             $resultado = $consulta->get_result();
-            $fila = $resultado->fetch_assoc();
+            $producto = $resultado->fetch_object('productos');
+            $consulta->close();
+            $conexion->close();
 
-            if ($fila) {
-                $prod = new productos();
-                $prod->setId($fila['id']);
-                $prod->setCategoriaId($fila['categoria_id']);
-                $prod->setNombre($fila['nombre']);
-                $prod->setDescripcion($fila['descripcion']);
-                $prod->setPrecio($fila['precio']);
-                $prod->setImagen($fila['imagen']);
-                $prod->setActivo($fila['activo']);
-                return $prod;
-            }
-
-            return null;
+            return $producto ?: null;
         }
 
-        public function insert(productos $producto) {
+        public static function insert(productos $producto) {
             $sql = 'INSERT INTO productos (categoria_id, nombre, descripcion, precio, imagen, activo) VALUES (?, ?, ?, ?, ?, ?)';
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $categoria_id = $producto->getCategoriaId();
             $nombre = $producto->getNombre();
             $descripcion = $producto->getDescripcion();
@@ -64,13 +44,17 @@ require_once __DIR__ . '/../models/productos.php';
 
             $consulta->bind_param("issdsi", $categoria_id, $nombre, $descripcion, $precio, $imagen, $activo);
             $consulta->execute();
+            $id = $conexion->insert_id;
+            $consulta->close();
+            $conexion->close();
 
-            return $this->conexion->insert_id;
+            return $id;
         }
 
-        public function update(productos $producto) {
+        public static function update(productos $producto) {
             $sql = 'UPDATE productos SET categoria_id = ?, nombre = ?, descripcion = ?, precio = ?, imagen = ?, activo = ? WHERE id = ?';
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $categoria_id = $producto->getCategoriaId();
             $nombre = $producto->getNombre();
             $descripcion = $producto->getDescripcion();
@@ -80,42 +64,57 @@ require_once __DIR__ . '/../models/productos.php';
             $id = $producto->getId();
 
             $consulta->bind_param("issdsii", $categoria_id, $nombre, $descripcion, $precio, $imagen, $activo, $id);
-            return $consulta->execute();
+            $resultado = $consulta->execute();
+            $consulta->close();
+            $conexion->close();
+            return $resultado;
         }
 
-        public function delete($id) {
+        public static function delete($id) {
             $sql = 'DELETE FROM productos WHERE id = ?';
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $consulta->bind_param("i", $id);
-            return $consulta->execute();
+            $resultado = $consulta->execute();
+            $consulta->close();
+            $conexion->close();
+            return $resultado;
         }
 
-        public function selectMasPedido() {
-            $sql = "SELECT p.id, p.nombre, p.descripcion, p.precio, p.imagen, SUM(pd.cantidad) AS unidades_vendidas
+        public static function selectMasPedido() {
+            $sql = "SELECT p.id, p.categoria_id, p.nombre, p.descripcion, p.precio, p.imagen, p.activo
                 FROM productos p
                 INNER JOIN pedido_detalle pd ON pd.producto_id = p.id
                 INNER JOIN pedidos pe ON pe.id = pd.pedido_id
                 WHERE p.activo = 1 AND pe.estado_pago = 'pagado' AND pe.estado <> 'cancelado'
-                GROUP BY p.id, p.nombre, p.descripcion, p.precio, p.imagen
-                ORDER BY unidades_vendidas DESC, p.id ASC
+                GROUP BY p.id, p.categoria_id, p.nombre, p.descripcion, p.precio, p.imagen, p.activo
+                ORDER BY SUM(pd.cantidad) DESC, p.id ASC
                 LIMIT 1";
 
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $consulta->execute();
-            $resultado = $consulta->get_result()->fetch_assoc();
+            $resultado = $consulta->get_result()->fetch_object('productos');
             $consulta->close();
+            $conexion->close();
 
-            return $resultado;
+            return $resultado ?: null;
         }
 
-        public function selectRandom() {
+        public static function selectRandom() {
             $sql = "SELECT * from productos WHERE activo = 1 ORDER BY RAND()";
-            $consulta = $this->conexion->prepare($sql);
+            $conexion = DataBase::connect();
+            $consulta = $conexion->prepare($sql);
             $consulta->execute();
-            $resultados = $consulta->get_result()->fetch_all(MYSQLI_ASSOC);
+            $resultado = $consulta->get_result();
+            $productos = [];
+            while ($producto = $resultado->fetch_object('productos')) {
+                $productos[] = $producto;
+            }
             $consulta->close();
+            $conexion->close();
 
-            return $resultados;
+            return $productos;
         }
     } 
 ?>

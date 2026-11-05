@@ -1,3 +1,8 @@
 .divImagen {
     background-color: #f5f5f5;
 }
+
+.tarjeta-ingrediente:hover {
+    transition: 0.5s;
+    border-color: black !important;
+}

@@ -1,5 +1,4 @@
 <?php
-    require_once __DIR__ . '/../config/DataBase.php';
     require_once __DIR__ . '/../models/productos.php';
     require_once __DIR__ . '/../dao/productosDAO.php';
     require_once __DIR__ . '/../models/ingredientes.php';
@@ -11,24 +10,11 @@
         public function index() {
             $id = $_GET['id'];
 
-            $conexion = DataBase::connect();
-            $productosDAO = new productosDAO($conexion);
-            $productos = $productosDAO->selectAll();
+            $productoActivo = productosDAO::selectByID($id);
 
-            $productoActivo = null;
+            $ingredientes = ingredientesDAO::selectAll();
 
-            foreach ($productos as $producto) {
-                if ($producto->getId() == $id) {
-                    $productoActivo = $producto;
-                    break;
-                }
-            }
-
-            $ingredientesDAO = new ingredientesDAO($conexion);
-            $ingredientes = $ingredientesDAO->selectAll();
-
-            $producto_ingredienteDAO = new producto_ingredienteDAO($conexion);
-            $producto_ingrediente = $producto_ingredienteDAO->selectAll();
+            $producto_ingrediente = producto_ingredienteDAO::selectAll();
 
             $ingredientesProducto = [];
             foreach ($producto_ingrediente as $relacion) {
@@ -46,7 +32,34 @@
                 }
             }
 
-            require_once __DIR__ . '/../views/detalleproducto.php';
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            if (!isset($_SESSION['carrito'])) {
+                $_SESSION['carrito'] = [];
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $productoId = $_POST['producto_id'] ?? null;
+                $accion = $_POST['accion'] ?? null;
+
+                if ($productoId && $accion === 'continuar') {
+                    if (isset($_SESSION['carrito'][$productoId])) {
+                        $_SESSION['carrito'][$productoId]++;
+                    } else {
+                        $_SESSION['carrito'][$productoId] = 1;
+                    }
+
+                    $_SESSION['mensaje_exito'] = "¡Producto añadido al carrito correctamente!";
+                    header('Location: /Daw2mvc/index.php?controller=carrito');
+                    exit;
+                }
+            }
+
+            $view = __DIR__ . '/../views/detalleproducto.php';
+            $css = 'detalleproducto.css';
+            require_once __DIR__ . '/../views/main3.php';
         }
     }
 ?>

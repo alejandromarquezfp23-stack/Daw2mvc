@@ -1,62 +1,54 @@
 <?php
+require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../models/ingredientes.php';
 
 class ingredientesDAO {
-    private $conexion;
-
-    public function __construct(mysqli $conexion) {
-        $this->conexion = $conexion;
-    }
-
-    public function selectAll() {
+    public static function selectAll() {
         $sql = 'SELECT id, nombre, imagen,precio_extra, activo FROM ingredientes ORDER BY id';
-        $consulta = $this->conexion->query($sql);
-        $resultados = $consulta->fetch_all(MYSQLI_ASSOC);
-
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
         $listaIngredientes = [];
-        foreach ($resultados as $fila) {
-            $ingrediente = new ingredientes();
-            $ingrediente->setId($fila['id']);
-            $ingrediente->setNombre($fila['nombre']);
-            $ingrediente->setImagen($fila['imagen']);
-            $ingrediente->setPrecioExtra($fila['precio_extra']);
-            $ingrediente->setActivo($fila['activo']);
+        while ($ingrediente = $consulta->fetch_object('Ingredientes')) {
             $listaIngredientes[] = $ingrediente;
         }
+        $consulta->close();
+        $conexion->close();
 
         return $listaIngredientes;
     }
 
-    public function selectByID($id) {
+    public static function selectByID($id) {
         $sql = 'SELECT id, nombre, imagen, precio_extra, activo FROM ingredientes WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
+        $ingrediente = $consulta->get_result()->fetch_object('Ingredientes');
         $consulta->close();
-        if (!$fila) {
-            return null;
-        }
-        return new ingredientes($fila['id'], $fila['nombre'], $fila['precio_extra'], $fila['activo']);
+        $conexion->close();
+        return $ingrediente ?: null;
     }
 
-    public function insert(ingredientes $ingrediente) {
+    public static function insert(ingredientes $ingrediente) {
         $sql = 'INSERT INTO ingredientes (nombre, imagen, precio_extra, activo) VALUES (?, ?, ?, ?)';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $nombre = $ingrediente->getNombre();
         $imagen = $ingrediente->getImagen();
         $precioExtra = $ingrediente->getPrecioExtra();
         $activo = $ingrediente->getActivo();
         $consulta->bind_param('ssdi', $nombre, $imagen, $precioExtra, $activo);
         $consulta->execute();
-        $id = $this->conexion->insert_id;
+        $id = $conexion->insert_id;
         $consulta->close();
+        $conexion->close();
         return $id;
     }
 
-    public function update(ingredientes $ingrediente) {
+    public static function update(ingredientes $ingrediente) {
         $sql = 'UPDATE ingredientes SET nombre = ?, imagen = ?, precio_extra = ?, activo = ? WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $nombre = $ingrediente->getNombre();
         $imagen = $ingrediente->getImagen();
         $precioExtra = $ingrediente->getPrecioExtra();
@@ -65,15 +57,18 @@ class ingredientesDAO {
         $consulta->bind_param('ssdi', $nombre, $imagen, $precioExtra, $activo, $id);
         $resultado = $consulta->execute();
         $consulta->close();
+        $conexion->close();
         return $resultado;
     }
 
-    public function delete($id) {
+    public static function delete($id) {
         $sql = 'DELETE FROM ingredientes WHERE id = ?';
-        $consulta = $this->conexion->prepare($sql);
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $resultado = $consulta->execute();
         $consulta->close();
+        $conexion->close();
         return $resultado;
     }
 }
