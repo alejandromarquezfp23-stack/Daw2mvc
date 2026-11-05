@@ -52,7 +52,7 @@ CREATE TABLE `ingredientes` (
   `activo` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) VALUES
   ('3', 'Albahaca fresca', 'imagenes/ingredientes/albahaca-fresca.png', '0.50', '1'),
@@ -78,7 +78,18 @@ INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) 
   ('47', 'Tomate cherry', 'imagenes/ingredientes/tomate-cherry.png', '0.50', '1'),
   ('48', 'Pan brioche', 'imagenes/ingredientes/pan-brioche.png', '0.50', '1'),
   ('49', 'Mejillones', 'imagenes/ingredientes/mejillones.png', '2.00', '1'),
-  ('50', 'Calamar', 'imagenes/ingredientes/calamar.png', '2.50', '1');
+  ('50', 'Calamar', 'imagenes/ingredientes/calamar.png', '2.50', '1'),
+  ('51', 'Atún rojo', 'imagenes/ingredientes/atun-rojo.png', '3.50', '1'),
+  ('52', 'Burrata', 'imagenes/ingredientes/burrata.png', '2.50', '1'),
+  ('53', 'Café', 'imagenes/ingredientes/cafe.png', '1.00', '1'),
+  ('54', 'Helado', 'imagenes/ingredientes/helado.png', '1.50', '1'),
+  ('55', 'Hierbabuena', 'imagenes/ingredientes/hierbabuena.png', '0.50', '1'),
+  ('56', 'Leche', 'imagenes/ingredientes/leche.png', '0.50', '1'),
+  ('57', 'Mascarpone', 'imagenes/ingredientes/mascarpone.png', '1.50', '1'),
+  ('58', 'Pulpo', 'imagenes/ingredientes/pulpo.png', '3.50', '1'),
+  ('59', 'Quesos variados', 'imagenes/ingredientes/quesos-variados.png', '2.00', '1'),
+  ('60', 'Solomillo', 'imagenes/ingredientes/solomillo.png', '3.50', '1'),
+  ('61', 'Vieiras', 'imagenes/ingredientes/vieiras.png', '3.50', '1');
 
 CREATE TABLE `ofertas` (
   `id` int NOT NULL AUTO_INCREMENT,
