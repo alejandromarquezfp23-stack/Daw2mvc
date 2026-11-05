@@ -87,16 +87,14 @@ body, .div-carta, .footer {
     border: none !important;
 }
 
-.flecha-oculta {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
-
 .d-flex.divProductos {
     flex-direction: row !important;
     padding-left: 86px !important;
     padding-right: 86px !important;
     scroll-padding-left: 86px;
     width: 100%;
+}
+
+.precioString {
+    color: #ff791b;
 }

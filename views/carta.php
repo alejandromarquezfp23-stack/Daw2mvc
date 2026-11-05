@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center pt-5 mt-4">
-                                <p class="fw-bold">
+                                <p class="fw-bold precioString">
                                     <?= htmlspecialchars((string) $producto->getPrecio()) ?>€
                                 </p>
                                 <a class="btn btn-primary rounded-pill" href="/Daw2mvc/index.php?controller=detalleProducto&action=index&id=<?= $producto->getId() ?>">
