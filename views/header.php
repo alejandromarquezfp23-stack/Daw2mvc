@@ -32,7 +32,7 @@
                         <a href="#" aria-label="Buscar" class="icono-link">
                             <img src="/Daw2mvc/iconos/LupaClara.svg" alt="Buscar" width="20" height="20" class="object-fit-contain">
                         </a>
-                        <a href="#" aria-label="Bolsas" class="icono-link">
+                        <a href="/Daw2mvc/index.php?controller=carrito" aria-label="Bolsas" class="icono-link">
                             <img src="/Daw2mvc/iconos/BolsaClara.svg" alt="Bolsa" width="20" height="20" class="object-fit-contain">
                         </a>
                     </div>
