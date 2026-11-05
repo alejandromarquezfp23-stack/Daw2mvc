@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Daw2mvc/css/carta.css?v=<?= time() ?>">
     <link rel="icon" type="image/png" href="/Daw2mvc/iconos/LogoOscuro.png">
+    <script src="/Daw2mvc/js/carta.js" defer></script>
 </head>
 
 <body>
@@ -18,16 +19,12 @@
     <div class="div-carta">
 
         <div class="d-flex flex-column flex-md-row justify-content-between mx-0 mx-md-5">
-            <h1 class="text-start text-md-center fw-semibold mx-0 mx-md-5 mt-3 mt-md-5 mb-3 mb-md-5 display-2">
+            <h1 class="text-start text-md-center fw-semibold mx-5 mx-md-5 mt-3 mt-md-5 mb-3 mb-md-5 display-2">
                 Carta
             </h1>
-
-            <h2 class="text-end fw-semibold mt-5 mt-md-5 mb-5 mb-md-5 me-5 h2-primero">
-                La mejor forma de elegir tus platos
-            </h2>
         </div>
 
-        <div class="d-flex flex-wrap flex-md-nowrap justify-content-center mx-0 mx-md-5 mb-3 mb-md-5 mt-3 mt-md-5 gap-0 gap-md-5">
+        <div class="d-flex flex-wrap flex-md-nowrap justify-content-center mx-0 mx-md-5 mb-md-5 gap-0 gap-md-5">
 
             <?php foreach ($categorias as $categoria) { ?>
 
@@ -74,7 +71,7 @@
 
                     <?php if ($producto->getCategoriaId() == $categoriaActivaId) { ?>
 
-                        <div class="divProducto m-md-4 p-4 rounded-3">
+                        <div class="divProducto mx-3 m-md-4 p-4 rounded-3">
 
                             <h5 class="fw-bold mt-2">
                                 <?= htmlspecialchars($producto->getNombre()) ?>
@@ -92,17 +89,14 @@
                                 >
                             </div>
 
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-primary rounded-pill m-3"
-                                    onclick="window.location.href='/Daw2mvc/index.php?controller=detalleProducto&action=index&id=<?= $producto->getId() ?>'">
+                            <div class="d-flex justify-content-between align-items-center pt-5 mt-4">
+                                <p class="fw-bold">
+                                    <?= htmlspecialchars((string) $producto->getPrecio()) ?>€
+                                </p>
+                                <a class="btn btn-primary rounded-pill" href="/Daw2mvc/index.php?controller=detalleProducto&action=index&id=<?= $producto->getId() ?>">
                                     Comprar
-                                </button>
+                                </a>
                             </div>
-
-                            <p class="m-1">
-                                <?= htmlspecialchars((string) $producto->getPrecio()) ?>€
-                            </p>
-
                         </div>
 
                     <?php } ?>
@@ -122,8 +116,5 @@
     <div class="footer">
         <?php include __DIR__ . '/footer.php'; ?>
     </div>
-
-    <script src="/Daw2mvc/js/carta.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
