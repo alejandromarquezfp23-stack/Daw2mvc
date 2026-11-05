@@ -52,7 +52,7 @@ CREATE TABLE `ingredientes` (
   `activo` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) VALUES
   ('3', 'Albahaca fresca', 'imagenes/ingredientes/albahaca-fresca.png', '0.50', '1'),
@@ -74,7 +74,11 @@ INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) 
   ('43', 'Aceitunas', 'imagenes/ingredientes/aceitunas.png', '0.50', '1'),
   ('44', 'Piparras', 'imagenes/ingredientes/piparras.png', '0.50', '1'),
   ('45', 'Huevo', 'imagenes/ingredientes/huevo.png', '0.50', '1'),
-  ('46', 'Cebolla', 'imagenes/ingredientes/cebolla.png', '0.50', '1');
+  ('46', 'Cebolla', 'imagenes/ingredientes/cebolla.png', '0.50', '1'),
+  ('47', 'Tomate cherry', 'imagenes/ingredientes/tomate-cherry.png', '0.50', '1'),
+  ('48', 'Pan brioche', 'imagenes/ingredientes/pan-brioche.png', '0.50', '1'),
+  ('49', 'Mejillones', 'imagenes/ingredientes/mejillones.png', '2.00', '1'),
+  ('50', 'Calamar', 'imagenes/ingredientes/calamar.png', '2.50', '1');
 
 CREATE TABLE `ofertas` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -175,6 +179,7 @@ CREATE TABLE `producto_ingrediente` (
 
 INSERT INTO `producto_ingrediente` (`producto_id`, `ingrediente_id`, `cantidad`) VALUES
   ('1', '3', '1.00'),
+  ('1', '47', '1.00'),
   ('2', '5', '1.00'),
   ('2', '6', '1.00'),
   ('3', '8', '1.00'),
@@ -187,6 +192,9 @@ INSERT INTO `producto_ingrediente` (`producto_id`, `ingrediente_id`, `cantidad`)
   ('15', '29', '1.00'),
   ('15', '45', '1.00'),
   ('15', '46', '1.00'),
+  ('15', '48', '1.00'),
+  ('16', '49', '1.00'),
+  ('16', '50', '1.00'),
   ('22', '31', '1.00'),
   ('22', '34', '1.00');
 
