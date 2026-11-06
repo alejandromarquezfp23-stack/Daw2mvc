@@ -1,5 +1,29 @@
 let animacionActual = null;
 
+function actualizarFlechas() {
+    const productos = document.querySelector('.divProductos');
+    const flechaIzquierda = document.querySelector('.flecha-izquierda');
+    const flechaDerecha = document.querySelector('.flecha-derecha');
+    const distanciaMaxima = productos.scrollWidth - productos.clientWidth;
+
+    flechaIzquierda.classList.toggle('flecha-oculta', distanciaMaxima <= 0 || productos.scrollLeft <= 0);
+    flechaDerecha.classList.toggle('flecha-oculta', distanciaMaxima <= 0 || productos.scrollLeft >= distanciaMaxima - 1);
+}
+
+function inicializarCarrusel() {
+    const productos = document.querySelector('.divProductos');
+
+    productos.addEventListener('scroll', actualizarFlechas);
+    window.addEventListener('resize', actualizarFlechas);
+    actualizarFlechas();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inicializarCarrusel);
+} else {
+    inicializarCarrusel();
+}
+
 function desplazarProductos(direccion) {
     const productos = document.querySelector('.divProductos');
     const inicio = productos.scrollLeft;
@@ -26,7 +50,6 @@ function desplazarProductos(direccion) {
             animacionActual = requestAnimationFrame(animar);
         } else {
             animacionActual = null;
-            actualizarFlechas();
         }
     }
 
