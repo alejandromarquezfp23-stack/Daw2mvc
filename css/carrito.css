@@ -1,0 +1,24 @@
+.divInformacion {
+    background-color: #F5F5F7;
+}
+
+.imagenCarrito {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.carrito-container {
+    padding: 80px !important;
+}
+
+@media (max-width: 500px) {
+    .imagenCarrito {
+        width: 85px;
+        height: 85px;
+    }
+
+    .carrito-container {
+        padding: 20px !important;
+    }
+}

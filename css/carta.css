@@ -34,7 +34,7 @@ body, .div-carta, .footer {
 .flecha-carrusel {
     position: absolute;
     z-index: 100;
-    width: 90px;
+    width: 50px;
 }
 
 .flecha-izquierda {
