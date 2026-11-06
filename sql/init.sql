@@ -27,6 +27,11 @@ CREATE TABLE `camisetas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `camisetas` (`nombre`, `talla`, `precio`) VALUES
+  ('Camiseta básica negra', 'M', 19.99),
+  ('Camiseta técnica running', 'L', 29.50),
+  ('Camiseta oversize', 'XL', 24.00);
+
 CREATE TABLE `categorias` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
