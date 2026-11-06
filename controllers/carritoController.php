@@ -26,5 +26,22 @@ class CarritoController {
         $css = 'carrito.css';
         require_once __DIR__ . '/../views/main3.php';
     }
+
+    public function eliminar() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productoId = $_POST['producto_id'] ?? null;
+
+            if ($productoId !== null && isset($_SESSION['carrito'][$productoId])) {
+                unset($_SESSION['carrito'][$productoId]);
+            }
+        }
+
+        header('Location: /Daw2mvc/index.php?controller=carrito');
+        exit;
+    }
 }
 ?>

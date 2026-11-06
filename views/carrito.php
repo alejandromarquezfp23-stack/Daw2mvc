@@ -45,9 +45,16 @@
                         <span class="text-secondary small"><?php echo $cantidad; ?> unidades</span>
                     </div>
 
-                    <h5 class="fw-semibold mb-0 text-nowrap">
-                        <?php echo number_format($subtotal, 2, ',', '.'); ?> €
-                    </h5>
+                    <div class="d-flex flex-column align-items-end">
+                        <h5 class="fw-semibold text-nowrap">
+                            <?php echo number_format($subtotal, 2, ',', '.'); ?> €
+                        </h5>
+
+                        <form method="post" action="/Daw2mvc/index.php?controller=carrito&action=eliminar">
+                            <input type="hidden" name="producto_id" value="<?php echo $producto->getId(); ?>">
+                            <button type="submit" class="btn btn-outline-primary rounded-3 px-5">Eliminar</button>
+                        </form>
+                    </div>
                 </div>
 
                 <hr>
