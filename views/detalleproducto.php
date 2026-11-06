@@ -70,7 +70,7 @@
                 <p class="small text-secondary my-3">
                     Conserva todas tus selecciones guardando este dispositivo
                     en Tus favoritos. Después, podrás volver cuando quieras
-                    y retomar todo donde lo deixaste.
+                    y retomar todo donde lo dejaste.
                 </p>
 
                 <button type="button" class="btn btn-primary btn-sm rounded-3">

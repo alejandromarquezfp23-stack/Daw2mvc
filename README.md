@@ -29,10 +29,10 @@ Proyecto de una web de restaurante en PHP, creado para practicar el patrón MVC 
 - `views/`: páginas y componentes visuales.
 - `config/`: configuración y conexión a la base de datos.
 - `sql/`: inicialización de la base de datos.
-- `css/`: css de las paginas.
-- `js/`: js de las paginas
-- `imagenes`: imagenes de las paginas.
-- `iconos`: iconos de los headers y footers, tambien de las paginas algunos.
+- `css/`: CSS de las páginas.
+- `js/`: JavaScript de las páginas.
+- `imagenes/`: imágenes de las páginas.
+- `iconos/`: iconos de las cabeceras y los pies de página; algunos también se usan en otras páginas.
 
 El enrutador recibe el controlador y la acción por parámetros. Por ejemplo:
 

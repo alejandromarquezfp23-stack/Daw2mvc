@@ -7,7 +7,7 @@ Guía de estudio orientada a alumnos. El objetivo es comprender **el 100 % del p
 1. Intenta responder mirando el código (no hace falta internet).
 2. Prueba en el navegador las URLs y “qué pasaría si…”.
 3. Las preguntas marcadas con ★ son especialmente recomendables en clase.
-4. Las de la sección *Ampliaciones* se pueden usar como parte del projecto.
+4. Las de la sección *Ampliaciones* se pueden usar como parte del proyecto.
 
 ---
 
@@ -174,4 +174,4 @@ Guía de estudio orientada a alumnos. El objetivo es comprender **el 100 % del p
 104. ¿Cómo mostrarías un mensaje “Producto creado correctamente” tras el redirect? (idea de *flash* con `$_SESSION`)
 105. ¿Qué mejorarías del `README.md` para que un compañero monte el proyecto en 5 minutos?
 106. ★ Si el proyecto crece a 10 controladores, ¿qué problema tiene cargar includes a mano? ¿Qué es un autoload (idea)?
-107. ¿Qué testras a mano antes de dar por buena una práctica? Lista un checklist de 5 pruebas en el navegador.
+107. ¿Qué pruebas harías a mano antes de dar por buena una práctica? Lista un checklist de 5 pruebas en el navegador.

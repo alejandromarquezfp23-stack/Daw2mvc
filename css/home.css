@@ -13,13 +13,22 @@ body {
     font-size: 40px;
 }
 
-.banner2, .banner3 {
+.banner3 {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 20px;
     background-color: #F5F5F7;
     width: 100%;
     color: #1D1D1F;
+}
+
+.banner2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: black;
+    width: 100%;
+    color: white;
 }
 
 .contenedores2 {

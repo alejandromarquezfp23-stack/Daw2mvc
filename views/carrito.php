@@ -1,6 +1,14 @@
 <div class="container-fluid carrito-container">
     <?php if (empty($productosCarrito)): ?>
-        <div class="alert alert-info">Tu carrito está vacío actualmente.</div>
+        <div class="d-flex flex-column justify-content-center align-items-center text-center">
+            <h1 class="fw-semibold">Tu bolsa está vacía.</h1>
+            <span>Inicia sesión para ver si tienes tus productos guardados. O sigue comprando.</span>
+
+            <div class="d-flex gap-3 mt-4">
+                <a href="/Daw2mvc/index.php?controller=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
+                <a href="/Daw2mvc/index.php?controller=carta" class="btn btn-outline-primary rounded-3 py-3 botonesOcul">Seguir comprando</a>
+            </div>
+        </div>
     <?php else: ?>
         <?php
             $totalCarrito = 0;
@@ -18,7 +26,7 @@
                 <?php echo number_format($totalCarrito, 2, ',', '.'); ?> €
             </h1>
             <p class="text-secondary small">Cancelación o devolución gratis.</p>
-            <a href="/Daw2mvc/index.php?controller=checkout" class="btn btn-primary rounded-3 px-4 mt-2">
+            <a href="/Daw2mvc/index.php?controller=pagar" class="btn btn-primary rounded-3 px-4 mt-2">
                 Continuar con el pago
             </a>
         </div>
@@ -85,7 +93,7 @@
                 <a href="/Daw2mvc/index.php?controller=carta" class="btn btn-secondary rounded-3 px-4">
                     Seguir comprando
                 </a>
-                <a href="/Daw2mvc/index.php?controller=checkout" class="btn btn-primary rounded-3 px-5">
+                <a href="/Daw2mvc/index.php?controller=pagar" class="btn btn-primary rounded-3 px-5">
                     Pagar
                 </a>
             </div>

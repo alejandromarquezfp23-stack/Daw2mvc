@@ -12,6 +12,10 @@
     padding: 80px 200px 80px 200px !important;
 }
 
+.botonesOcul {
+    width: 360px;
+}
+
 @media (max-width: 500px) {
     .imagenCarrito {
         width: 85px;
