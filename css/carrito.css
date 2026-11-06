@@ -9,7 +9,7 @@
 }
 
 .carrito-container {
-    padding: 80px !important;
+    padding: 80px 200px 80px 200px !important;
 }
 
 @media (max-width: 500px) {
