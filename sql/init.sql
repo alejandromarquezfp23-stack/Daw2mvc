@@ -136,7 +136,7 @@ INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `descripcion`, `precio`
   ('10', '2', 'Salmón a la brasa', 'Lomo de salmón a la brasa con verduras de temporada y salsa de cítricos.', '27.50', 'imagenes/productos/salmon-a-la-brasa.png', '1'),
   ('11', '2', 'Risotto de trufa y parmesano', 'Arroz cremoso con parmesano curado, setas y un toque de trufa.', '28.00', 'imagenes/productos/risotto-de-trufa-y-parmesano.png', '1'),
   ('12', '2', 'Tagliatelle con bogavante', 'Pasta fresca con bogavante, tomate cherry y emulsión ligera de marisco.', '34.50', 'imagenes/productos/tagliatelle-con-bogavante-rico.png', '1'),
-  ('13', '2', 'Paletilla de cordero a baja temperatura', 'Cordero cocinado lentamente con parmentier de patata y reducción de romero.', '35.00', 'imagenes/productos/paletilla-de-cordero.png', '1'),
+  ('13', '2', 'Paletilla de cordero', 'Cordero cocinado lentamente con parmentier de patata y reducción de romero.', '35.00', 'imagenes/productos/paletilla-de-cordero.png', '1'),
   ('14', '2', 'Magret de pato con frutos rojos', 'Magret rosado con salsa de frutos rojos y milhojas de patata.', '31.50', 'imagenes/productos/magret-de-pato.png', '1'),
   ('15', '2', 'Hamburguesa gourmet de vacuno', 'Vacuno premium, queso curado, cebolla caramelizada y pan brioche.', '24.00', 'imagenes/productos/hamburguesa-gourmet.png', '1'),
   ('16', '2', 'Arroz meloso de marisco', 'Arroz meloso con gambas, mejillones, calamar y fumet casero.', '32.00', 'imagenes/productos/arroz-meloso-de-marisco.png', '1'),

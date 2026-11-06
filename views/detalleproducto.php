@@ -8,7 +8,7 @@
         <div class="col-12 col-md-6">
             <div class="divImagen rounded-4 d-flex justify-content-center align-items-center p-3 p-md-4">
                 <img src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
-                    alt="<?php echo $productoActivo->getNombre(); ?>"
+                    alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>"
                     class="img-fluid w-75">
             </div>
         </div>
@@ -59,7 +59,7 @@
                 </h2>
                 <img
                     src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
-                    alt="<?php echo $productoActivo->getNombre(); ?>"
+                    alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>"
                     class="img-fluid w-50">
             </div>
 
@@ -91,3 +91,11 @@
         </div>
     </div>
 </form>
+
+<div class="bannerCarta d-flex flex-column align-items-center justify-content-center text-center pt-5 mt-5 pb-5 mb-5 px-md-4">
+    <div class="w-100 d-flex justify-content-center mb-4">
+        <img src="<?php echo $productoActivo->getImagen(); ?>"
+            class="img-fluid w-25 rounded-3"
+            alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>">
+    </div>
+</div>

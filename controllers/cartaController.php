@@ -9,6 +9,8 @@ class CartaController {
     public function index() {
         $categorias = categoriasDAO::selectAll();
         $productos = productosDAO::selectAll();
+        $productoMasPedido = productosDAO::selectMasPedido();
+        $productosRandom = productosDAO::selectRandom();
 
         $categoriaActivaId = isset($_GET['id'])
             ? $_GET['id']

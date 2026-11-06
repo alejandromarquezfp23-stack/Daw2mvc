@@ -4,7 +4,7 @@ body, .div-carta, .footer {
 }
 
 .h2-segundo {
-    padding: 0 62.5px;
+    padding: 0 55px;
 }
 
 .divProducto {
@@ -13,44 +13,18 @@ body, .div-carta, .footer {
 }
 
 .divProducto:hover {
-    transform: scale(1.03);
+    transform: scale(1.01);
     transition: all 0.3s ease;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .divCategoria:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: all 0.3s ease;
 }
 
 .divProducto img, .divProducto h5, .divProducto p, .divProducto div {
     background-color: white;
-}
-
-/* Mostrar correctamente las imágenes */
-.ratio-3x2 {
-    --bs-aspect-ratio: 66.6667%;
-}
-
-@media (min-width: 500px) {
-
-    .container-fluid.div-carta {
-        padding: 16px !important;
-    }
-
-    .div-carta > .d-flex.justify-content-between {
-        flex-direction: row !important;
-    }
-
-    .d-flex.divProductos {
-        flex-direction: row !important;
-    }
-
-    .divProducto {
-        width: 400px;
-        min-width: 400px;
-        height: 500px;
-    }
 }
 
 .divProductos::-webkit-scrollbar {
@@ -64,11 +38,11 @@ body, .div-carta, .footer {
 }
 
 .flecha-izquierda {
-    left: 90px;
+    left: 10px;
 }
 
 .flecha-derecha {
-    right: 90px;
+    right: 10px;
 }
 
 .flecha-carrusel img {
@@ -97,4 +71,29 @@ body, .div-carta, .footer {
 
 .precioString {
     color: #ff791b;
+}
+
+.bannerCarta {
+    background-color: #1D1D1F;
+}
+
+@media (min-width: 500px) {
+
+    .container-fluid.div-carta {
+        padding: 16px !important;
+    }
+
+    .div-carta > .d-flex.justify-content-between {
+        flex-direction: row !important;
+    }
+
+    .d-flex.divProductos {
+        flex-direction: row !important;
+    }
+
+    .divProducto {
+        width: 400px;
+        min-width: 400px;
+        height: 500px;
+    }
 }

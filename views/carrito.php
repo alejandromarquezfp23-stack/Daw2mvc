@@ -1,10 +1,3 @@
-<?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    $productosCarrito = $productosCarrito ?? [];
-?>
-
 <div class="container py-5">
     <h1 class="mb-4 fw-bold">Tu Carrito de Compra</h1>
 
