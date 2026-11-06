@@ -1,7 +1,7 @@
 <?php
 
-include_once("models/CamisetaDAO.php");
-include_once("models/Camiseta.php");
+include_once(__DIR__ . '/../dao/CamisetaDAO.php');
+include_once(__DIR__ . '/../models/Camiseta.php');
 
 class productoController
 {
