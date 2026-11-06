@@ -13,6 +13,10 @@
     <?php if (isset($css)) : ?>
         <link rel="stylesheet" href="/Daw2mvc/css/<?= $css ?>">
     <?php endif; ?>
+
+    <?php if (isset($js)) : ?>
+        <script src="/Daw2mvc/js/<?= $js ?>"></script>
+    <?php endif; ?>
 </head>
 
 <body>

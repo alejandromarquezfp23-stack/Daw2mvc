@@ -4,7 +4,7 @@ require_once __DIR__ . '/../models/usuarios.php';
 
 class usuariosDAO {
     public static function selectAll() {
-        $sql = 'SELECT id, nombre, email, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
+        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaUsuarios = [];
@@ -98,6 +98,19 @@ class usuariosDAO {
         $consulta->close();
         $conexion->close();
         return $resultado;
+    }
+
+    public static function selectUserCorrect($email) {
+        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios WHERE email = ?';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
+        $consulta->bind_param('s', $email);
+        $consulta->execute();
+        $usuario = $consulta->get_result()->fetch_object('usuarios');
+        $consulta->close();
+        $conexion->close();
+
+        return $usuario ?: null;
     }
 }
 ?>

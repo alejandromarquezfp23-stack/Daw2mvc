@@ -6,12 +6,12 @@
 
         <div class="row justify-content-center w-100">
             <div class="col-12 col-md-8 col-lg-6">
-                <input type="text" placeholder="Usuario" class="form-control shadow-none py-2 mb-3">
+                <input type="email" name="email" placeholder="Correo electronico..." class="form-control shadow-none py-2 mb-3">
 
-                <input type="password" placeholder="Contraseña" class="form-control shadow-none py-2 mb-3">
+                <input type="password" name="password" placeholder="Contraseña..." class="form-control shadow-none py-2 mb-3">
 
                 <div class="d-flex flex-column flex-sm-row gap-3">
-                    <button id="botonLogin" class="btn botones flex-fill py-2">Continuar</button>
+                    <button type="submit" name="login" class="btn botones flex-fill py-2">Continuar</button>
                     <a href="/Daw2mvc/index.php?controller=registro" class="btn botones flex-fill py-2">¿No tienes cuenta? Registrate</a>
                 </div>
             </div>

@@ -1,6 +1,10 @@
 <?php
 include_once("config/parameters.php");
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 function showError($code, $message)
 {
     http_response_code($code);

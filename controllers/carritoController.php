@@ -4,10 +4,6 @@ require_once __DIR__ . '/../dao/productosDAO.php';
 
 class CarritoController {
     public function index() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $carritoSesion = $_SESSION['carrito'] ?? [];
         $productosCarrito = [];
 
@@ -28,10 +24,6 @@ class CarritoController {
     }
 
     public function eliminar() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productoId = $_POST['producto_id'] ?? null;
 
