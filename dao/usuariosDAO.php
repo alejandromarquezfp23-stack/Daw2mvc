@@ -9,7 +9,7 @@ class usuariosDAO {
         $consulta = $conexion->query($sql);
         $usuarios = [];
         while ($fila = $consulta->fetch_object('usuarios')) {
-            $listaUsuarios[] = $fila;
+            $usuarios[] = $fila;
         }
         $consulta->close();
         $conexion->close();
@@ -26,7 +26,7 @@ class usuariosDAO {
         $fila = $consulta->get_result()->fetch_object();
         $consulta->close();
         $conexion->close();
-        return $fila;
+        return $fila ?: null;
     }
 
     public static function insert(usuarios $usuario) {
