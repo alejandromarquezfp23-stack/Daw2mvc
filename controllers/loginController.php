@@ -14,7 +14,13 @@ class loginController {
             $usuario = usuariosDAO::selectByEmail($email);
 
             if ($usuario && password_verify($password, $usuario->getPassword())) {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+
+                session_regenerate_id(true);
                 $_SESSION['usuario'] = $usuario;
+
                 $loginCorrecto = true;
             }
         }
@@ -31,8 +37,12 @@ class loginController {
             exit;
         }
 
-        unset($_SESSION['usuario']);
-        session_regenerate_id(true);
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION = [];
+        session_destroy();
 
         header('Location: /Daw2mvc/index.php?controller=carrito');
         exit;
