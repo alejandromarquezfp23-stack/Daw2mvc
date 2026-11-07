@@ -29,18 +29,6 @@ class usuariosDAO {
         return $fila ? self::crearUsuario($fila) : null;
     }
 
-    public static function selectByEmail($email) {
-        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios WHERE email = ?';
-        $conexion = DataBase::connect();
-        $consulta = $conexion->prepare($sql);
-        $consulta->bind_param('s', $email);
-        $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
-        $consulta->close();
-        $conexion->close();
-        return $fila ? self::crearUsuario($fila) : null;
-    }
-
     public static function insert(usuarios $usuario) {
         $sql = 'INSERT INTO usuarios (nombre, email, password, telefono, direccion, fecha_nacimiento, rol) VALUES (?, ?, ?, ?, ?, ?, ?)';
         $conexion = DataBase::connect();
@@ -78,17 +66,6 @@ class usuariosDAO {
         return $resultado;
     }
 
-    public static function updatePassword($id, $password) {
-        $sql = 'UPDATE usuarios SET password = ? WHERE id = ?';
-        $conexion = DataBase::connect();
-        $consulta = $conexion->prepare($sql);
-        $consulta->bind_param('si', $password, $id);
-        $resultado = $consulta->execute();
-        $consulta->close();
-        $conexion->close();
-        return $resultado;
-    }
-
     public static function delete($id) {
         $sql = 'DELETE FROM usuarios WHERE id = ?';
         $conexion = DataBase::connect();
@@ -100,6 +77,18 @@ class usuariosDAO {
         return $resultado;
     }
 
+    public static function selectByEmail($email) {
+        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios WHERE email = ?';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
+        $consulta->bind_param('s', $email);
+        $consulta->execute();
+        $fila = $consulta->get_result()->fetch_assoc();
+        $consulta->close();
+        $conexion->close();
+        return $fila ? self::crearUsuario($fila) : null;
+    }
+    
     private static function crearUsuario(array $fila) {
         return new usuarios(
             $fila['id'] ?? null,
