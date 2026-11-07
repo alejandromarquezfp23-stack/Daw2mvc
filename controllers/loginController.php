@@ -4,13 +4,14 @@ require_once __DIR__ . '/../dao/usuariosDAO.php';
 
 class loginController {
     public function index() {
-        $loginCorrecto = false;
+        $loginCorrecto = null;
 
         if (isset($_POST['login'])) {
+            $loginCorrecto = false;
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $usuario = usuariosDAO::selectUserCorrect($email);
+            $usuario = usuariosDAO::selectByEmail($email);
 
             if ($usuario && password_verify($password, $usuario->getPassword())) {
                 $_SESSION['usuario'] = $usuario;
@@ -22,6 +23,19 @@ class loginController {
         $css = 'login.css';
         $js = 'login.js';
         require_once __DIR__ . '/../views/main3.php';
+    }
+
+    public function logout() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        unset($_SESSION['usuario']);
+        session_regenerate_id(true);
+
+        header('Location: /Daw2mvc/index.php?controller=carrito');
+        exit;
     }
 }
 ?>

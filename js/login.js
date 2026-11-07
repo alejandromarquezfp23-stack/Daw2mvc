@@ -1,11 +1,17 @@
-if (loginCorrecto) {
+if (loginCorrecto === true) {
     Swal.fire({
-        title: "Login correcto!",
+        title: "¡Login correcto!",
+        text: "Has iniciado sesión correctamente.",
         icon: "success",
-        draggable: true,
-        timer: 1500,
+        timer: 3000,
         showConfirmButton: false
     }).then(() => {
-        window.location.href = "/Daw2mvc/index.php?controller=home";
+        window.location.href = "/Daw2mvc/index.php?controller=carrito";
+    });
+} else if (loginCorrecto === false) {
+    Swal.fire({
+        title: "¡Login incorrecto!",
+        text: "El correo o la contraseña no son correctos.",
+        icon: "error"
     });
 }

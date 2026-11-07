@@ -5,7 +5,13 @@
             <span>Inicia sesión para ver si tienes tus productos guardados. O sigue comprando.</span>
 
             <div class="d-flex gap-3 mt-4">
-                <a href="/Daw2mvc/index.php?controller=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
+                <?php if (isset($_SESSION['usuario'])): ?>
+                    <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
+                        <button type="submit" class="btn btn-primary rounded-3 py-3 botonesOcul">Cerrar sesión</button>
+                    </form>
+                <?php else: ?>
+                    <a href="/Daw2mvc/index.php?controller=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
+                <?php endif; ?>
                 <a href="/Daw2mvc/index.php?controller=carta" class="btn btn-outline-primary rounded-3 py-3 botonesOcul">Seguir comprando</a>
             </div>
         </div>

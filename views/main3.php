@@ -28,14 +28,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        const loginCorrecto = <?= json_encode($loginCorrecto ?? false) ?>;
-    </script>
-
     <?php if (isset($js)) : ?>
+        <script>
+            const loginCorrecto = <?= json_encode($loginCorrecto ?? null) ?>;
+            const registroCorrecto = <?= json_encode($registroCorrecto ?? null) ?>;
+        </script>
         <script src="/Daw2mvc/js/<?= $js ?>"></script>
     <?php endif; ?>
-
 </body>
 </html>

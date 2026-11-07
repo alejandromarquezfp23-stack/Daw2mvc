@@ -228,17 +228,18 @@ CREATE TABLE `usuarios` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Usuarios de prueba: la contraseña común es 1234.
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `telefono`, `direccion`, `fecha_nacimiento`, `rol`, `fecha_registro`) VALUES
-  ('1', 'Usuario Demo 01', 'demo01@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000001', 'Calle Demo 1', '1995-01-10', 'usuario', '2026-11-02 18:47:45'),
-  ('2', 'Usuario Demo 02', 'demo02@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000002', 'Calle Demo 2', '1992-02-11', 'usuario', '2026-11-02 18:47:45'),
-  ('3', 'Usuario Demo 03', 'demo03@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000003', 'Calle Demo 3', '1998-03-12', 'usuario', '2026-11-02 18:47:45'),
-  ('4', 'Usuario Demo 04', 'demo04@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000004', 'Calle Demo 4', '1994-04-13', 'usuario', '2026-11-02 18:47:45'),
-  ('5', 'Usuario Demo 05', 'demo05@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000005', 'Calle Demo 5', '1991-05-14', 'usuario', '2026-11-02 18:47:45'),
-  ('6', 'Usuario Demo 06', 'demo06@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000006', 'Calle Demo 6', '1996-06-15', 'usuario', '2026-11-02 18:47:45'),
-  ('7', 'Usuario Demo 07', 'demo07@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000007', 'Calle Demo 7', '1993-07-16', 'usuario', '2026-11-02 18:47:45'),
-  ('8', 'Usuario Demo 08', 'demo08@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000008', 'Calle Demo 8', '1997-08-17', 'usuario', '2026-11-02 18:47:45'),
-  ('9', 'Usuario Demo 09', 'demo09@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000009', 'Calle Demo 9', '1990-09-18', 'usuario', '2026-11-02 18:47:45'),
-  ('10', 'Usuario Demo 10', 'demo10@example.com', '$2y$10$yuBeSKodED2DcG48.QcYl.dJIXO2zzLU4UNolJ7bWGgBoqmo1D4ve', '600000010', 'Calle Demo 10', '1999-10-19', 'usuario', '2026-11-02 18:47:45');
+  ('1', 'Usuario Demo 01', 'demo01@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000001', 'Calle Demo 1', '1995-01-10', 'usuario', '2026-11-02 18:47:45'),
+  ('2', 'Usuario Demo 02', 'demo02@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000002', 'Calle Demo 2', '1992-02-11', 'usuario', '2026-11-02 18:47:45'),
+  ('3', 'Usuario Demo 03', 'demo03@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000003', 'Calle Demo 3', '1998-03-12', 'usuario', '2026-11-02 18:47:45'),
+  ('4', 'Usuario Demo 04', 'demo04@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000004', 'Calle Demo 4', '1994-04-13', 'usuario', '2026-11-02 18:47:45'),
+  ('5', 'Usuario Demo 05', 'demo05@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000005', 'Calle Demo 5', '1991-05-14', 'usuario', '2026-11-02 18:47:45'),
+  ('6', 'Usuario Demo 06', 'demo06@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000006', 'Calle Demo 6', '1996-06-15', 'usuario', '2026-11-02 18:47:45'),
+  ('7', 'Usuario Demo 07', 'demo07@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000007', 'Calle Demo 7', '1993-07-16', 'usuario', '2026-11-02 18:47:45'),
+  ('8', 'Usuario Demo 08', 'demo08@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000008', 'Calle Demo 8', '1997-08-17', 'usuario', '2026-11-02 18:47:45'),
+  ('9', 'Usuario Demo 09', 'demo09@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000009', 'Calle Demo 9', '1990-09-18', 'usuario', '2026-11-02 18:47:45'),
+  ('10', 'Usuario Demo 10', 'demo10@example.com', '$2y$10$dXrgGsinhkMlOJxyktnhw.39/veSPhy0xwXs3mC5i3BZ8blhAhQLK', '600000010', 'Calle Demo 10', '1999-10-19', 'usuario', '2026-11-02 18:47:45');
 
 CREATE TABLE `pedidos` (
   `id` int NOT NULL AUTO_INCREMENT,

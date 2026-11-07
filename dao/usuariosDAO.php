@@ -8,8 +8,8 @@ class usuariosDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaUsuarios = [];
-        while ($usuario = $consulta->fetch_object('usuarios')) {
-            $listaUsuarios[] = $usuario;
+        while ($fila = $consulta->fetch_assoc()) {
+            $listaUsuarios[] = self::crearUsuario($fila);
         }
         $consulta->close();
         $conexion->close();
@@ -23,10 +23,10 @@ class usuariosDAO {
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
-        $usuario = $consulta->get_result()->fetch_object('usuarios');
+        $fila = $consulta->get_result()->fetch_assoc();
         $consulta->close();
         $conexion->close();
-        return $usuario ?: null;
+        return $fila ? self::crearUsuario($fila) : null;
     }
 
     public static function selectByEmail($email) {
@@ -35,10 +35,10 @@ class usuariosDAO {
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('s', $email);
         $consulta->execute();
-        $usuario = $consulta->get_result()->fetch_object('usuarios');
+        $fila = $consulta->get_result()->fetch_assoc();
         $consulta->close();
         $conexion->close();
-        return $usuario ?: null;
+        return $fila ? self::crearUsuario($fila) : null;
     }
 
     public static function insert(usuarios $usuario) {
@@ -100,17 +100,18 @@ class usuariosDAO {
         return $resultado;
     }
 
-    public static function selectUserCorrect($email) {
-        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios WHERE email = ?';
-        $conexion = DataBase::connect();
-        $consulta = $conexion->prepare($sql);
-        $consulta->bind_param('s', $email);
-        $consulta->execute();
-        $usuario = $consulta->get_result()->fetch_object('usuarios');
-        $consulta->close();
-        $conexion->close();
-
-        return $usuario ?: null;
+    private static function crearUsuario(array $fila) {
+        return new usuarios(
+            $fila['id'] ?? null,
+            $fila['nombre'] ?? null,
+            $fila['email'] ?? null,
+            $fila['password'] ?? null,
+            $fila['telefono'] ?? null,
+            $fila['direccion'] ?? null,
+            $fila['fecha_nacimiento'] ?? null,
+            $fila['rol'] ?? null,
+            $fila['fecha_registro'] ?? null
+        );
     }
 }
 ?>
