@@ -13,7 +13,7 @@ class loginController {
 
             $usuario = usuariosDAO::selectByEmail($email);
 
-            if ($usuario && password_verify($password, $usuario->getPassword())) {
+            if ($usuario && password_verify($password, $usuario->password)) {
                 if (session_status() === PHP_SESSION_NONE) {
                     session_start();
                 }

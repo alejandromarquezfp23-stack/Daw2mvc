@@ -7,14 +7,14 @@ class usuariosDAO {
         $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
-        $listaUsuarios = [];
-        while ($fila = $consulta->fetch_assoc()) {
-            $listaUsuarios[] = self::crearUsuario($fila);
+        $usuarios = [];
+        while ($fila = $consulta->fetch_object('usuarios')) {
+            $listaUsuarios[] = $fila;
         }
         $consulta->close();
         $conexion->close();
 
-        return $listaUsuarios;
+        return $usuarios;
     }
 
     public static function selectByID($id) {
@@ -23,10 +23,10 @@ class usuariosDAO {
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
+        $fila = $consulta->get_result()->fetch_object();
         $consulta->close();
         $conexion->close();
-        return $fila ? self::crearUsuario($fila) : null;
+        return $fila;
     }
 
     public static function insert(usuarios $usuario) {
@@ -83,24 +83,10 @@ class usuariosDAO {
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('s', $email);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_assoc();
+        $fila = $consulta->get_result()->fetch_object();
         $consulta->close();
         $conexion->close();
-        return $fila ? self::crearUsuario($fila) : null;
-    }
-    
-    private static function crearUsuario(array $fila) {
-        return new usuarios(
-            $fila['id'] ?? null,
-            $fila['nombre'] ?? null,
-            $fila['email'] ?? null,
-            $fila['password'] ?? null,
-            $fila['telefono'] ?? null,
-            $fila['direccion'] ?? null,
-            $fila['fecha_nacimiento'] ?? null,
-            $fila['rol'] ?? null,
-            $fila['fecha_registro'] ?? null
-        );
+        return $fila;
     }
 }
 ?>
