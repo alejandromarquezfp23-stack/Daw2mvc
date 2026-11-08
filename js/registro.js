@@ -1,7 +1,7 @@
 if (registroCorrecto === true) {
     Swal.fire({
-        title: "¡Registro completado!",
-        text: "Tu cuenta se ha creado correctamente.",
+        title: "¡Registro completado, inicia sesión!",
+        text: "Tu cuenta se ha creado correctamente, ahora inicia sesión.",
         icon: "success",
         timer: 3000,
         showConfirmButton: false
@@ -11,7 +11,7 @@ if (registroCorrecto === true) {
 } else if (registroCorrecto === false) {
     Swal.fire({
         title: "No se pudo completar el registro",
-        text: "Ya existe una cuenta registrada con ese correo electrónico.",
+        text: "El registro ha fallado, intentalo de nuevo.",
         icon: "error"
     });
 }
