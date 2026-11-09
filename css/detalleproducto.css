@@ -10,3 +10,11 @@
 .bannerCarta {
     background-color: #1D1D1F;
 }
+
+.tarjeta-ingrediente.ingrediente-anadido {
+    border: 2px solid #198754 !important;
+}
+
+.tarjeta-ingrediente.ingrediente-eliminado {
+    border: 2px solid #dc3545 !important;
+}

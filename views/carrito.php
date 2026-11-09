@@ -19,9 +19,8 @@
         <?php
             $totalCarrito = 0;
             foreach ($productosCarrito as $item) {
-                $producto = $item['producto'];
                 $cantidad = $item['cantidad'];
-                $precio = method_exists($producto, 'getPrecio') ? $producto->getPrecio() : ($producto->precio ?? 0);
+                $precio = $item['precio_unitario'];
                 $totalCarrito += $precio * $cantidad;
             }
         ?>
@@ -45,7 +44,7 @@
                 $cantidad = $item['cantidad'];
 
                 $nombre = method_exists($producto, 'getNombre') ? $producto->getNombre() : ($producto->nombre ?? '');
-                $precio = method_exists($producto, 'getPrecio') ? $producto->getPrecio() : ($producto->precio ?? 0);
+                $precio = $item['precio_unitario'];
                 $imagen = method_exists($producto, 'getImagen') ? $producto->getImagen() : ($producto->imagen ?? '');
 
                 $subtotal = $precio * $cantidad;
@@ -57,6 +56,17 @@
                     <div class="flex-grow-1">
                         <h5 class="fw-semibold mb-2"><?php echo htmlspecialchars($nombre); ?></h5>
                         <span class="text-secondary small"><?php echo $cantidad; ?> unidades</span>
+                        <span class="spanCantidadBotones d-flex">
+                            <form method="POST" action="" class="m-1">
+                                <input type="hidden" name="clave_carrito" value="<?= htmlspecialchars((string) $item['clave']) ?>">
+                                <button type="submit" name="sumar" class="btn btn-outline-primary rounded-3">+</button>
+                            </form>
+
+                            <form method="POST" action="" class="m-1">
+                                <input type="hidden" name="clave_carrito" value="<?= htmlspecialchars((string) $item['clave']) ?>">
+                                <button type="submit" name="restar" class="btn btn-outline-primary rounded-3">-</button>
+                            </form>
+                        </span>
                     </div>
 
                     <div class="d-flex flex-column align-items-end">
@@ -65,7 +75,7 @@
                         </h5>
 
                         <form method="post" action="/Daw2mvc/index.php?controller=carrito&action=eliminar">
-                            <input type="hidden" name="producto_id" value="<?php echo $producto->getId(); ?>">
+                            <input type="hidden" name="clave_carrito" value="<?php echo htmlspecialchars((string) $item['clave'], ENT_QUOTES, 'UTF-8'); ?>">
                             <button type="submit" class="btn btn-outline-primary rounded-3 px-5">Eliminar</button>
                         </form>
                     </div>
