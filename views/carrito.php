@@ -2,13 +2,17 @@
     <?php if (empty($productosCarrito)): ?>
         <div class="d-flex flex-column justify-content-center align-items-center text-center">
             <h1 class="fw-semibold">Tu bolsa está vacía.</h1>
-            <span>Inicia sesión para ver si tienes tus productos guardados. O sigue comprando.</span>
-
-            <div class="d-flex gap-3 mt-4">
+            <?php if (isset($_SESSION['usuario'])): ?>
+                <span>No tienes ningun producto en la cesta.</span>
+            <?php else: ?>
+                <span>Inicia sesión para ver si tienes tus productos guardados. O sigue comprando.</span>
+            <?php endif; ?>
+            
+                <div class="d-flex gap-3 mt-4">
                 <?php if (isset($_SESSION['usuario'])): ?>
-                    <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
+                    <!-- <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
                         <button type="submit" class="btn btn-primary rounded-3 py-3 botonesOcul">Cerrar sesión</button>
-                    </form>
+                    </form> -->
                 <?php else: ?>
                     <a href="/Daw2mvc/index.php?controller=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
                 <?php endif; ?>

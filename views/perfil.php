@@ -2,9 +2,11 @@
     <div class="py-5 divArriba">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="fw-semibold">Cuenta</h5>
-            <button type="submit" class="btn btn-secondary rounded-3">
-                Cerrar sesión
-            </button>
+            <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
+                <button type="submit" class="btn btn-secondary rounded-3">
+                    Cerrar sesión
+                </button>
+            </form>
         </div>
 
         <hr>

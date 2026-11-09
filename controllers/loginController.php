@@ -44,7 +44,7 @@ class loginController {
         $_SESSION = [];
         session_destroy();
 
-        header('Location: /Daw2mvc/index.php?controller=carrito');
+        header('Location: /Daw2mvc/index.php?controller=login');
         exit;
     }
 }

@@ -12,6 +12,11 @@
             $usuarioID = $_SESSION['usuario']->id;
             $usuario = usuariosDAO::selectByID($usuarioID);
 
+            if (!isset($_SESSION['usuario'])) {
+                header("Location: index.php?controller=login");
+                exit();
+            }
+
             $view = __DIR__ . '/../views/perfil.php';
             $css = 'perfil.css';
             $js = '';
