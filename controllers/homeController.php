@@ -10,6 +10,7 @@ class homeController {
         $productoMasPedido = productosDAO::selectMasPedido();
         $productosRandom = productosDAO::selectRandom();
 
+        $titulo = 'Appletito';
         $view = __DIR__ . '/../views/home.php';
         $css = 'home.css';
 

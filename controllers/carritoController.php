@@ -55,6 +55,7 @@ class CarritoController {
             }
         }
 
+        $titulo = 'Carrito de Appletito';
         $view = __DIR__ . '/../views/carrito.php';
         $css = 'carrito.css';
         require_once __DIR__ . '/../views/main3.php';

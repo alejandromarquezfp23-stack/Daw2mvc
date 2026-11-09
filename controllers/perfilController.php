@@ -16,7 +16,8 @@
                 header("Location: index.php?controller=login");
                 exit();
             }
-
+            
+            $titulo = 'Perfil en Appletito';
             $view = __DIR__ . '/../views/perfil.php';
             $css = 'perfil.css';
             $js = '';

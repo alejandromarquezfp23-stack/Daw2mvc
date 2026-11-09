@@ -23,6 +23,7 @@ class RegistroController {
             }
         }
 
+        $titulo = 'Registro de Appletito';
         $view = __DIR__ . '/../views/registro.php';
         $css = 'login.css';
         $js = 'registro.js';

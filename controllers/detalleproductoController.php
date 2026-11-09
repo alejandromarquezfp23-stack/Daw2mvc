@@ -112,6 +112,7 @@
                 exit;
             }
 
+            $titulo = $productoActivo->getNombre() . ' de Appletito';
             $view = __DIR__ . '/../views/detalleproducto.php';
             $css = 'detalleproducto.css';
             $js = 'detalleproducto.js';

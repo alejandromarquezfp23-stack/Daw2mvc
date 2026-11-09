@@ -24,6 +24,7 @@ class CartaController {
             }
         }
 
+        $titulo = 'Carta de Appletito';
         $view = __DIR__ . '/../views/carta.php';
         $css = 'carta.css';
         $js = 'carta.js';

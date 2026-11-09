@@ -24,7 +24,8 @@ class loginController {
                 $loginCorrecto = true;
             }
         }
-
+        
+        $titulo = 'Login en Appletito';
         $view = __DIR__ . '/../views/login.php';
         $css = 'login.css';
         $js = 'login.js';
