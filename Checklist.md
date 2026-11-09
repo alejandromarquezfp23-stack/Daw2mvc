@@ -68,21 +68,21 @@
 -   [x] Mostrar los productos disponibles.
 -   [x] Permitir consultar el detalle de cada producto.
 -   [x] Mostrar los ingredientes de cada producto.
--   [ ] Permitir añadir ingredientes a un producto.
--   [ ] Permitir eliminar ingredientes de un producto.
--   [ ] Actualizar el precio del producto según los ingredientes
+-   [x] Permitir añadir ingredientes a un producto.
+-   [x] Permitir eliminar ingredientes de un producto.
+-   [x] Actualizar el precio del producto según los ingredientes
     añadidos o eliminados.
 -   [x] Implementar el carrito de compra.
 -   [x] Permitir consultar los productos del carrito.
--   [ ] Permitir modificar los productos del carrito.
+-   [x] Permitir modificar los productos del carrito.
 -   [x] Permitir eliminar productos del carrito.
 -   [x] Actualizar el precio del pedido al modificar los productos.
 -   [ ] Mostrar las ofertas disponibles.
 -   [ ] Permitir añadir ofertas al carrito.
 -   [ ] Diseñar diferentes ofertas individualmente.
--   [ ] Mostrar el precio final y los impuestos durante el proceso de
+-   [x] Mostrar el precio final y los impuestos durante el proceso de
     compra.
--   [ ] Permitir confirmar y finalizar el pedido.
+-   [x] Permitir confirmar y finalizar el pedido.
 
 ### Pedidos y cuenta de usuario
 
@@ -109,14 +109,14 @@
 
 ### Gestión de productos
 
--   [ ] Listar los productos.
--   [ ] Modificar los productos.
--   [ ] Ordenar los productos.
+-   [x] Listar los productos.
+-   [x] Modificar los productos.
+-   [x] Ordenar los productos.
 -   [ ] Filtrar productos por nombre.
 -   [ ] Filtrar productos por ID.
 -   [ ] Filtrar productos por precio.
--   [ ] Añadir productos.
--   [ ] Eliminar productos.
+-   [x] Añadir productos.
+-   [x] Eliminar productos.
 
 ### Gestión de pedidos
 
@@ -134,7 +134,7 @@
 
 ### Requisitos técnicos del panel
 
--   [ ] Utilizar el DOM para obtener, crear y modificar elementos HTML
+-   [x] Utilizar el DOM para obtener, crear y modificar elementos HTML
     dinámicamente.
 -   [ ] Gestionar las acciones del usuario mediante eventos de
     JavaScript.
@@ -160,9 +160,9 @@
 -   [x] Definir las relaciones entre las tablas.
 -   [x] Definir las claves primarias y foráneas.
 -   [x] Introducir los datos iniciales necesarios.
--   [ ] Configurar la base de datos dentro de un contenedor Docker.
--   [ ] Comprobar la conexión entre PHP y MySQL.
--   [ ] Comprobar que todas las funcionalidades guardan y recuperan
+-   [x] Configurar la base de datos dentro de un contenedor Docker.
+-   [x] Comprobar la conexión entre PHP y MySQL.
+-   [x] Comprobar que todas las funcionalidades guardan y recuperan
     correctamente los datos.
 
 ## 6. Servicios web y entorno de desarrollo
@@ -197,7 +197,7 @@
 -   [x] Comprobar el registro y el inicio de sesión.
 -   [x] Comprobar el funcionamiento de las sesiones PHP.
 -   [x] Comprobar el funcionamiento del carrito.
--   [ ] Comprobar la modificación de ingredientes y precios.
+-   [x] Comprobar la modificación de ingredientes y precios.
 -   [ ] Comprobar las ofertas.
 -   [ ] Comprobar la finalización de pedidos.
 -   [ ] Comprobar la consulta del último pedido.
