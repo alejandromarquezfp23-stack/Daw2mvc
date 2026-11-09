@@ -74,7 +74,7 @@
     añadidos o eliminados.
 -   [x] Implementar el carrito de compra.
 -   [x] Permitir consultar los productos del carrito.
--   [x] Permitir modificar los productos del carrito.
+-   [ ] Permitir modificar los productos del carrito.
 -   [x] Permitir eliminar productos del carrito.
 -   [x] Actualizar el precio del pedido al modificar los productos.
 -   [ ] Mostrar las ofertas disponibles.
@@ -109,14 +109,14 @@
 
 ### Gestión de productos
 
--   [x] Listar los productos.
+-   [ ] Listar los productos.
 -   [ ] Modificar los productos.
--   [x] Ordenar los productos.
+-   [ ] Ordenar los productos.
 -   [ ] Filtrar productos por nombre.
 -   [ ] Filtrar productos por ID.
 -   [ ] Filtrar productos por precio.
--   [x] Añadir productos.
--   [x] Eliminar productos.
+-   [ ] Añadir productos.
+-   [ ] Eliminar productos.
 
 ### Gestión de pedidos
 
@@ -134,7 +134,7 @@
 
 ### Requisitos técnicos del panel
 
--   [x] Utilizar el DOM para obtener, crear y modificar elementos HTML
+-   [ ] Utilizar el DOM para obtener, crear y modificar elementos HTML
     dinámicamente.
 -   [ ] Gestionar las acciones del usuario mediante eventos de
     JavaScript.
@@ -160,9 +160,9 @@
 -   [x] Definir las relaciones entre las tablas.
 -   [x] Definir las claves primarias y foráneas.
 -   [x] Introducir los datos iniciales necesarios.
--   [x] Configurar la base de datos dentro de un contenedor Docker.
--   [x] Comprobar la conexión entre PHP y MySQL.
--   [x] Comprobar que todas las funcionalidades guardan y recuperan
+-   [ ] Configurar la base de datos dentro de un contenedor Docker.
+-   [ ] Comprobar la conexión entre PHP y MySQL.
+-   [ ] Comprobar que todas las funcionalidades guardan y recuperan
     correctamente los datos.
 
 ## 6. Servicios web y entorno de desarrollo
