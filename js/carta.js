@@ -1,38 +1,46 @@
-let animacionActual = null;
+const animacionesCarrusel = new WeakMap();
 
-function actualizarFlechas() {
-    const productos = document.querySelector('.divProductos');
-    const flechaIzquierda = document.querySelector('.flecha-izquierda');
-    const flechaDerecha = document.querySelector('.flecha-derecha');
+function actualizarFlechas(carrusel) {
+    const productos = carrusel.querySelector('.divProductos');
+    const flechaIzquierda = carrusel.querySelector('.flecha-izquierda');
+    const flechaDerecha = carrusel.querySelector('.flecha-derecha');
     const distanciaMaxima = productos.scrollWidth - productos.clientWidth;
 
     flechaIzquierda.classList.toggle('flecha-oculta', distanciaMaxima <= 0 || productos.scrollLeft <= 0);
     flechaDerecha.classList.toggle('flecha-oculta', distanciaMaxima <= 0 || productos.scrollLeft >= distanciaMaxima - 1);
 }
 
-function inicializarCarrusel() {
-    const productos = document.querySelector('.divProductos');
+function inicializarCarruseles() {
+    const carruseles = document.querySelectorAll('.carruselProductos');
 
-    productos.addEventListener('scroll', actualizarFlechas);
-    window.addEventListener('resize', actualizarFlechas);
-    actualizarFlechas();
+    carruseles.forEach((carrusel) => {
+        const productos = carrusel.querySelector('.divProductos');
+        productos.addEventListener('scroll', () => actualizarFlechas(carrusel));
+        actualizarFlechas(carrusel);
+    });
+
+    window.addEventListener('resize', () => {
+        carruseles.forEach(actualizarFlechas);
+    });
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', inicializarCarrusel);
+    document.addEventListener('DOMContentLoaded', inicializarCarruseles);
 } else {
-    inicializarCarrusel();
+    inicializarCarruseles();
 }
 
-function desplazarProductos(direccion) {
-    const productos = document.querySelector('.divProductos');
+function desplazarProductos(boton, direccion) {
+    const carrusel = boton.closest('.carruselProductos');
+    const productos = carrusel.querySelector('.divProductos');
     const inicio = productos.scrollLeft;
     const distanciaMaxima = productos.scrollWidth - productos.clientWidth;
     const destino = Math.max(0, Math.min(inicio + direccion * 350, distanciaMaxima));
     const duracion = 700;
     let tiempoInicial = null;
+    const animacionActual = animacionesCarrusel.get(productos);
 
-    if (animacionActual !== null) {
+    if (animacionActual !== undefined) {
         cancelAnimationFrame(animacionActual);
     }
 
@@ -41,17 +49,17 @@ function desplazarProductos(direccion) {
             tiempoInicial = tiempoActual;
         }
 
-        let progreso = Math.min((tiempoActual - tiempoInicial) / duracion, 1);
-        let suavizado = 1 - Math.pow(1 - progreso, 4);
-
+        const progreso = Math.min((tiempoActual - tiempoInicial) / duracion, 1);
+        const suavizado = 1 - Math.pow(1 - progreso, 4);
         productos.scrollLeft = inicio + (destino - inicio) * suavizado;
 
         if (progreso < 1) {
-            animacionActual = requestAnimationFrame(animar);
+            animacionesCarrusel.set(productos, requestAnimationFrame(animar));
         } else {
-            animacionActual = null;
+            animacionesCarrusel.delete(productos);
+            actualizarFlechas(carrusel);
         }
     }
 
-    animacionActual = requestAnimationFrame(animar);
+    animacionesCarrusel.set(productos, requestAnimationFrame(animar));
 }

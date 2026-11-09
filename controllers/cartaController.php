@@ -12,15 +12,15 @@ class CartaController {
         $productoMasPedido = productosDAO::selectMasPedido();
         $productosRandom = productosDAO::selectRandom();
 
-        $categoriaActivaId = isset($_GET['id'])
-            ? $_GET['id']
-            : (isset($categorias[0]) ? $categorias[0]->getId() : 0);
+        $categoriaActivaId = null;
+        $requestedCategoriaId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $nombreCategoria = '';
-        foreach ($categorias as $categoria) {
-            if ($categoria->getId() == $categoriaActivaId) {
-                $nombreCategoria = $categoria->getNombre();
-                break;
+        if ($requestedCategoriaId !== false && $requestedCategoriaId !== null) {
+            foreach ($categorias as $categoria) {
+                if ((int) $categoria->getId() === $requestedCategoriaId) {
+                    $categoriaActivaId = $requestedCategoriaId;
+                    break;
+                }
             }
         }
 
