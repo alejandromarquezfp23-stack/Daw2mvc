@@ -1,0 +1,23 @@
+.divArriba {
+    background-color: black;
+    padding: 0 200px;
+    color: white;
+}
+
+.divMedio {
+    background-color: #f5f5f5;
+}
+
+#divBlancos {
+    background-color: white;
+}
+
+p {
+    max-width: 500px;
+}
+
+@media (max-width: 500px) {
+    .divArriba {
+        padding: 0 1rem;
+    }
+}

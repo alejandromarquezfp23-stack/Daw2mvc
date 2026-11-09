@@ -9,13 +9,33 @@ class pedido_detalle {
     protected $subtotal;
 
     public function __construct($id = null, $pedido_id = null, $producto_id = null, $nombre_producto = null, $precio_unitario = null, $cantidad = null, $subtotal = null) {
-        $this->id = $id;
-        $this->pedido_id = $pedido_id;
-        $this->producto_id = $producto_id;
-        $this->nombre_producto = $nombre_producto;
-        $this->precio_unitario = $precio_unitario;
-        $this->cantidad = $cantidad;
-        $this->subtotal = $subtotal;
+        if ($id !== null) {
+            $this->id = $id;
+        }
+
+        if ($pedido_id !== null) {
+            $this->pedido_id = $pedido_id;
+        }
+
+        if ($producto_id !== null) {
+            $this->producto_id = $producto_id;
+        }
+
+        if ($nombre_producto !== null) {
+            $this->nombre_producto = $nombre_producto;
+        }
+
+        if ($precio_unitario !== null) {
+            $this->precio_unitario = $precio_unitario;
+        }
+
+        if ($cantidad !== null) {
+            $this->cantidad = $cantidad;
+        }
+
+        if ($subtotal !== null) {
+            $this->subtotal = $subtotal;
+        }
     }
 
     public function getId() { 

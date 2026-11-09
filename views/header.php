@@ -18,8 +18,8 @@
                 </ul>
 
                 <div class="d-flex justify-content-center align-items-center gap-4 py-2 py-md-0">
-                    <a href="#" class="icono-link">
-                        <img src="/Daw2mvc/iconos/LupaClara.svg" alt="Buscar" width="20" height="20" class="object-fit-contain">
+                    <a href="/Daw2mvc/index.php?controller=perfil" class="icono-link">
+                        <img src="/Daw2mvc/iconos/UsuarioNegro.svg" alt="Iniciar sesión" width="20" height="20" class="object-fit-contain">
                     </a>
                     <a href="/Daw2mvc/index.php?controller=carrito" class="icono-link">
                         <img src="/Daw2mvc/iconos/BolsaClara.svg" alt="Carrito de compra" width="20" height="20" class="object-fit-contain">

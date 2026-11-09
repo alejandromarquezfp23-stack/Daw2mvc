@@ -4,8 +4,13 @@ class oferta_producto {
     protected $producto_id;
 
     public function __construct($oferta_id = null, $producto_id = null) {
-        $this->oferta_id = $oferta_id;
-        $this->producto_id = $producto_id;
+        if ($oferta_id !== null) {
+            $this->oferta_id = $oferta_id;
+        }
+
+        if ($producto_id !== null) {
+            $this->producto_id = $producto_id;
+        }
     }
 
     public function getOfertaId() { 
