@@ -17,28 +17,75 @@
     </div>
 
     <div class="d-flex flex-column flex-md-row gap-3 gap-md-0 p-3 p-md-5 divMedio my-5">
-        <div id="divBlancos" class="rounded-3 m-md-3 p-3">
+        <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
             <h2 class="fw-semibold">Saldo de tu cuenta de Appletito: 0,00 €</h2>
-            <p>Canjea tarjetas regalo de Apple en tu cuenta o añade dinero directamente cuando tú quieras. Tras hacerlo, podrás usar tu saldo para todo lo que necesites en Apple: productos, accesorios, apps, juegos, música, películas, series, iCloud y mucho más.</p>
-            <button type="submit" class="btn btn-outline-primary rounded-3">
-                Gestionar saldo
-            </button>
-        </div>
+            <p>Consulta el saldo disponible en tu cuenta y tenlo a mano para tus próximos pedidos en Appletito.</p>
+            <input type="submit" name="gestionar_saldo" value="Gestionar saldo" class="btn btn-outline-primary rounded-3">
+        </form>
 
-        <div id="divBlancos" class="rounded-3 m-md-3 p-3">
+        <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
             <h2 class="fw-semibold">Tus pedidos</h2>
-            <p>Sigue, modifica o cancela un pedido para hacer una devolución.</p>
-            <button type="submit" class="btn btn-outline-primary rounded-3">
-                Consulta tu historial de pedidos
-            </button>
-        </div>
+            <p>Revisa tus pedidos anteriores, consulta qué platos incluiste y comprueba el importe de cada pedido.</p>
+            <input type="submit" name="historial_pedidos" value="Consulta tu historial de pedidos" class="btn btn-outline-primary rounded-3">
+        </form>
 
-        <div id="divBlancos" class="rounded-3 m-md-3 p-3">
+        <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
             <h2 class="fw-semibold">Tus favoritos</h2>
-            <p>Tanto si compras online o en un Apple Store, puedes guardar de forma sencilla los productos que te interesen y hacer un seguimiento de tu progreso aquí.</p>
-            <button type="submit" class="btn btn-outline-primary rounded-3">
-                Ver Tus favoritos
-            </button>
-        </div>
+            <p>Guarda tus platos favoritos para encontrarlos fácilmente y volver a pedirlos cuando te apetezcan.</p>
+            <input type="submit" name="ver_favoritos" value="Ver Tus favoritos" class="btn btn-outline-primary rounded-3">
+        </form>
     </div>
+
+    <?php if ($gestionar_saldo): ?>
+        <!-- <div>Contenido de cuenta</div> -->
+    <?php endif; ?>
+
+    <?php if ($historial_pedidos): ?>
+        <div class="d-flex flex-column divMedio mb-5 py-5">
+            <?php if (empty($pedidosUsuario)): ?>
+                <div class="d-flex justify-content-center align-items-center m-5">
+                    <div class="rounded-3 p-4 bg-white text-center">
+                        <h4 class="fw-semibold mb-2">Todavía no tienes pedidos</h4>
+                        <p>Cuando hagas tu primer pedido, aparecerá aquí.</p>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="carruselProductos">
+                    <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
+                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
+                    </button>
+
+                    <div class="d-flex divProductos overflow-auto">
+                        <?php foreach ($pedidosUsuario as $pedido): ?>
+                            <div class="divProducto mx-3 m-md-3 p-4 rounded-3" style="min-width: 280px;">
+                                <p class="text-muted mb-1">Pedido</p>
+                                <h5 class="fw-bold">#<?= $pedido->getId() ?></h5>
+
+                                <p class="mb-1"><strong>Estado:</strong> <?= htmlspecialchars($pedido->getEstado()) ?></p>
+                                <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido->getFechaPedido()) ?></p>
+                                <p class="mb-3"><strong>Total:</strong> <?= number_format((float) $pedido->getTotal(), 2, ',', '.') ?> €</p>
+
+                                <?php foreach ($pedidodetalle as $detalle): ?>
+                                    <?php if ((int) $detalle->getPedidoId() === (int) $pedido->getId()): ?>
+                                        <div class="border-top pt-2">
+                                            <p class="mb-1">Producto ID: <?= $detalle->getProductoId() ?></p>
+                                            <p class="mb-1">Cantidad: <?= $detalle->getCantidad() ?></p>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
+                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
+                    </button>
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($ver_favoritos): ?>
+        <!-- <div>ver_favoritos</div> -->
+    <?php endif; ?>
 </div>

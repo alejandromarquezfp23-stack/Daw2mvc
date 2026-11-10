@@ -16,8 +16,80 @@ p {
     max-width: 500px;
 }
 
+.carruselProductos {
+    position: relative;
+    width: 100%;
+}
+
+.divProductos {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 0 44px;
+}
+
+.divProductos::-webkit-scrollbar {
+    display: none;
+}
+
+.flecha-carrusel {
+    position: absolute;
+    top: 40%;
+    width: 90px !important;
+    height: 90px !important;
+    padding: 0;
+    border: none;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+}
+
+.flecha-carrusel.flecha-oculta {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flecha-izquierda {
+    left: 20px;
+}
+
+.flecha-derecha {
+    right: 20px;
+}
+
+.flecha-carrusel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.divProducto {
+    min-width: 280px;
+    width: 280px;
+    background: white;
+    color: black;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 @media (max-width: 500px) {
     .divArriba {
         padding: 0 1rem;
+    }
+
+    .divProductos {
+        padding: 0 26px;
+    }
+
+    .divProducto {
+        min-width: 72vw;
+        width: 72vw;
+    }
+
+    .flecha-carrusel {
+        width: 24px !important;
+        height: 24px !important;
     }
 }
