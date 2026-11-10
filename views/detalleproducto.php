@@ -81,7 +81,7 @@
                 </p>
 
                 <?php if ($esFavorito): ?>
-                    <button type="submit" name="productoEliminarFavoritos" value="1" class="btn btn-outline-danger btn-sm rounded-3">
+                    <button type="submit" name="productoEliminarFavoritos" value="1" class="btn btn-secondary btn-sm rounded-3">
                         Eliminar de favoritos
                     </button>
                 <?php else: ?>
