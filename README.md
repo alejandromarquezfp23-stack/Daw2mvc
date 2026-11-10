@@ -9,13 +9,13 @@ Proyecto de una web de restaurante en PHP, creado para practicar el patrón MVC 
 
 ## Puesta en marcha
 
-1. Importa `sql/init.sql` desde phpMyAdmin o ejecuta:
+1. Si usas Docker Compose, el script `sql/init.sql` se importa automáticamente al crear el volumen de MySQL por primera vez. Si el volumen ya existía, importar el script manualmente desde phpMyAdmin o ejecutar:
 
    ```bash
    mysql -u root -p < sql/init.sql
    ```
 
-   El volcado crea la base `daw2mvc` y reemplaza las tablas existentes.
+   El volcado crea la base `daw2mvc` y reemplaza las tablas existentes. Ten en cuenta que los scripts de inicialización de Docker no se vuelven a ejecutar mientras se conserve el volumen.
 
 2. Comprueba los datos de conexión en `config/dataBase.php`. Por defecto usa `root`, contraseña `root` y puerto `3308`; ajústalos a tu instalación de MySQL.
 

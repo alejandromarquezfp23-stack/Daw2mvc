@@ -10,6 +10,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `pedido_detalle_ingrediente`;
 DROP TABLE IF EXISTS `pedido_detalle`;
 DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `favoritos`;
 DROP TABLE IF EXISTS `usuarios`;
 DROP TABLE IF EXISTS `producto_ingrediente`;
 DROP TABLE IF EXISTS `oferta_producto`;
@@ -227,6 +228,15 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `favoritos` (
+  `usuario_id` int NOT NULL,
+  `producto_id` int NOT NULL,
+  PRIMARY KEY (`usuario_id`,`producto_id`),
+  KEY `producto_id` (`producto_id`),
+  CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Usuarios de prueba: la contraseña común es 1234.
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `telefono`, `direccion`, `fecha_nacimiento`, `rol`, `fecha_registro`) VALUES
