@@ -80,9 +80,15 @@
                     y retomar todo donde lo dejaste.
                 </p>
 
-                <button type="submit" name="productoInsertarFavoritos" value="1" class="btn btn-primary btn-sm rounded-3">
-                    Guardar en favoritos
-                </button>
+                <?php if ($esFavorito): ?>
+                    <button type="submit" name="productoEliminarFavoritos" value="1" class="btn btn-outline-danger btn-sm rounded-3">
+                        Eliminar de favoritos
+                    </button>
+                <?php else: ?>
+                    <button type="submit" name="productoInsertarFavoritos" value="1" class="btn btn-primary btn-sm rounded-3">
+                        Guardar en favoritos
+                    </button>
+                <?php endif; ?>
                 <hr class="my-4">
                 <p class="small text-secondary mb-0">
                     Tu información de ticket aparecerá en tu correo electrónico.

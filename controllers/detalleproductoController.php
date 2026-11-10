@@ -125,10 +125,8 @@
                 if (!$usuarioID) {
                     $mensajeJS = 'Error';
                 } else {
-                    $productoFavorito = new favoritos((int) $id, (int) $usuarioID);
-                    if (favoritosDAO::selectByIDs((int) $id, (int) $usuarioID)) {
-                        $mensajeJS = 'Ya estaba';
-                    } else {
+                    if (!favoritosDAO::selectByIDs((int) $id, (int) $usuarioID)) {
+                        $productoFavorito = new favoritos((int) $id, (int) $usuarioID);
                         favoritosDAO::insert($productoFavorito);
                         $mensajeJS = 'Insertado';
                     }
@@ -141,6 +139,8 @@
                     $mensajeJS = 'Eliminado';
                 }
             }
+
+            $esFavorito = $usuarioID && favoritosDAO::selectByIDs((int) $id, (int) $usuarioID) !== null;
 
             $titulo = $productoActivo->getNombre() . ' de Appletito';
             $view = __DIR__ . '/../views/detalleproducto.php';
