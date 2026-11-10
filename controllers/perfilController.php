@@ -5,13 +5,11 @@
     require_once __DIR__ . '/../dao/pedido_detalleDAO.php';
     require_once __DIR__ . '/../models/usuarios.php';
     require_once __DIR__ . '/../dao/usuariosDAO.php';
+    require_once __DIR__ . '/../models/favoritos.php';
+    require_once __DIR__ . '/../dao/favoritosDAO.php';
 
     class PerfilController {
         public function index() {       
-            $pedidos = pedidosDAO::selectAll();
-            $pedidodetalle = pedido_detalleDAO::selectAll();
-            $usuarios = usuariosDAO::selectAll();
-
             if (!isset($_SESSION['usuario'])) {
                 header("Location: index.php?controller=login");
                 exit();
@@ -19,8 +17,6 @@
 
             $usuarioID = $_SESSION['usuario']->id;
             $usuario = usuariosDAO::selectByID($usuarioID);
-
-            $pedidosUsuario = pedidosDAO::selectByUsuarioID($usuarioID);;
 
             $gestionar_saldo = false;
             $historial_pedidos = false;
@@ -37,6 +33,10 @@
             if (isset($_POST['ver_favoritos'])) {
                 $ver_favoritos = true;
             }
+
+            $pedidosUsuario = $historial_pedidos ? pedidosDAO::selectByUsuarioID($usuarioID) : [];
+            $pedidodetalle = $historial_pedidos ? pedido_detalleDAO::selectAll() : [];
+            $favoritosUsuario = $ver_favoritos ? favoritosDAO::selectByUsuarioID($usuarioID) : [];
             
             $titulo = 'Perfil en Appletito';
             $view = __DIR__ . '/../views/perfil.php';

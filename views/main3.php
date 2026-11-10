@@ -32,6 +32,7 @@
         <script>
             const loginCorrecto = <?= json_encode($loginCorrecto ?? null) ?>;
             const registroCorrecto = <?= json_encode($registroCorrecto ?? null) ?>;
+            const mensajeJS = <?= json_encode($mensajeJS ?? null) ?>;
         </script>
         <script src="/Daw2mvc/js/<?= $js ?>"></script>
     <?php endif; ?>

@@ -5,9 +5,17 @@
     require_once __DIR__ . '/../dao/ingredientesDAO.php';
     require_once __DIR__ . '/../models/producto_ingrediente.php';
     require_once __DIR__ . '/../dao/producto_ingredienteDAO.php';
+    require_once __DIR__ . '/../models/favoritos.php';
+    require_once __DIR__ . '/../dao/favoritosDAO.php';
 
     class DetalleProductoController {
         public function index() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $usuarioID = isset($_SESSION['usuario']) ? $_SESSION['usuario']->id : null;
+
             $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             if (!$id || $id < 1) {
                 showError(400, 'El producto indicado no es válido.');
@@ -42,7 +50,7 @@
                 $_SESSION['carrito'] = [];
             }
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
                 $productoId = $_POST['producto_id'] ?? null;
                 $accion = $_POST['accion'] ?? null;
 
@@ -110,6 +118,28 @@
                 $_SESSION['mensaje_exito'] = '¡Producto añadido al carrito correctamente!';
                 header('Location: /Daw2mvc/index.php?controller=carrito');
                 exit;
+            }
+
+            $mensajeJS = '';
+            if (isset($_POST['productoInsertarFavoritos'])) {
+                if (!$usuarioID) {
+                    $mensajeJS = 'Error';
+                } else {
+                    $productoFavorito = new favoritos((int) $id, (int) $usuarioID);
+                    if (favoritosDAO::selectByIDs((int) $id, (int) $usuarioID)) {
+                        $mensajeJS = 'Ya estaba';
+                    } else {
+                        favoritosDAO::insert($productoFavorito);
+                        $mensajeJS = 'Insertado';
+                    }
+                }
+            } else if (isset($_POST['productoEliminarFavoritos'])) {
+                if (!$usuarioID) {
+                    $mensajeJS = 'Error';
+                } else {
+                    favoritosDAO::delete((int) $id, (int) $usuarioID);
+                    $mensajeJS = 'Eliminado';
+                }
             }
 
             $titulo = $productoActivo->getNombre() . ' de Appletito';

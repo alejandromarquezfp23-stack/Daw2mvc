@@ -86,6 +86,46 @@
     <?php endif; ?>
 
     <?php if ($ver_favoritos): ?>
-        <!-- <div>ver_favoritos</div> -->
+        <div class="d-flex flex-column divMedio mb-5 py-5">
+            <?php if (empty($favoritosUsuario)): ?>
+                <div class="d-flex justify-content-center align-items-center m-5">
+                    <div class="rounded-3 p-4 bg-white text-center">
+                        <h4 class="fw-semibold mb-2">Todavía no tienes productos en favoritos</h4>
+                        <p>Cuando pongas tu primer producto en favoritos, aparecerá aquí.</p>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="carruselProductos">
+                    <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
+                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
+                    </button>
+
+                    <div class="d-flex divProductos overflow-auto">
+                        <?php foreach ($favoritosUsuario as $favorito): ?>
+                            <div class="divProducto mx-3 m-md-3 p-4 rounded-4" style="min-width: 280px;">
+                                <h5 class="fw-bold">
+                                    <?= htmlspecialchars($favorito->getNombre(), ENT_QUOTES, 'UTF-8') ?>
+                                </h5>
+
+                                <div class="d-flex justify-content-center">
+                                    <img
+                                        src="/Daw2mvc/<?= htmlspecialchars($favorito->getImagen(), ENT_QUOTES, 'UTF-8') ?>"
+                                        alt="<?= htmlspecialchars($favorito->getNombre(), ENT_QUOTES, 'UTF-8') ?>"
+                                        class="object-fit-contain w-75"
+                                    >
+                                </div>
+                                <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $favorito->getId()) ?>">
+                                    Ver producto
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
+                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
+                    </button>
+                </div>
+            <?php endif; ?>
+        </div>
     <?php endif; ?>
 </div>

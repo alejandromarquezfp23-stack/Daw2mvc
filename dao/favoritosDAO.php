@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/DataBase.php';
 require_once __DIR__ . '/../models/favoritos.php';
+require_once __DIR__ . '/../models/productos.php';
 
 class favoritosDAO {
     public static function selectAll() {
@@ -27,6 +28,26 @@ class favoritosDAO {
         $consulta->close();
         $conexion->close();
         return $relacion ?: null;
+    }
+
+    public static function selectByUsuarioID($usuarioId) {
+        $sql = 'SELECT p.id, p.categoria_id, p.nombre, p.descripcion, p.precio, p.imagen, p.activo
+                FROM favoritos f
+                INNER JOIN productos p ON p.id = f.producto_id
+                WHERE f.usuario_id = ?
+                ORDER BY p.nombre';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare($sql);
+        $consulta->bind_param('i', $usuarioId);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+        $productos = [];
+        while ($producto = $resultado->fetch_object('productos')) {
+            $productos[] = $producto;
+        }
+        $consulta->close();
+        $conexion->close();
+        return $productos;
     }
 
     public static function insert(favoritos $relacion) {

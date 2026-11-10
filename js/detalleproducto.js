@@ -73,3 +73,29 @@ aIngredientes.forEach(function(a) {
         });
     });
 });
+
+if (mensajeJS === 'Insertado') {
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Producto añadido a favoritos.",
+        icon: "success",
+        timer: 3000,
+        showConfirmButton: false
+    });
+} else if (mensajeJS === 'Error') {
+    Swal.fire({
+        title: "¡No has iniciado sesion!",
+        text: "Debes iniciar sesión para añadir favoritos..",
+        icon: "error",
+        timer: 3000,
+        showConfirmButton: false
+    });
+} else if(mensajeJS === 'Eliminado') {
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Producto eliminado de favoritos.",
+        icon: "success",
+        timer: 3000,
+        showConfirmButton: false
+    });
+}

@@ -80,7 +80,7 @@
                     y retomar todo donde lo dejaste.
                 </p>
 
-                <button type="button" class="btn btn-primary btn-sm rounded-3">
+                <button type="submit" name="productoInsertarFavoritos" value="1" class="btn btn-primary btn-sm rounded-3">
                     Guardar en favoritos
                 </button>
                 <hr class="my-4">
