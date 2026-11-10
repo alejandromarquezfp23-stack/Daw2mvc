@@ -4,7 +4,7 @@ require_once __DIR__ . '/../models/productos.php';
 
     class productosDAO {
         public static function selectAll() {
-            $sql = 'SELECT * FROM productos ORDER BY id';
+            $sql = 'SELECT * FROM productos';
             $conexion = DataBase::connect();
             $consulta = $conexion->query($sql);
             $productos = [];
@@ -109,6 +109,48 @@ require_once __DIR__ . '/../models/productos.php';
             $resultado = $consulta->get_result();
             $productos = [];
             while ($producto = $resultado->fetch_object('productos')) {
+                $productos[] = $producto;
+            }
+            $consulta->close();
+            $conexion->close();
+
+            return $productos;
+        }
+
+        public static function selectOrderID() {
+            $sql = 'SELECT * FROM productos ORDER BY id';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $productos = [];
+            while ($producto = $consulta->fetch_object('productos')) {
+                $productos[] = $producto;
+            }
+            $consulta->close();
+            $conexion->close();
+
+            return $productos;
+        }
+
+        public static function selectOrderNombre() {
+            $sql = 'SELECT * FROM productos ORDER BY nombre';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $productos = [];
+            while ($producto = $consulta->fetch_object('productos')) {
+                $productos[] = $producto;
+            }
+            $consulta->close();
+            $conexion->close();
+
+            return $productos;
+        }
+
+        public static function selectOrderPrecio() {
+            $sql = 'SELECT * FROM productos ORDER BY precio';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $productos = [];
+            while ($producto = $consulta->fetch_object('productos')) {
                 $productos[] = $producto;
             }
             $consulta->close();

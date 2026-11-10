@@ -1,6 +1,6 @@
 <div class="div-carta">
     <div class="d-flex flex-column flex-md-row justify-content-between mx-0 mx-md-5">
-        <h1 class="text-start text-md-center fw-semibold mx-5 mx-md-5 mt-3 mt-md-5 mb-3 mb-md-5 display-2">
+        <h1 class="text-start text-md-center fw-semibold mx-5 mx-md-5 mt-md-3 display-2">
             Carta
         </h1>
     </div>
@@ -25,12 +25,28 @@
     <?php foreach ($categorias as $categoria) { ?>
         <?php if ($categoriaActivaId === null || (int) $categoria->getId() === $categoriaActivaId) { ?>
             <section class="categoriaCarta">
-                <h2 class="fw-semibold mx-0 mx-md-5 mt-4 mt-md-5 mb-4 mb-md-5 h2-segundo">
+                <h2 class="fw-semibold mx-0 mx-md-5 mt-5 mt-md-5 h2-segundo">
                     <?= htmlspecialchars($categoria->getNombre()) ?>.
                     <span class="text-secondary fw-semibold">
                         Elige el plato que más te guste.
                     </span>
                 </h2>
+
+                <form method="POST" class="d-flex gap-3 mx-md-5 px-md-5 py-md-3 filtrosCarta">
+                    <input type="hidden" name="id" value="<?= $categoriaActivaId ?>">
+
+                    <button type="submit" name="filtroid" value="1" class="btn btn-outline-dark rounded-pill px-4">
+                        ID
+                    </button>
+
+                    <button type="submit" name="filtronombre" value="2" class="btn btn-outline-dark rounded-pill px-4">
+                        Nombre
+                    </button>
+
+                    <button type="submit" name="filtroprecio" value="3" class="btn btn-outline-dark rounded-pill px-4">
+                        Precio
+                    </button>
+                </form>
 
                 <div class="d-flex align-items-center carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Desplazar productos hacia la izquierda">
@@ -40,7 +56,7 @@
                     <div class="d-flex divProductos overflow-auto">
                         <?php foreach ($productos as $producto) { ?>
                             <?php if ((int) $producto->getCategoriaId() === (int) $categoria->getId()) { ?>
-                                <div class="divProducto mx-3 m-md-3 p-4 rounded-3">
+                                <div class="divProducto mx-3 m-md-3 p-4 rounded-4">
                                     <div class="d-flex justify-content-first">
                                         <p class="fw-bold precioString">
                                             <?= htmlspecialchars((string) $producto->getPrecio()) ?>€
@@ -64,8 +80,8 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end pt-2">
-                                        <a class="btn btn-primary rounded-pill w-100" href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $producto->getId()) ?>">
-                                            Comprar
+                                        <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $producto->getId()) ?>">
+                                            Añadir al carrito
                                         </a>
                                     </div>
                                 </div>

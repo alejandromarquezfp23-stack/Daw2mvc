@@ -8,12 +8,19 @@ class CartaController {
 
     public function index() {
         $categorias = categoriasDAO::selectAll();
-        $productos = productosDAO::selectAll();
+        $productos = '';
         $productoMasPedido = productosDAO::selectMasPedido();
         $productosRandom = productosDAO::selectRandom();
+        // $productoporID = productosDAO::selectOrderID();
+        // $productoporNombre = productosDAO::selectOrderNombre();
+        // $productoporPrecio = productosDAO::selectOrderPrecio();
 
         $categoriaActivaId = null;
         $requestedCategoriaId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $requestedCategoriaId = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        }
 
         if ($requestedCategoriaId !== false && $requestedCategoriaId !== null) {
             foreach ($categorias as $categoria) {
@@ -22,6 +29,16 @@ class CartaController {
                     break;
                 }
             }
+        }
+
+        if (isset($_POST['filtroid'])) {
+            $productos = productosDAO::selectOrderID();
+        } else if (isset($_POST['filtronombre'])) {
+            $productos = productosDAO::selectOrderNombre();
+        } else if (isset($_POST['filtroprecio'])) {
+            $productos = productosDAO::selectOrderPrecio();
+        } else {
+            $productos = productosDAO::selectAll();
         }
 
         $titulo = 'Carta de Appletito';

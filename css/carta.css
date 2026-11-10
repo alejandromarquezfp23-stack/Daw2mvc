@@ -84,18 +84,6 @@ body, .div-carta, .footer {
     background-color: #1D1D1F;
 }
 
-.divProducto:nth-child(odd) {
-    background-color: black;
-    color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.divProducto:nth-child(even) {
-    background-color: white;
-    color: black;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .div-carta > .d-flex.justify-content-between {
     flex-direction: row !important;
 }
@@ -104,6 +92,8 @@ body, .div-carta, .footer {
     width: 400px;
     min-width: 400px;
     height: 500px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 500px) {
@@ -135,6 +125,18 @@ body, .div-carta, .footer {
         padding: 0 20px;
         font-size: 1.45rem;
         line-height: 1.3;
+    }
+
+    .filtrosCarta {
+        gap: 8px !important;
+        margin: 12px 20px 12px 20px;
+    }
+
+    .filtrosCarta .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 0.55rem 0.4rem;
+        font-size: 0.9rem;
     }
 
     .carruselProductos {
