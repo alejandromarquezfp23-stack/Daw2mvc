@@ -80,9 +80,9 @@
 -   [ ] Mostrar las ofertas disponibles.
 -   [ ] Permitir añadir ofertas al carrito.
 -   [ ] Diseñar diferentes ofertas individualmente.
--   [x] Mostrar el precio final y los impuestos durante el proceso de
+-   [ ] Mostrar el precio final y los impuestos durante el proceso de
     compra.
--   [x] Permitir confirmar y finalizar el pedido.
+-   [ ] Permitir confirmar y finalizar el pedido.
 
 ### Pedidos y cuenta de usuario
 
@@ -91,7 +91,7 @@
     acceder a la aplicación.
 -   [ ] Permitir consultar los datos personales del usuario.
 -   [ ] Permitir modificar los datos personales del usuario.
--   [ ] Permitir consultar el historial de pedidos del usuario.
+-   [x] Permitir consultar el historial de pedidos del usuario.
 
 ## 4. Panel de administración
 
@@ -112,15 +112,15 @@
 -   [x] Listar los productos.
 -   [x] Modificar los productos.
 -   [x] Ordenar los productos.
--   [ ] Filtrar productos por nombre.
--   [ ] Filtrar productos por ID.
--   [ ] Filtrar productos por precio.
+-   [x] Filtrar productos por nombre.
+-   [x] Filtrar productos por ID.
+-   [x] Filtrar productos por precio.
 -   [x] Añadir productos.
 -   [x] Eliminar productos.
 
 ### Gestión de pedidos
 
--   [ ] Listar los pedidos.
+-   [x] Listar los pedidos.
 -   [ ] Ordenar los pedidos.
 -   [ ] Filtrar pedidos por diferentes campos.
 -   [ ] Añadir productos a un pedido.
@@ -134,7 +134,7 @@
 
 ### Requisitos técnicos del panel
 
--   [x] Utilizar el DOM para obtener, crear y modificar elementos HTML
+-   [ ] Utilizar el DOM para obtener, crear y modificar elementos HTML
     dinámicamente.
 -   [ ] Gestionar las acciones del usuario mediante eventos de
     JavaScript.
@@ -162,7 +162,7 @@
 -   [x] Introducir los datos iniciales necesarios.
 -   [x] Configurar la base de datos dentro de un contenedor Docker.
 -   [x] Comprobar la conexión entre PHP y MySQL.
--   [x] Comprobar que todas las funcionalidades guardan y recuperan
+-   [ ] Comprobar que todas las funcionalidades guardan y recuperan
     correctamente los datos.
 
 ## 6. Servicios web y entorno de desarrollo
