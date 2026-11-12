@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="footer-container mx-auto">
         <div class="footer-brand d-flex align-items-center gap-2 mb-3">
-            <img src="/Daw2mvc/iconos/Logo.svg" alt="" width="35" height="35" class="object-fit-contain">
+            <img src="/Daw2mvc/iconos/LogoOscuro.svg" alt="" width="35" height="35" class="object-fit-contain">
             <span>Appletito</span>
         </div>
 
