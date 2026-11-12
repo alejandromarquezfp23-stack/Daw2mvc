@@ -52,7 +52,7 @@
             <?php else: ?>
                 <div class="carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
-                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda.svg" alt="">
+                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
                     </button>
 
                     <div class="d-flex divProductos overflow-auto">
@@ -78,7 +78,7 @@
                     </div>
 
                     <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
-                        <img src="/Daw2mvc/iconos/icono_flecha_derecha.svg" alt="">
+                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
                     </button>
                 </div>
             <?php endif; ?>
@@ -97,7 +97,7 @@
             <?php else: ?>
                 <div class="carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
-                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda.svg" alt="">
+                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
                     </button>
 
                     <div class="d-flex divProductos overflow-auto">
@@ -122,7 +122,7 @@
                     </div>
 
                     <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
-                        <img src="/Daw2mvc/iconos/icono_flecha_derecha.svg" alt="">
+                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
                     </button>
                 </div>
             <?php endif; ?>
