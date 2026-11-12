@@ -46,6 +46,6 @@ class CartaController {
         $css = 'carta.css';
         $js = 'carta.js';
 
-        require_once __DIR__ . '/../views/main.php';
+        require_once __DIR__ . '/../views/main2.php';
     }
 }

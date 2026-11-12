@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Daw2mvc/css/header.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="/Daw2mvc/css/footer.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Daw2mvc/iconos/LogoOscuro.png">
+    <link rel="icon" type="image/svg+xml" href="/Daw2mvc/iconos/LogoOscuro.svg">
 
     <?php if (isset($css)) : ?>
         <link rel="stylesheet" href="/Daw2mvc/css/<?= $css ?>">

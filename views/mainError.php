@@ -14,7 +14,7 @@
         label { display: flex; flex-direction: column; gap: 0.25rem; }
         input, select, button { padding: 0.4rem 0.5rem; font: inherit; }
     </style>
-    <link rel="icon" type="image/png" sizes="32x32" href="/Daw2mvc/iconos/LogoOscuro.png">
+    <link rel="icon" type="image/svg+xml" href="/Daw2mvc/iconos/LogoOscuro.svg">
 </head>
 
 <body>
