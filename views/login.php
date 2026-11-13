@@ -12,7 +12,7 @@
 
                 <div class="d-flex flex-column flex-sm-row gap-3">
                     <button type="submit" name="login" class="btn botones flex-fill py-2">Continuar</button>
-                    <a href="/Daw2mvc/index.php?controller=usuario&amp;action=create" class="btn botones flex-fill py-2">¿No tienes cuenta? Registrate</a>
+                    <a href="<?= url ?>index.php?controller=usuario&amp;action=create" class="btn botones flex-fill py-2">¿No tienes cuenta? Registrate</a>
                 </div>
             </div>
         </div>

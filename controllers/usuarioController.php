@@ -134,7 +134,7 @@
             $_SESSION = [];
             session_destroy();
 
-            header('Location: /Daw2mvc/index.php?controller=usuario&action=login');
+            header('Location: ' . url . 'index.php?controller=usuario&action=login');
             exit;
         }
 
@@ -144,7 +144,7 @@
             }
 
             if (!isset($_SESSION['usuario'])) {
-                header('Location: /Daw2mvc/index.php?controller=usuario&action=login');
+                header('Location: ' . url . 'index.php?controller=usuario&action=login');
                 exit;
             }
         }

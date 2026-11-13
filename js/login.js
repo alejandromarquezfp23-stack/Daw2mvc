@@ -7,7 +7,7 @@ if (loginCorrecto === true) {
         timerProgressBar: true,
         showConfirmButton: false
     }).then(() => {
-        window.location.href = "/Daw2mvc/index.php?controller=carrito";
+        window.location.href = "index.php?controller=carrito";
     });
 } else if (loginCorrecto === false) {
     Swal.fire({

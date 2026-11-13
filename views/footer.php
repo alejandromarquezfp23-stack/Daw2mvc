@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="footer-container mx-auto">
         <div class="footer-brand d-flex align-items-center gap-2 mb-3">
-            <img src="/Daw2mvc/iconos/LogoOscuro.svg" alt="" width="35" height="35" class="object-fit-contain">
+            <img src="<?= url ?>iconos/LogoOscuro.svg" alt="" width="35" height="35" class="object-fit-contain">
             <span>Appletito</span>
         </div>
 
@@ -15,28 +15,28 @@
             <div class="col-6 col-md-3">
                 <h6 class="mb-3">Explorar</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=productos">Carta de la casa</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="<?= url ?>index.php?controller=productos">Carta de la casa</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-3">
                 <h6 class="mb-3">Appletito</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Restaurante</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Restaurante</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-3">
                 <h6 class="mb-3">Ayuda</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Soporte</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Soporte</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-3">
                 <h6 class="mb-3">Información legal</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Política de privacidad</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Política de privacidad</a></li>
                 </ul>
             </div>
 
@@ -50,11 +50,11 @@
             </p>
 
             <div class="footer-legal d-flex flex-wrap gap-2 align-items-center">
-                <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Privacidad</a>
+                <a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Privacidad</a>
                 <span>|</span>
-                <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Cookies</a>
+                <a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Cookies</a>
                 <span>|</span>
-                <a class="text-decoration-none" href="/Daw2mvc/index.php?controller=home">Avisos legales</a>
+                <a class="text-decoration-none" href="<?= url ?>index.php?controller=home">Avisos legales</a>
             </div>
         </div>
     </div>

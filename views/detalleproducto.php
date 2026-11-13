@@ -12,7 +12,7 @@
     <div class="row align-items-center g-4 g-lg-5">
         <div class="col-12 col-md-6">
             <div class="divImagen rounded-4 d-flex justify-content-center align-items-center p-3 p-md-4">
-                <img src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
+                <img src="<?= url ?><?php echo $productoActivo->getImagen(); ?>"
                     alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>"
                     class="img-fluid w-75">
             </div>
@@ -38,7 +38,7 @@
                         <div class="border rounded-3 p-3 mb-3 tarjeta-ingrediente">
                             <div class="d-flex justify-content-between align-items-center gap-3">
                                 <div class="d-flex align-items-center gap-3">
-                                    <img src="/Daw2mvc/<?php echo $ingrediente->getImagen(); ?>"
+                                    <img src="<?= url ?><?php echo $ingrediente->getImagen(); ?>"
                                         alt=""
                                         width="32"
                                         height="32"
@@ -91,7 +91,7 @@
                     <?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>
                 </h2>
 
-                <img src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
+                <img src="<?= url ?><?php echo $productoActivo->getImagen(); ?>"
                     alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>"
                     class="img-fluid w-50">
             </div>
@@ -161,8 +161,8 @@
 
 <div class="bannerCarta d-flex flex-column align-items-center justify-content-center text-center pt-5 mt-5 pb-5 mb-5 px-md-4">
     <div class="w-100 d-flex justify-content-center mb-4">
-        <img src="/Daw2mvc/<?php echo $productoActivo->getImagen(); ?>"
-            class="img-fluid w-25 rounded-3"
+        <img src="<?= url ?><?php echo $productoActivo->getImagen(); ?>"
+            class="img-fluid imagen-banner-producto rounded-3"
             alt="<?php echo htmlspecialchars($productoActivo->getNombre(), ENT_QUOTES, 'UTF-8'); ?>">
     </div>
 </div>

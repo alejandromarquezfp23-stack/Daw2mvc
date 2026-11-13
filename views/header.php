@@ -2,8 +2,8 @@
     <nav class="navbar navbar-expand-md custom-navbar text-white" data-bs-theme="dark">
         <div class="container-fluid max-w-apple">
             
-            <a class="navbar-brand me-0" href="/Daw2mvc/index.php?controller=home">
-                <img src="/Daw2mvc/iconos/LogoClaro.svg" alt="Appletito" width="25" height="25" class="object-fit-contain d-block">
+            <a class="navbar-brand me-0" href="<?= url ?>index.php?controller=home">
+                <img src="<?= url ?>iconos/LogoClaro.svg" alt="Appletito" width="25" height="25" class="object-fit-contain d-block">
             </a>
 
             <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Abrir menú">
@@ -12,17 +12,17 @@
 
             <div class="collapse navbar-collapse" id="menuNavegacion">
                 <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4 text-white">
-                    <li class="nav-item"><a class="nav-link text-white" href="/Daw2mvc/index.php?controller=home">Restaurante</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="/Daw2mvc/index.php?controller=productos">Carta de la casa</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="/Daw2mvc/index.php?controller=home">Soporte</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="<?= url ?>index.php?controller=home">Restaurante</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="<?= url ?>index.php?controller=productos">Carta de la casa</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="<?= url ?>index.php?controller=home">Soporte</a></li>
                 </ul>
 
                 <div class="d-flex justify-content-center align-items-center gap-4 py-2 py-md-0">
-                    <a href="/Daw2mvc/index.php?controller=usuario&action=show" class="icono-link">
-                        <img src="/Daw2mvc/iconos/UsuarioBlanco.svg" alt="Iniciar sesión" width="20" height="20" class="object-fit-contain">
+                    <a href="<?= url ?>index.php?controller=usuario&action=show" class="icono-link">
+                        <img src="<?= url ?>iconos/UsuarioBlanco.svg" alt="Iniciar sesión" width="20" height="20" class="object-fit-contain">
                     </a>
-                    <a href="/Daw2mvc/index.php?controller=carrito" class="icono-link">
-                        <img src="/Daw2mvc/iconos/BolsaOscura.svg" alt="Carrito de compra" width="20" height="20" class="object-fit-contain">
+                    <a href="<?= url ?>index.php?controller=carrito" class="icono-link">
+                        <img src="<?= url ?>iconos/BolsaOscura.svg" alt="Carrito de compra" width="20" height="20" class="object-fit-contain">
                     </a>
                 </div>
             </div>

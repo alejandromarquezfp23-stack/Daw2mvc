@@ -7,7 +7,7 @@ if (registroCorrecto === true) {
         timerProgressBar: true,
         showConfirmButton: false
     }).then(() => {
-        window.location.href = "/Daw2mvc/index.php?controller=usuario&action=login";
+        window.location.href = "index.php?controller=usuario&action=login";
     });
 } else if (registroCorrecto === false) {
     Swal.fire({

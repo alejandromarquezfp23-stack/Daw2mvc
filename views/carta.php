@@ -56,7 +56,7 @@
 
                 <div class="d-flex align-items-center carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Desplazar productos hacia la izquierda">
-                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
                     </button>
 
                     <div class="d-flex divProductos overflow-auto">
@@ -86,7 +86,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end pt-2">
-                                        <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $producto->getId()) ?>">
+                                        <a class="btn btn-primary rounded-3 w-100" href="<?= url ?>index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $producto->getId()) ?>">
                                             Añadir al carrito
                                         </a>
                                     </div>
@@ -96,7 +96,7 @@
                     </div>
 
                     <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Desplazar productos hacia la derecha">
-                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_derecha-removebg-preview.png" alt="">
                     </button>
                 </div>
             </section>
@@ -113,7 +113,7 @@
         </div>
 
         <a class="btn btn-primary rounded-pill w-25"
-        href="/Daw2mvc/index.php?controller=productos&amp;action=detalle&amp;id=<?= urlencode((string) $productosRandom[0]->getId()) ?>">
+        href="<?= url ?>index.php?controller=productos&amp;action=detalle&amp;id=<?= urlencode((string) $productosRandom[0]->getId()) ?>">
             Comprar
         </a>
     </div>

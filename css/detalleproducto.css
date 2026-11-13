@@ -10,3 +10,14 @@
 .bannerCarta {
     background-color: #1D1D1F;
 }
+
+.imagen-banner-producto {
+    width: 25%;
+}
+
+@media (max-width: 500px) {
+    .imagen-banner-producto {
+        width: 70%;
+        max-width: 320px;
+    }
+}

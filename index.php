@@ -16,7 +16,7 @@ function showError($code, $message)
 }
 
 if (!isset($_GET['controller'])) {
-    header("Location: " . url . "?controller=" . default_controller);
+    header("Location: " . url . "index.php?controller=" . default_controller);
     exit;
 }
 

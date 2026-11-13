@@ -227,7 +227,7 @@
             }
 
             $_SESSION['mensaje_exito'] = '¡Producto añadido al carrito correctamente!';
-            header('Location: /Daw2mvc/index.php?controller=carrito');
+            header('Location: ' . url . 'index.php?controller=carrito');
             exit;
         }
     }

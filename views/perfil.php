@@ -2,7 +2,7 @@
     <div class="py-5 divArriba">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="fw-semibold">Cuenta</h5>
-            <form method="post" action="/Daw2mvc/index.php?controller=usuario&action=logout">
+            <form method="post" action="<?= url ?>index.php?controller=usuario&action=logout">
                 <button type="submit" class="btn btn-secondary rounded-3">
                     Cerrar sesión
                 </button>
@@ -52,7 +52,7 @@
             <?php else: ?>
                 <div class="carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
-                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
                     </button>
 
                     <div class="d-flex divProductos overflow-auto">
@@ -77,7 +77,7 @@
                     </div>
 
                     <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
-                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_derecha-removebg-preview.png" alt="">
                     </button>
                 </div>
             <?php endif; ?>
@@ -96,7 +96,7 @@
             <?php else: ?>
                 <div class="carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
-                        <img src="/Daw2mvc/iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
                     </button>
 
                     <div class="d-flex divProductos overflow-auto">
@@ -108,12 +108,12 @@
 
                                 <div class="d-flex justify-content-center">
                                     <img
-                                        src="/Daw2mvc/<?= htmlspecialchars($favorito->getImagen(), ENT_QUOTES, 'UTF-8') ?>"
+                                        src="<?= url ?><?= htmlspecialchars($favorito->getImagen(), ENT_QUOTES, 'UTF-8') ?>"
                                         alt="<?= htmlspecialchars($favorito->getNombre(), ENT_QUOTES, 'UTF-8') ?>"
                                         class="object-fit-contain w-75"
                                     >
                                 </div>
-                                <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $favorito->getId()) ?>">
+                                <a class="btn btn-primary rounded-3 w-100" href="<?= url ?>index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $favorito->getId()) ?>">
                                     Ver producto
                                 </a>
                             </div>
@@ -121,7 +121,7 @@
                     </div>
 
                     <button class="btn flecha-carrusel flecha-derecha" type="button" onclick="desplazarProductos(this, 1)" aria-label="Pedido siguiente">
-                        <img src="/Daw2mvc/iconos/icono_flecha_derecha-removebg-preview.png" alt="">
+                        <img src="<?= url ?>iconos/icono_flecha_derecha-removebg-preview.png" alt="">
                     </button>
                 </div>
             <?php endif; ?>

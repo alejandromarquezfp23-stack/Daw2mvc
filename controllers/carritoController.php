@@ -52,7 +52,7 @@
 
             $this->actualizarCantidad();
 
-            header('Location: /Daw2mvc/index.php?controller=carrito');
+            header('Location: ' . url . 'index.php?controller=carrito');
             exit;
         }
 
@@ -72,7 +72,7 @@
                 unset($_SESSION['carrito'][$claveCarrito]);
             }
 
-            header('Location: /Daw2mvc/index.php?controller=carrito');
+            header('Location: ' . url . 'index.php?controller=carrito');
             exit;
         }
 
