@@ -9,11 +9,18 @@
 }
 
 .carrito-container {
-    padding: 80px 200px 80px 200px !important;
+    padding: 80px clamp(20px, 8vw, 200px) !important;
 }
 
 .botonesOcul {
-    width: 360px;
+    flex: 1 1 240px;
+    max-width: 360px;
+}
+
+.carrito-vacio-acciones {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .spanCantidadBotones button {
@@ -28,5 +35,14 @@
 
     .carrito-container {
         padding: 20px !important;
+    }
+
+    .carrito-vacio-acciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botonesOcul {
+        width: 100%;
     }
 }

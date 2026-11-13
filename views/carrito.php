@@ -8,7 +8,7 @@
                 <span>Inicia sesión para ver si tienes tus productos guardados. O sigue comprando.</span>
             <?php endif; ?>
             
-                <div class="d-flex gap-3 mt-4">
+                <div class="d-flex gap-3 mt-4 carrito-vacio-acciones">
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <!-- <form method="post" action="/Daw2mvc/index.php?controller=usuario&action=logout">
                         <button type="submit" class="btn btn-primary rounded-3 py-3 botonesOcul">Cerrar sesión</button>
