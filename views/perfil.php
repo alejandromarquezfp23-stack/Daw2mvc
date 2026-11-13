@@ -12,7 +12,7 @@
         <hr>
 
         <div>
-            <h2 class="fw-semibold">Hola, <?php echo $usuario->nombre ?></h2>
+            <h2 class="fw-semibold">Hola, <?php echo htmlspecialchars($usuario->nombre, ENT_QUOTES, 'UTF-8'); ?></h2>
         </div>
     </div>
 
@@ -61,17 +61,16 @@
                                 <p class="text-muted mb-1">Pedido</p>
                                 <h5 class="fw-bold">#<?= $pedido->getId() ?></h5>
 
-                                <p class="mb-1"><strong>Estado:</strong> <?= htmlspecialchars($pedido->getEstado()) ?></p>
-                                <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido->getFechaPedido()) ?></p>
+                                <p class="mb-1"><strong>Estado:</strong> <?= htmlspecialchars($pedido->getEstado(), ENT_QUOTES, 'UTF-8') ?></p>
+                                <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido->getFechaPedido(), ENT_QUOTES, 'UTF-8') ?></p>
                                 <p class="mb-3"><strong>Total:</strong> <?= number_format((float) $pedido->getTotal(), 2, ',', '.') ?> €</p>
 
-                                <?php foreach ($pedidodetalle as $detalle): ?>
-                                    <?php if ((int) $detalle->getPedidoId() === (int) $pedido->getId()): ?>
-                                        <div class="border-top pt-2">
-                                            <p class="mb-1">Producto ID: <?= $detalle->getProductoId() ?></p>
-                                            <p class="mb-1">Cantidad: <?= $detalle->getCantidad() ?></p>
-                                        </div>
-                                    <?php endif; ?>
+                                <?php foreach (($pedidodetalle[$pedido->getId()] ?? []) as $detalle): ?>
+                                    <div class="border-top pt-2">
+                                        <p class="mb-1"><?= htmlspecialchars($detalle->getNombreProducto(), ENT_QUOTES, 'UTF-8') ?></p>
+                                        <p class="mb-1">Cantidad: <?= (int) $detalle->getCantidad() ?></p>
+                                        <p class="mb-1"><?= number_format((float) $detalle->getSubtotal(), 2, ',', '.') ?> €</p>
+                                    </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php endforeach; ?>

@@ -98,16 +98,17 @@
             $usuario = usuariosDAO::selectByID($usuarioID);
 
             $gestionar_saldo = isset($_POST['gestionar_saldo']);
-            $historial_pedidos = isset($_POST['historial_pedidos']);
+            $historial_pedidos = isset($_POST['historial_pedidos']) || isset($_GET['historial_pedidos']);
             $ver_favoritos = isset($_POST['ver_favoritos']);
 
             $pedidosUsuario = $historial_pedidos
                 ? pedidosDAO::selectByUsuarioID($usuarioID)
                 : [];
 
-            $pedidodetalle = $historial_pedidos
-                ? pedido_detalleDAO::selectAll()
-                : [];
+            $pedidodetalle = [];
+            foreach ($pedidosUsuario as $pedido) {
+                $pedidodetalle[$pedido->getId()] = pedido_detalleDAO::selectByPedidoID($pedido->getId());
+            }
 
             $favoritosUsuario = $ver_favoritos
                 ? favoritosDAO::selectByUsuarioID($usuarioID)

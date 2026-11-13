@@ -35,7 +35,7 @@
                 <?php echo number_format($totalCarrito, 2, ',', '.'); ?> €
             </h1>
             <p class="text-secondary small">Cancelación o devolución gratis.</p>
-            <a href="/Daw2mvc/index.php?controller=carrito&action=checkout" class="btn btn-primary rounded-3 px-4 mt-2">
+            <a href="/Daw2mvc/index.php?controller=pedidos&action=create" class="btn btn-primary rounded-3 px-4 mt-2">
                 Continuar con el pago
             </a>
         </div>
@@ -113,7 +113,7 @@
                 <a href="/Daw2mvc/index.php?controller=productos" class="btn btn-secondary rounded-3 px-4">
                     Seguir comprando
                 </a>
-                <a href="/Daw2mvc/index.php?controller=carrito&action=checkout" class="btn btn-primary rounded-3 px-5">
+                <a href="/Daw2mvc/index.php?controller=pedidos&action=create" class="btn btn-primary rounded-3 px-5">
                     Pagar
                 </a>
             </div>

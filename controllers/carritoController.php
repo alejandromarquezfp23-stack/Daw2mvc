@@ -76,18 +76,6 @@
             exit;
         }
 
-        public function checkout() {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            $titulo = 'Pagar';
-            $view = __DIR__ . '/../views/pagar.php';
-            $css = 'pagar.css';
-
-            require __DIR__ . '/../views/main3.php';
-        }
-
         private function actualizarCantidad() {
             $claveCarrito = $_POST['clave_carrito'] ?? null;
 

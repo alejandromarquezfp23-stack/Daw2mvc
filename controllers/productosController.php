@@ -86,8 +86,8 @@
             unset($_SESSION['mensaje_favoritos'], $_SESSION['tipo_mensaje_favoritos']);
 
             $titulo = $productoActivo->getNombre() . ' de Appletito';
-            $view = __DIR__ . '/../views/detalleproducto.php';
-            $css = 'detalleproducto.css';
+            $view = __DIR__ . '/../views/detalleProducto.php';
+            $css = 'detalleProducto.css';
 
             require __DIR__ . '/../views/main3.php';
         }

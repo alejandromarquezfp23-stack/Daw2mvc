@@ -82,7 +82,6 @@ INSERT INTO `ingredientes` (`id`, `nombre`, `imagen`, `precio_extra`, `activo`) 
   ('45', 'Huevo', 'imagenes/ingredientes/huevo.webp', '0.50', '1'),
   ('46', 'Cebolla', 'imagenes/ingredientes/cebolla.webp', '0.50', '1'),
   ('47', 'Tomate cherry', 'imagenes/ingredientes/tomate-cherry.webp', '0.50', '1'),
-  ('48', 'Pan brioche', 'imagenes/ingredientes/pan-brioche.webp', '0.50', '1'),
   ('49', 'Mejillones', 'imagenes/ingredientes/mejillones.webp', '2.00', '1'),
   ('50', 'Calamar', 'imagenes/ingredientes/calamar.webp', '2.50', '1'),
   ('51', 'Atún rojo', 'imagenes/ingredientes/atun-rojo.webp', '3.50', '1'),
