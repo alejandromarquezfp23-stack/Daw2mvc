@@ -27,11 +27,16 @@
                 }
             }
 
+            $filtroActivo = null;
+
             if (isset($_POST['filtroid'])) {
+                $filtroActivo = 'id';
                 $productos = productosDAO::selectOrderID();
             } elseif (isset($_POST['filtronombre'])) {
+                $filtroActivo = 'nombre';
                 $productos = productosDAO::selectOrderNombre();
             } elseif (isset($_POST['filtroprecio'])) {
+                $filtroActivo = 'precio';
                 $productos = productosDAO::selectOrderPrecio();
             } else {
                 $productos = productosDAO::selectAll();

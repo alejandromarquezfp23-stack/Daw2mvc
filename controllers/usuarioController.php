@@ -97,7 +97,7 @@
             $usuarioID = $_SESSION['usuario']->id;
             $usuario = usuariosDAO::selectByID($usuarioID);
 
-            $gestionar_saldo = isset($_POST['gestionar_saldo']);
+            $gestionar_cuenta = isset($_POST['gestionar_cuenta']);
             $historial_pedidos = isset($_POST['historial_pedidos']) || isset($_GET['historial_pedidos']);
             $ver_favoritos = isset($_POST['ver_favoritos']);
 

@@ -4,6 +4,7 @@ if (loginCorrecto === true) {
         text: "Has iniciado sesión correctamente.",
         icon: "success",
         timer: 3000,
+        timerProgressBar: true,
         showConfirmButton: false
     }).then(() => {
         window.location.href = "/Daw2mvc/index.php?controller=carrito";

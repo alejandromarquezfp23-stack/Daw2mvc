@@ -48,10 +48,6 @@
                                         <?php echo htmlspecialchars($ingrediente->getNombre(), ENT_QUOTES, 'UTF-8'); ?>
                                     </span>
                                 </div>
-
-                                <span class="text-nowrap precio-ajuste">
-                                    +<?php echo number_format($ingrediente->getPrecioExtra(), 2, ',', '.'); ?> €
-                                </span>
                             </div>
 
                             <label class="form-label small mt-3 mb-1"
@@ -59,11 +55,7 @@
                                 Personaliza este ingrediente
                             </label>
 
-                            <select
-                                class="form-select"
-                                id="ingrediente-<?php echo $ingredienteId; ?>"
-                                name="ingredientes[<?php echo $ingredienteId; ?>]">
-
+                            <select class="form-select" id="ingrediente-<?php echo $ingredienteId; ?>" name="ingredientes[<?php echo $ingredienteId; ?>]">
                                 <option value="" <?php echo empty($seleccionesIngredientes[$ingredienteId]) ? 'selected' : ''; ?>>
                                     Sin cambios
                                 </option>
@@ -78,11 +70,13 @@
                             </select>
                         </div>
                     <?php } ?>
-                </div>
 
-                <button class="btn btn-outline-primary" type="submit" name="accion" value="actualizar">
-                    Actualizar precio
-                </button>
+                    <?php if (!empty($ingredientesActivos)) { ?>
+                        <button class="btn btn-primary" type="submit" name="accion" value="actualizar">
+                            Actualizar precio
+                        </button>
+                    <?php } ?>
+                </div>
             </form>
         </div>
     </div>

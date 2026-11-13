@@ -4,6 +4,7 @@ if (registroCorrecto === true) {
         text: "Tu cuenta se ha creado correctamente, ahora inicia sesión.",
         icon: "success",
         timer: 3000,
+        timerProgressBar: true,
         showConfirmButton: false
     }).then(() => {
         window.location.href = "/Daw2mvc/index.php?controller=usuario&action=login";

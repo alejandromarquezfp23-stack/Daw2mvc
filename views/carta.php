@@ -32,18 +32,24 @@
                     </span>
                 </h2>
 
-                <form method="POST" class="d-flex gap-3 mx-md-5 px-md-5 filtrosCarta">
+                <form method="POST" class="d-flex gap-4 py-md-3 mx-md-5 px-md-5 rounded-pill filtrosCarta">
                     <input type="hidden" name="id" value="<?= $categoriaActivaId ?>">
 
-                    <button type="submit" name="filtroid" value="1" class="btn btn-outline-dark rounded-pill px-4">
+                    <button type="submit" name="filtroid" value="1"
+                        class="btn <?= $filtroActivo === 'id' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                        aria-pressed="<?= $filtroActivo === 'id' ? 'true' : 'false' ?>">
                         ID
                     </button>
 
-                    <button type="submit" name="filtronombre" value="2" class="btn btn-outline-dark rounded-pill px-4">
+                    <button type="submit" name="filtronombre" value="2"
+                        class="btn <?= $filtroActivo === 'nombre' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                        aria-pressed="<?= $filtroActivo === 'nombre' ? 'true' : 'false' ?>">
                         Nombre
                     </button>
 
-                    <button type="submit" name="filtroprecio" value="3" class="btn btn-outline-dark rounded-pill px-4">
+                    <button type="submit" name="filtroprecio" value="3"
+                        class="btn <?= $filtroActivo === 'precio' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                        aria-pressed="<?= $filtroActivo === 'precio' ? 'true' : 'false' ?>">
                         Precio
                     </button>
                 </form>

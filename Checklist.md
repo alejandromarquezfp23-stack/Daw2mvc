@@ -49,7 +49,7 @@
 -   [x] Desarrollar la página Home.
 -   [x] Desarrollar la página de productos o carta.
 -   [x] Desarrollar la página de detalle de cada producto.
--   [ ] Desarrollar las diferentes páginas del proceso de compra.
+-   [x] Desarrollar las diferentes páginas del proceso de compra.
 -   [x] Desarrollar el footer.
 -   [x] Adaptar la página Home a escritorio y móvil.
 
@@ -59,7 +59,7 @@
 -   [x] Implementar el inicio de sesión.
 -   [x] Utilizar sesiones PHP para mantener la sesión iniciada durante
     la navegación.
--   [ ] Restringir la finalización de compras a usuarios con sesión
+-   [x] Restringir la finalización de compras a usuarios con sesión
     iniciada.
 -   [x] Implementar el cierre de sesión.
 
@@ -82,11 +82,11 @@
 -   [ ] Diseñar diferentes ofertas individualmente.
 -   [ ] Mostrar el precio final y los impuestos durante el proceso de
     compra.
--   [ ] Permitir confirmar y finalizar el pedido.
+-   [x] Permitir confirmar y finalizar el pedido.
 
 ### Pedidos y cuenta de usuario
 
--   [ ] Guardar los pedidos realizados en la base de datos.
+-   [x] Guardar los pedidos realizados en la base de datos.
 -   [ ] Mostrar los datos del último pedido cuando el usuario vuelva a
     acceder a la aplicación.
 -   [ ] Permitir consultar los datos personales del usuario.

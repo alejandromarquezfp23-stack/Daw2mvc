@@ -96,6 +96,10 @@ body, .div-carta, .footer {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.filtrosCarta button {
+    transition: all .25s ease;
+}
+
 @media (max-width: 500px) {
     .div-carta > .d-flex.justify-content-between h1 {
         font-size: clamp(2.5rem, 11vw, 3.5rem);

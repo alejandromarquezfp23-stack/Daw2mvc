@@ -18,8 +18,8 @@
 
     <div class="d-flex flex-column flex-md-row gap-3 gap-md-0 p-3 p-md-5 divMedio my-5">
         <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
-            <h2 class="fw-semibold">Saldo de tu cuenta de Appletito: 0,00 €</h2>
-            <p>Consulta el saldo disponible en tu cuenta y tenlo a mano para tus próximos pedidos en Appletito.</p>
+            <h2 class="fw-semibold">Tu cuenta de Appletito</h2>
+            <p>Consulta tu cuenta de Appletito y tus datos privados, puedes modificarlos siempre que quieras, recuerda de los cambios que hagas siempre.</p>
             <input type="submit" name="gestionar_saldo" value="Gestionar saldo" class="btn btn-outline-primary rounded-3">
         </form>
 
@@ -36,7 +36,7 @@
         </form>
     </div>
 
-    <?php if ($gestionar_saldo): ?>
+    <?php if ($gestionar_cuenta): ?>
         <!-- <div>Contenido de cuenta</div> -->
     <?php endif; ?>
 
