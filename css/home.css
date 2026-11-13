@@ -46,3 +46,48 @@ body {
 .contenedores4 {
     background: linear-gradient(180deg, #bce3f7 0%, #edf8fc 50%, #F5F5F7 100%);
 }
+
+@media (max-width: 767.98px) {
+    .titulos-h1 {
+        font-size: clamp(1.75rem, 7vw, 2.4rem);
+    }
+
+    .banner,
+    .banner2,
+    .banner3 {
+        padding: 24px 16px;
+    }
+
+    .banner img,
+    .banner2 img,
+    .banner3 img {
+        width: 88% !important;
+        max-width: 420px;
+        max-height: 48vh;
+        object-fit: contain;
+    }
+
+    .contenedores2,
+    .contenedores3,
+    .contenedores4 {
+        padding: 24px !important;
+    }
+
+    .contenedores2 img,
+    .contenedores3 img,
+    .contenedores4 img {
+        width: 100% !important;
+        max-height: 42vh;
+        object-fit: contain;
+    }
+
+    .banner .d-flex,
+    .banner2 .d-flex,
+    .banner3 .d-flex,
+    .contenedores2 .d-flex,
+    .contenedores3 .d-flex,
+    .contenedores4 .d-flex {
+        flex-wrap: wrap;
+        gap: 12px !important;
+    }
+}

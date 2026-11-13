@@ -43,6 +43,6 @@
     }
 
     .botonesOcul {
-        width: 100%;
+        flex: 50px;
     }
 }
