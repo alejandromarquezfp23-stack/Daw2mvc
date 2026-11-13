@@ -10,13 +10,13 @@
             
                 <div class="d-flex gap-3 mt-4">
                 <?php if (isset($_SESSION['usuario'])): ?>
-                    <!-- <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
+                    <!-- <form method="post" action="/Daw2mvc/index.php?controller=usuario&action=logout">
                         <button type="submit" class="btn btn-primary rounded-3 py-3 botonesOcul">Cerrar sesión</button>
                     </form> -->
                 <?php else: ?>
-                    <a href="/Daw2mvc/index.php?controller=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
+                    <a href="/Daw2mvc/index.php?controller=usuario&action=login" class="btn btn-primary rounded-3 py-3 botonesOcul">Iniciar sesión</a>
                 <?php endif; ?>
-                <a href="/Daw2mvc/index.php?controller=carta" class="btn btn-outline-primary rounded-3 py-3 botonesOcul">Seguir comprando</a>
+                <a href="/Daw2mvc/index.php?controller=productos" class="btn btn-outline-primary rounded-3 py-3 botonesOcul">Seguir comprando</a>
             </div>
         </div>
     <?php else: ?>
@@ -35,7 +35,7 @@
                 <?php echo number_format($totalCarrito, 2, ',', '.'); ?> €
             </h1>
             <p class="text-secondary small">Cancelación o devolución gratis.</p>
-            <a href="/Daw2mvc/index.php?controller=pagar" class="btn btn-primary rounded-3 px-4 mt-2">
+            <a href="/Daw2mvc/index.php?controller=carrito&action=checkout" class="btn btn-primary rounded-3 px-4 mt-2">
                 Continuar con el pago
             </a>
         </div>
@@ -61,12 +61,12 @@
                         <h5 class="fw-semibold mb-2"><?php echo htmlspecialchars($nombre); ?></h5>
                         <span class="text-secondary small"><?php echo $cantidad; ?> unidades</span>
                         <span class="spanCantidadBotones d-flex">
-                            <form method="POST" action="" class="m-1">
+                            <form method="POST" action="/Daw2mvc/index.php?controller=carrito&amp;action=update" class="m-1">
                                 <input type="hidden" name="clave_carrito" value="<?= htmlspecialchars((string) $item['clave']) ?>">
                                 <button type="submit" name="sumar" class="btn btn-outline-primary rounded-3">+</button>
                             </form>
 
-                            <form method="POST" action="" class="m-1">
+                            <form method="POST" action="/Daw2mvc/index.php?controller=carrito&amp;action=update" class="m-1">
                                 <input type="hidden" name="clave_carrito" value="<?= htmlspecialchars((string) $item['clave']) ?>">
                                 <button type="submit" name="restar" class="btn btn-outline-primary rounded-3">-</button>
                             </form>
@@ -78,7 +78,7 @@
                             <?php echo number_format($subtotal, 2, ',', '.'); ?> €
                         </h5>
 
-                        <form method="post" action="/Daw2mvc/index.php?controller=carrito&action=eliminar">
+                        <form method="post" action="/Daw2mvc/index.php?controller=carrito&amp;action=destroy">
                             <input type="hidden" name="clave_carrito" value="<?php echo htmlspecialchars((string) $item['clave'], ENT_QUOTES, 'UTF-8'); ?>">
                             <button type="submit" class="btn btn-outline-primary rounded-3 px-5">Eliminar</button>
                         </form>
@@ -110,10 +110,10 @@
             </div>
 
             <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mt-3">
-                <a href="/Daw2mvc/index.php?controller=carta" class="btn btn-secondary rounded-3 px-4">
+                <a href="/Daw2mvc/index.php?controller=productos" class="btn btn-secondary rounded-3 px-4">
                     Seguir comprando
                 </a>
-                <a href="/Daw2mvc/index.php?controller=pagar" class="btn btn-primary rounded-3 px-5">
+                <a href="/Daw2mvc/index.php?controller=carrito&action=checkout" class="btn btn-primary rounded-3 px-5">
                     Pagar
                 </a>
             </div>

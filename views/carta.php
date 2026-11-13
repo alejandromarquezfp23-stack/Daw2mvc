@@ -8,7 +8,7 @@
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-center mx-0 mx-md-5 mb-md-5 gap-0 gap-md-5">
         <?php foreach ($categorias as $categoria) { ?>
             <div class="col-6 col-md-auto text-center px-md-0 divCategoria">
-                <a href="index.php?controller=carta&amp;id=<?= urlencode((string) $categoria->getId()) ?>" class="text-decoration-none text-dark">
+                <a href="index.php?controller=productos&amp;id=<?= urlencode((string) $categoria->getId()) ?>" class="text-decoration-none text-dark">
                     <img
                         src="<?= htmlspecialchars($categoria->getImagenes()) ?>"
                         alt=""
@@ -32,7 +32,7 @@
                     </span>
                 </h2>
 
-                <form method="POST" class="d-flex gap-3 mx-md-5 px-md-5 py-md-3 filtrosCarta">
+                <form method="POST" class="d-flex gap-3 mx-md-5 px-md-5 filtrosCarta">
                     <input type="hidden" name="id" value="<?= $categoriaActivaId ?>">
 
                     <button type="submit" name="filtroid" value="1" class="btn btn-outline-dark rounded-pill px-4">
@@ -80,7 +80,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end pt-2">
-                                        <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $producto->getId()) ?>">
+                                        <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $producto->getId()) ?>">
                                             Añadir al carrito
                                         </a>
                                     </div>
@@ -107,7 +107,7 @@
         </div>
 
         <a class="btn btn-primary rounded-pill w-25"
-        href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $productosRandom[0]->getId()) ?>">
+        href="/Daw2mvc/index.php?controller=productos&amp;action=detalle&amp;id=<?= urlencode((string) $productosRandom[0]->getId()) ?>">
             Comprar
         </a>
     </div>

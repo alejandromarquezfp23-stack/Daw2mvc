@@ -2,7 +2,7 @@
     <div class="py-5 divArriba">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="fw-semibold">Cuenta</h5>
-            <form method="post" action="/Daw2mvc/index.php?controller=login&action=logout">
+            <form method="post" action="/Daw2mvc/index.php?controller=usuario&action=logout">
                 <button type="submit" class="btn btn-secondary rounded-3">
                     Cerrar sesión
                 </button>
@@ -114,7 +114,7 @@
                                         class="object-fit-contain w-75"
                                     >
                                 </div>
-                                <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=detalleProducto&amp;action=index&amp;id=<?= urlencode((string) $favorito->getId()) ?>">
+                                <a class="btn btn-primary rounded-3 w-100" href="/Daw2mvc/index.php?controller=productos&amp;action=show&amp;id=<?= urlencode((string) $favorito->getId()) ?>">
                                     Ver producto
                                 </a>
                             </div>

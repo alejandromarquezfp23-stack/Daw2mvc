@@ -1,4 +1,4 @@
-<form action="" method="POST" class="container-fluid px-3 px-md-5 py-4 py-md-5">
+<form action="/Daw2mvc/index.php?controller=usuario&amp;action=store" method="POST" class="container-fluid px-3 px-md-5 py-4 py-md-5">
     <h1 class="fw-semibold text-center text-md-start px-md-5 mx-md-5">Crea tu cuenta en Appletito.</h1>
 
     <div class="d-flex flex-column align-items-center text-center mt-4 mt-md-5 p-3">

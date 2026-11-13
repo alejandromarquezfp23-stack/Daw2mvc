@@ -13,12 +13,12 @@
             <div class="collapse navbar-collapse" id="menuNavegacion">
                 <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center gap-md-4">
                     <li class="nav-item"><a class="nav-link text-dark" href="/Daw2mvc/index.php?controller=home">Restaurante</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="/Daw2mvc/index.php?controller=carta">Carta de la casa</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="/Daw2mvc/index.php?controller=productos">Carta de la casa</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="/Daw2mvc/index.php?controller=home">Soporte</a></li>
                 </ul>
 
                 <div class="d-flex justify-content-center align-items-center gap-4 py-2 py-md-0">
-                    <a href="/Daw2mvc/index.php?controller=perfil" class="icono-link">
+                    <a href="/Daw2mvc/index.php?controller=usuario&action=show" class="icono-link">
                         <img src="/Daw2mvc/iconos/UsuarioNegro.svg" alt="Iniciar sesión" width="20" height="20" class="object-fit-contain">
                     </a>
                     <a href="/Daw2mvc/index.php?controller=carrito" class="icono-link">

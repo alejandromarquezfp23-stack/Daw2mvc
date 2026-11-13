@@ -15,7 +15,7 @@
             <div class="col-6 col-md-3">
                 <h6 class="mb-3">Explorar</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=carta">Carta de la casa</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="/Daw2mvc/index.php?controller=productos">Carta de la casa</a></li>
                 </ul>
             </div>
 
