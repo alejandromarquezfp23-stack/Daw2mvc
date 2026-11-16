@@ -101,8 +101,22 @@
             $historial_pedidos = isset($_POST['historial_pedidos']) || isset($_GET['historial_pedidos']);
             $ver_favoritos = isset($_POST['ver_favoritos']);
 
+            $filtroActivo = null;
+            $ordenPedidos = 'fecha';
+
+            if (isset($_POST['filtroidpedido'])) {
+                $filtroActivo = 'id';
+                $ordenPedidos = 'id';
+            } elseif (isset($_POST['filtrofechapedido'])) {
+                $filtroActivo = 'fecha';
+                $ordenPedidos = 'fecha';
+            } elseif (isset($_POST['filtropreciopedido'])) {
+                $filtroActivo = 'precio';
+                $ordenPedidos = 'precio';
+            }
+
             $pedidosUsuario = $historial_pedidos
-                ? pedidosDAO::selectByUsuarioID($usuarioID)
+                ? pedidosDAO::selectByUsuarioID($usuarioID, $ordenPedidos)
                 : [];
 
             $pedidodetalle = [];

@@ -29,8 +29,13 @@ class pedidosDAO {
         return $pedido ?: null;
     }
 
-    public static function selectByUsuarioID($usuarioId) {
-        $sql = 'SELECT id, usuario_id, estado, fecha_pedido, subtotal, descuento, total, metodo_pago, estado_pago FROM pedidos WHERE usuario_id = ? ORDER BY fecha_pedido DESC';
+    public static function selectByUsuarioID($usuarioId, $orden = 'fecha') {
+        $ordenSql = [
+            'id' => 'id ASC',
+            'fecha' => 'fecha_pedido DESC',
+            'precio' => 'total ASC',
+        ][$orden] ?? 'fecha_pedido DESC';
+        $sql = 'SELECT id, usuario_id, estado, fecha_pedido, subtotal, descuento, total, metodo_pago, estado_pago FROM pedidos WHERE usuario_id = ? ORDER BY ' . $ordenSql;
         $conexion = DataBase::connect();
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $usuarioId);
@@ -94,6 +99,48 @@ class pedidosDAO {
         $consulta->close();
         $conexion->close();
         return $resultado;
+    }
+
+    public static function selectOrderID() {
+        $sql = 'SELECT * FROM pedidos ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $pedidos = [];
+        while ($pedido = $consulta->fetch_object('pedidos')) {
+            $pedidos[] = $pedido;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return $pedidos;
+    }
+
+    public static function selectOrderData() {
+        $sql = 'SELECT * FROM pedidos ORDER BY fecha_pedido';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $pedidos = [];
+        while ($pedido = $consulta->fetch_object('pedidos')) {
+            $pedidos[] = $pedido;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return $pedidos;
+    }
+
+    public static function selectOrderPrecio() {
+        $sql = 'SELECT * FROM pedidos ORDER BY total';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $pedidos = [];
+        while ($pedido = $consulta->fetch_object('pedidos')) {
+            $pedidos[] = $pedido;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return $pedidos;
     }
 }
 ?>

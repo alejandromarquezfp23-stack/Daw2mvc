@@ -50,6 +50,37 @@
                     </div>
                 </div>
             <?php else: ?>
+                <div class="divFiltroPedidos">
+                    <form method="POST" class="d-flex flex-wrap align-items-center gap-3 p-3 bg-white rounded-3 filtrosPedidos" aria-label="Ordenar pedidos">
+                        <input type="hidden" name="historial_pedidos" value="1">
+
+                        <div class="d-flex flex-column">
+                            <span class="fw-semibold">Ordenar pedidos</span>
+                            <small class="text-muted">Elige un criterio</small>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2 filtroBotones" role="group" aria-label="Criterio de ordenación">
+                            <button type="submit" name="filtroidpedido" value="1"
+                                class="btn <?= $filtroActivo === 'id' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                                aria-pressed="<?= $filtroActivo === 'id' ? 'true' : 'false' ?>">
+                                ID
+                            </button>
+
+                            <button type="submit" name="filtrofechapedido" value="2"
+                                class="btn <?= $filtroActivo === 'fecha' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                                aria-pressed="<?= $filtroActivo === 'fecha' ? 'true' : 'false' ?>">
+                                Fecha
+                            </button>
+
+                            <button type="submit" name="filtropreciopedido" value="3"
+                                class="btn <?= $filtroActivo === 'precio' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                                aria-pressed="<?= $filtroActivo === 'precio' ? 'true' : 'false' ?>">
+                                Precio
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="carruselProductos">
                     <button class="btn flecha-carrusel flecha-izquierda" type="button" onclick="desplazarProductos(this, -1)" aria-label="Pedido anterior">
                         <img src="<?= url ?>iconos/icono_flecha_izquierda-removebg-preview.png" alt="">
@@ -60,7 +91,6 @@
                             <div class="divProducto mx-3 m-md-3 p-4 rounded-3" style="min-width: 280px;">
                                 <p class="text-muted mb-1">Pedido</p>
                                 <h5 class="fw-bold">#<?= $pedido->getId() ?></h5>
-
                                 <p class="mb-1"><strong>Estado:</strong> <?= htmlspecialchars($pedido->getEstado(), ENT_QUOTES, 'UTF-8') ?></p>
                                 <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido->getFechaPedido(), ENT_QUOTES, 'UTF-8') ?></p>
                                 <p class="mb-3"><strong>Total:</strong> <?= number_format((float) $pedido->getTotal(), 2, ',', '.') ?> €</p>

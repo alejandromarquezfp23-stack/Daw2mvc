@@ -32,26 +32,33 @@
                     </span>
                 </h2>
 
-                <form method="POST" class="d-flex gap-4 py-md-3 mx-md-5 px-md-5 rounded-pill filtrosCarta">
+                <form method="POST" class="d-flex flex-wrap align-items-center gap-3 p-3 bg-white rounded-3 filtrosCarta" aria-label="Ordenar productos">
                     <input type="hidden" name="id" value="<?= $categoriaActivaId ?>">
 
-                    <button type="submit" name="filtroid" value="1"
-                        class="btn <?= $filtroActivo === 'id' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
-                        aria-pressed="<?= $filtroActivo === 'id' ? 'true' : 'false' ?>">
-                        ID
-                    </button>
+                    <div class="d-flex flex-column">
+                        <span class="fw-semibold">Ordenar productos</span>
+                        <small class="text-muted">Elige un criterio</small>
+                    </div>
 
-                    <button type="submit" name="filtronombre" value="2"
-                        class="btn <?= $filtroActivo === 'nombre' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
-                        aria-pressed="<?= $filtroActivo === 'nombre' ? 'true' : 'false' ?>">
-                        Nombre
-                    </button>
+                    <div class="d-flex flex-wrap gap-2 filtroBotones" role="group" aria-label="Criterio de ordenación">
+                        <button type="submit" name="filtroid" value="1"
+                            class="btn <?= $filtroActivo === 'id' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                            aria-pressed="<?= $filtroActivo === 'id' ? 'true' : 'false' ?>">
+                            ID
+                        </button>
 
-                    <button type="submit" name="filtroprecio" value="3"
-                        class="btn <?= $filtroActivo === 'precio' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
-                        aria-pressed="<?= $filtroActivo === 'precio' ? 'true' : 'false' ?>">
-                        Precio
-                    </button>
+                        <button type="submit" name="filtronombre" value="2"
+                            class="btn <?= $filtroActivo === 'nombre' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                            aria-pressed="<?= $filtroActivo === 'nombre' ? 'true' : 'false' ?>">
+                            Nombre
+                        </button>
+
+                        <button type="submit" name="filtroprecio" value="3"
+                            class="btn <?= $filtroActivo === 'precio' ? 'btn-dark' : 'btn-outline-dark' ?> rounded-pill px-4"
+                            aria-pressed="<?= $filtroActivo === 'precio' ? 'true' : 'false' ?>">
+                            Precio
+                        </button>
+                    </div>
                 </form>
 
                 <div class="d-flex align-items-center carruselProductos">

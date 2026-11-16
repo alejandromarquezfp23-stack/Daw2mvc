@@ -71,7 +71,34 @@ p {
     padding: 1.25rem;
 }
 
+.filtrosPedidos {
+    width: fit-content;
+    max-width: 100%;
+}
+
+.divFiltroPedidos {
+    padding: 10px 60px;
+}
+
 @media (max-width: 500px) {
+    .divFiltroPedidos {
+        padding: 10px 16px;
+    }
+
+    .filtrosPedidos {
+        align-items: stretch !important;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filtroBotones {
+        width: 100%;
+    }
+
+    .filtroBotones .btn {
+        flex: 1;
+    }
+
     .divArriba {
         padding: 0 1rem;
     }
