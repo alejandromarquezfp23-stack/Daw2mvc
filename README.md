@@ -109,6 +109,11 @@ La configuración por defecto está en `config/parameters.php` y define:
 - `default_action = "index"`
 
 Importante: no existe `cartaController` ni `detalleproductoController` en este proyecto; la app usa `productos` para la carta y `productos&action=show` para el detalle.
+
+## Sitemap
+
+El archivo `sitemap.xml` está preparado para el dominio `https://appletito.infinityfreeapp.com`. Súbelo a la carpeta raíz pública del sitio para que quede disponible en `https://appletito.infinityfreeapp.com/sitemap.xml`. Incluye las páginas públicas y los detalles de los productos del catálogo inicial; si cambias los productos o sus identificadores, actualiza también sus URLs en el sitemap.
+
 ## Datos de la base de datos
 
 La base de datos por defecto se llama `daw2mvc` y se inicializa con el archivo `sql/init.sql`.
