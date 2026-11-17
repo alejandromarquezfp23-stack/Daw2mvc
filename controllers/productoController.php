@@ -5,8 +5,10 @@ include_once(__DIR__ . '/../models/Camiseta.php');
 
 class productoController
 {
+    // Tallas permitidas para las camisetas de este controlador.
     private const TALLAS_VALIDAS = ['XXL', 'XL', 'L', 'M', 'S'];
 
+    // Obtiene todas las camisetas para mostrarlas en el listado.
     public function index()
     {
         $productos = CamisetaDAO::getAll();
@@ -14,12 +16,14 @@ class productoController
         include_once 'views/main.php';
     }
 
+    // Muestra el formulario para crear una camiseta.
     public function create()
     {
         $view = "views/productos/create.php";
         include_once 'views/main.php';
     }
 
+    // Valida los datos recibidos y guarda la camiseta nueva.
     public function store()
     {
         $nombre = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
@@ -38,6 +42,7 @@ class productoController
         exit;
     }
 
+    // Elimina la camiseta indicada por su identificador.
     public function destroy()
     {
         if (!isset($_GET['id']) || !ctype_digit((string) $_GET['id'])) {
@@ -50,6 +55,7 @@ class productoController
         exit;
     }
 
+    // Busca una camiseta y muestra su ficha si existe.
     public function show()
     {
         if (!isset($_GET['id']) || !ctype_digit((string) $_GET['id'])) {

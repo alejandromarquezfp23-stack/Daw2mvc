@@ -9,11 +9,13 @@
     require_once __DIR__ . '/../dao/producto_ingredienteDAO.php';
 
     class ProductosController {
+        // Carga el catálogo y aplica la categoría o el orden solicitados.
         public function index() {
             $categorias = categoriasDAO::selectAll();
             $productoMasPedido = productosDAO::selectMasPedido();
             $productosRandom = productosDAO::selectRandom();
             $categoriaActivaId = null;
+            // La categoría puede llegar tanto desde un enlace como desde un formulario.
             $categoriaId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,6 +31,7 @@
 
             $filtroActivo = null;
 
+            // Aplica el orden indicado; si no se eligió ninguno, muestra el orden normal.
             if (isset($_POST['filtroid'])) {
                 $filtroActivo = 'id';
                 $productos = productosDAO::selectOrderID();
@@ -50,6 +53,7 @@
             require __DIR__ . '/../views/main2.php';
         }
 
+        // Prepara el detalle del producto y procesa las opciones de ingredientes.
         public function show() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -88,6 +92,7 @@
             $mensajeFavoritos = $_SESSION['mensaje_favoritos'] ?? null;
             $tipoMensajeFavoritos = $_SESSION['tipo_mensaje_favoritos'] ?? 'success';
 
+            // Estos avisos son temporales y no deben repetirse en la siguiente visita.
             unset($_SESSION['mensaje_favoritos'], $_SESSION['tipo_mensaje_favoritos']);
 
             $titulo = $productoActivo->getNombre() . ' de Appletito';
@@ -117,12 +122,14 @@
 
         }
 
+        // Devuelve solo los ingredientes activos asociados al producto.
         private function obtenerIngredientesActivos(int $productoId): array {
             $ingredientes = ingredientesDAO::selectAll();
             $relaciones = producto_ingredienteDAO::selectByProductoID($productoId);
             $ingredientesActivos = [];
             $ingredientesPorId = [];
 
+            // Indexa los ingredientes para buscarlos rápidamente desde cada relación.
             foreach ($ingredientes as $ingrediente) {
                 $ingredientesPorId[$ingrediente->getId()] = $ingrediente;
             }
@@ -138,6 +145,7 @@
             return $ingredientesActivos;
         }
 
+        // Valida las opciones enviadas, ajusta el precio y prepara la selección.
         private function procesarSolicitudDetalle(int $id, $productoActivo, array $ingredientesActivos): array {
             $seleccionesIngredientes = [];
             $precioCentimos = (int) round((float) $productoActivo->getPrecio() * 100);
@@ -168,6 +176,7 @@
 
             $ingredientesPermitidos = [];
 
+            // Solo se aceptarán ingredientes activos asociados a este producto.
             foreach ($ingredientesActivos as $ingrediente) {
                 $ingredientesPermitidos[$ingrediente->getId()] = $ingrediente;
             }
@@ -211,7 +220,9 @@
             ];
         }
 
+        // Agrupa en el carrito productos con la misma personalización.
         private function agregarAlCarrito(int $id, int $precioCentimos, array $ingredientes): void {
+            // Ordenar las opciones hace que una misma combinación genere siempre la misma clave.
             ksort($ingredientes, SORT_NUMERIC);
             $claveCarrito = $id . ':' . sha1(json_encode($ingredientes));
 

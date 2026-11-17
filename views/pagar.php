@@ -1,3 +1,4 @@
+<!-- Este formulario envía la confirmación del pedido al controlador de pedidos. -->
 <form class="container checkout-container py-4" action="index.php?controller=pedidos&action=store" method="POST">
     <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-5">
         <h3 class="fw-semibold mb-0">Finalizar pedido</h3>
@@ -17,10 +18,12 @@
             <div class="mb-5">
                 <h4 class="fw-semibold mb-4">Resumen de tu pedido</h4>
 
+                <!-- Recorre los productos del carrito y muestra sus personalizaciones. -->
                 <?php foreach ($productosCarrito as $producto): ?>
                     <div class="d-flex justify-content-between align-items-center border-bottom py-3">
                         <div>
                             <h6 class="fw-semibold mb-1">
+                                <!-- Escapa el texto para que caracteres especiales no se interpreten como HTML. -->
                                 <?php echo htmlspecialchars($producto['nombre'], ENT_QUOTES, 'UTF-8'); ?>
                             </h6>
                             <small class="text-secondary">
@@ -28,6 +31,7 @@
                             </small>
                             <?php foreach ($producto['ingredientes'] as $ingrediente): ?>
                                 <div class="small mt-1">
+                                    <!-- La acción indica si el ingrediente se añadió o se quitó. -->
                                     <?php if ($ingrediente['accion'] === 'anadir'): ?>
                                         <span class="text-secondary">Añadido:</span>
                                     <?php else: ?>
@@ -48,6 +52,7 @@
                 <?php endforeach; ?>
             </div>
 
+            <!-- number_format muestra los importes con dos decimales y separadores españoles. -->
             <div class="rounded-3 bg-light p-4 mb-5">
                 <div class="d-flex justify-content-between mb-3">
                     <span class="text-secondary">Subtotal</span>
@@ -56,7 +61,7 @@
 
                 <div class="d-flex justify-content-between mb-3">
                     <span class="text-secondary">Descuento</span>
-                    <span>0,00 €</span>
+                    <span>-<?= number_format($descuento, 2, ',', '.') ?></span>
                 </div>
 
                 <hr>
@@ -73,7 +78,7 @@
                 <input class="form-check-input" type="checkbox"
                        id="terminos" name="terminos" value="1" required>
                 <label class="form-check-label" for="terminos">
-                    He leído y acepto los términos y condiciones de Appletito.
+                    He leído y acepto los  <a href="#">términos y condiciones</a> de Appletito.
                 </label>
             </div>
 
@@ -101,6 +106,7 @@
                 data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
 
+    <!-- Panel lateral con el mismo resumen, accesible desde el botón superior. -->
     <div class="offcanvas-body px-4">
         <h5 class="fw-semibold mb-4">Artículos</h5>
 
@@ -143,7 +149,7 @@
 
         <div class="d-flex justify-content-between mb-3">
             <span class="text-secondary">Descuento</span>
-            <span>0,00 €</span>
+            <span>-<?= number_format($descuento, 2, ',', '.') ?></span>
         </div>
 
         <hr>

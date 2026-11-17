@@ -9,17 +9,22 @@
     require_once __DIR__ . '/../dao/productosDAO.php';
     require_once __DIR__ . '/../models/ingredientes.php';
     require_once __DIR__ . '/../dao/ingredientesDAO.php';
+    require_once __DIR__ . '/../models/ofertas.php';
+    require_once __DIR__ . '/../dao/ofertasDAO.php';
 
     class PedidosController {
+        // La ruta principal del controlador lleva a la preparación del pedido.
         public function index() {
             $this->create();
         }
 
+        // Prepara el resumen del carrito y los importes de la pantalla de pago.
         public function create() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
 
+            // Solo un usuario conectado puede iniciar un pedido.
             if (empty($_SESSION['usuario'])) {
                 header('Location: index.php?controller=usuario&action=login');
                 exit;
@@ -33,6 +38,7 @@
             $productosCarrito = [];
             $subtotalCentimos = 0;
 
+            // Convierte las líneas de sesión a los datos que necesita la vista.
             foreach ($_SESSION['carrito'] as $clave => $linea) {
                 $producto = productosDAO::selectByID($linea['producto_id']);
 
@@ -41,11 +47,13 @@
                 }
 
                 $cantidad = (int) $linea['cantidad'];
+                // Se calculan los importes en céntimos para evitar errores de redondeo.
                 $precioCentimos = (int) round((float) $linea['precio_unitario'] * 100);
                 $totalLineaCentimos = $precioCentimos * $cantidad;
 
                 $ingredientesLinea = [];
 
+                // Recupera los nombres de las personalizaciones válidas del producto.
                 foreach (($linea['ingredientes'] ?? []) as $ingredienteID => $accion) {
                     $ingrediente = ingredientesDAO::selectByID((int) $ingredienteID);
 
@@ -76,7 +84,18 @@
             }
 
             $subtotal = $subtotalCentimos / 100;
-            $total = $subtotal;
+            $descuento = 0;
+
+            // Vuelve a consultar el cupón para calcular el importe que se mostrará.
+            $codigoCupon = $_SESSION['cupon_codigo'] ?? null;
+            if ($codigoCupon !== null) {
+                $oferta = ofertasDAO::selectByCodigo($codigoCupon);
+                if ($oferta !== null) {
+                    $descuento = $subtotal * ((float) $oferta->getValor() / 100);
+                }
+            }
+
+            $total = max(0, $subtotal - $descuento);
 
             $titulo = 'Finalizar pedido';
             $view = __DIR__ . '/../views/pagar.php';
@@ -86,11 +105,13 @@
             require __DIR__ . '/../views/main3.php';
         }
 
+        // Valida la confirmación y guarda el pedido, sus productos y sus ingredientes.
         public function store() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
 
+            // Exige el envío del formulario y la aceptación de los términos.
             if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['terminos'])) {
                 header('Location: index.php?controller=pedidos&action=create');
                 exit;
@@ -103,16 +124,18 @@
 
             $usuarioID = (int) $_SESSION['usuario']->id;
             $subtotalCentimos = 0;
+            $subtotal = 0;
             $descuento = 0;
+            $total = 0;
 
             $pedido = new pedidos(
                 null,
                 $usuarioID,
                 'pendiente',
                 date('Y-m-d H:i:s'),
-                0,
-                0,
-                0,
+                $subtotal,
+                $descuento,
+                $total,
                 'pendiente',
                 'pendiente'
             );
@@ -126,6 +149,7 @@
 
             $pedido->setId($pedidoID);
 
+            // Guarda cada producto como un detalle asociado al nuevo pedido.
             foreach ($_SESSION['carrito'] as $linea) {
                 $productoID = (int) $linea['producto_id'];
                 $cantidad = (int) $linea['cantidad'];
@@ -161,6 +185,7 @@
                     return;
                 }
 
+                // Guarda aparte las personalizaciones elegidas para esta línea.
                 foreach (($linea['ingredientes'] ?? []) as $ingredienteID => $accion) {
                     if (!in_array($accion, ['anadir', 'quitar'], true)) {
                         continue;
@@ -196,7 +221,18 @@
             }
 
             $subtotal = $subtotalCentimos / 100;
-            $total = $subtotal - $descuento;
+            $descuento = 0;
+
+            // Calcula de nuevo el descuento al confirmar para guardar el total final.
+            $codigoCupon = $_SESSION['cupon_codigo'] ?? null;
+            if ($codigoCupon !== null) {
+                $oferta = ofertasDAO::selectByCodigo($codigoCupon);
+                if ($oferta !== null) {
+                    $descuento = $subtotal * ((float) $oferta->getValor() / 100);
+                }
+            }
+
+            $total = max(0, $subtotal - $descuento);
 
             $pedido->setSubtotal($subtotal);
             $pedido->setDescuento($descuento);
@@ -207,6 +243,7 @@
                 return;
             }
 
+            // Vacía el carrito y deja en sesión lo necesario para mostrar la confirmación.
             unset($_SESSION['carrito']);
 
             $_SESSION['compra_correcta'] = true;
@@ -216,6 +253,7 @@
             exit;
         }
 
+        // Muestra la confirmación una sola vez usando los datos guardados en la sesión.
         public function show() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();

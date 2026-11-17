@@ -1,5 +1,7 @@
+// Guarda la animación activa de cada carrusel para poder cancelarla al iniciar otra.
 const animacionesCarrusel = new WeakMap();
 
+// Oculta o muestra las flechas según la posición y el espacio disponible.
 function actualizarFlechas(carrusel) {
     const productos = carrusel.querySelector('.divProductos');
     const flechaIzquierda = carrusel.querySelector('.flecha-izquierda');
@@ -10,6 +12,7 @@ function actualizarFlechas(carrusel) {
     flechaDerecha.classList.toggle('flecha-oculta', distanciaMaxima <= 0 || productos.scrollLeft >= distanciaMaxima - 1);
 }
 
+// Conecta los eventos de desplazamiento y redimensionado con cada carrusel.
 function inicializarCarruseles() {
     const carruseles = document.querySelectorAll('.carruselProductos');
 
@@ -24,12 +27,14 @@ function inicializarCarruseles() {
     });
 }
 
+// Espera a que exista el HTML antes de buscar los carruseles.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inicializarCarruseles);
 } else {
     inicializarCarruseles();
 }
 
+// Desplaza suavemente el carrusel hacia la dirección indicada por el botón.
 function desplazarProductos(boton, direccion) {
     const carrusel = boton.closest('.carruselProductos');
     const productos = carrusel.querySelector('.divProductos');
@@ -44,6 +49,7 @@ function desplazarProductos(boton, direccion) {
         cancelAnimationFrame(animacionActual);
     }
 
+    // Aplica una curva de desaceleración para que el movimiento termine suavemente.
     function animar(tiempoActual) {
         if (tiempoInicial === null) {
             tiempoInicial = tiempoActual;

@@ -3,6 +3,7 @@
     require_once __DIR__ . '/../dao/categoriasDAO.php';
 
     class HomeController {
+        // Carga los datos destacados y muestra la página de inicio.
         public function index() {
             $productos = productosDAO::selectAll();
             $categorias = categoriasDAO::selectAll();

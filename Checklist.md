@@ -78,20 +78,22 @@
 -   [x] Permitir eliminar productos del carrito.
 -   [x] Actualizar el precio del pedido al modificar los productos.
 -   [ ] Mostrar las ofertas disponibles.
--   [ ] Permitir añadir ofertas al carrito.
--   [ ] Diseñar diferentes ofertas individualmente.
--   [ ] Mostrar el precio final y los impuestos durante el proceso de
+-   [x] Permitir añadir ofertas al carrito.
+-   [x] Diseñar diferentes ofertas individualmente.
+-   [x] Mostrar el precio final y los impuestos durante el proceso de
     compra.
 -   [x] Permitir confirmar y finalizar el pedido.
 
 ### Pedidos y cuenta de usuario
 
 -   [x] Guardar los pedidos realizados en la base de datos.
--   [ ] Mostrar los datos del último pedido cuando el usuario vuelva a
+-   [x] Mostrar los datos del último pedido cuando el usuario vuelva a
     acceder a la aplicación.
 -   [ ] Permitir consultar los datos personales del usuario.
 -   [ ] Permitir modificar los datos personales del usuario.
 -   [x] Permitir consultar el historial de pedidos del usuario.
+-   [x] Permitir ordenar el historial de pedidos del usuario por ID,
+    fecha y precio.
 
 ## 4. Panel de administración
 
@@ -121,8 +123,8 @@
 ### Gestión de pedidos
 
 -   [x] Listar los pedidos.
--   [ ] Ordenar los pedidos.
--   [ ] Filtrar pedidos por diferentes campos.
+-   [x] Ordenar los pedidos.
+-   [x] Filtrar pedidos por diferentes campos.
 -   [ ] Añadir productos a un pedido.
 -   [ ] Eliminar productos de un pedido.
 -   [ ] Modificar el precio final de un pedido.

@@ -100,7 +100,7 @@ CREATE TABLE `ofertas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` text COLLATE utf8mb4_unicode_ci,
-  `tipo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Valores: descuento, 2x1, combo, codigo',
+  `tipo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Valores: descuento, 2x1, combo, codigo, estudiante',
   `valor` decimal(10,2) DEFAULT NULL,
   `codigo` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_inicio` datetime NOT NULL,
@@ -112,8 +112,8 @@ CREATE TABLE `ofertas` (
 
 INSERT INTO `ofertas` (`id`, `nombre`, `descripcion`, `tipo`, `valor`, `codigo`, `fecha_inicio`, `fecha_fin`, `activa`) VALUES
   ('1', 'Bienvenida Appletito', 'Descuento de bienvenida para nuevos clientes.', 'descuento', '10.00', 'BIENVENIDA10', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
-  ('2', 'Noche para dos', 'Menú especial para compartir en pareja.', 'combo', '2.00', 'NOCHE2', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
-  ('3', 'Dulce final', 'Descuento en una selección de postres.', 'descuento', '15.00', 'DULCE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1');
+  ('3', 'Dulce final', 'Descuento en una selección de postres.', 'descuento', '15.00', 'DULCE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1'),
+  ('4', 'Estudiante Appletito', 'Descuento especial para estudiantes con carnet universitario o de instituto.', 'estudiante', '15.00', 'ESTUDIANTE15', '2026-11-01 11:58:50', '2027-11-01 11:58:50', '1');
 
 CREATE TABLE `productos` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -180,8 +180,8 @@ INSERT INTO `oferta_producto` (`oferta_id`, `producto_id`) VALUES
   ('1', '18'),
   ('3', '18'),
   ('3', '19'),
-  ('2', '41'),
-  ('2', '42');
+  ('4', '24'),
+  ('4', '27');
 
 CREATE TABLE `producto_ingrediente` (
   `producto_id` int NOT NULL,

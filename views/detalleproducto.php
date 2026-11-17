@@ -70,12 +70,6 @@
                             </select>
                         </div>
                     <?php } ?>
-
-                    <?php if (!empty($ingredientesActivos)) { ?>
-                        <button class="btn btn-primary" type="submit" name="accion" value="actualizar">
-                            Actualizar precio
-                        </button>
-                    <?php } ?>
                 </div>
             </form>
         </div>

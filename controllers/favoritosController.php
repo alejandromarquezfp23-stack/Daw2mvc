@@ -3,6 +3,7 @@
     require_once __DIR__ . '/../dao/favoritosDAO.php';
 
     class FavoritosController {
+        // Añade el producto a favoritos si el usuario ha iniciado sesión.
         public function store() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -30,6 +31,7 @@
             exit;
         }
 
+        // Quita el producto de favoritos del usuario conectado.
         public function destroy() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();

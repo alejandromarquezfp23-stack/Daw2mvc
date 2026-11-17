@@ -9,10 +9,12 @@
     require_once __DIR__ . '/../dao/favoritosDAO.php';
 
     class UsuarioController {
+        // La ruta principal del controlador muestra el formulario de acceso.
         public function index() {
             $this->login();
         }
 
+        // Comprueba las credenciales y muestra el formulario de inicio de sesión.
         public function login() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -28,6 +30,7 @@
                 $loginCorrecto = false;
 
                 if ($usuario && password_verify($password, $usuario->password)) {
+                    // Renueva el identificador de sesión tras autenticar al usuario.
                     session_regenerate_id(true);
                     $_SESSION['usuario'] = $usuario;
                     $loginCorrecto = true;
@@ -41,6 +44,7 @@
             require __DIR__ . '/../views/main3.php';
         }
 
+        // Muestra el formulario de registro.
         public function create() {
             $registroCorrecto = null;
 
@@ -51,6 +55,7 @@
             require __DIR__ . '/../views/main3.php';
         }
 
+        // Valida el registro y guarda la contraseña cifrada si el correo está disponible.
         public function store() {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 http_response_code(405);
@@ -67,6 +72,7 @@
                 $direccion = trim($_POST['direccion'] ?? '');
                 $fechaNacimiento = $_POST['fecha_nacimiento'] ?? '';
 
+                // Evita crear otra cuenta con una dirección de correo ya registrada.
                 if (!usuariosDAO::selectByEmail($email)) {
                     $usuario = new usuarios(
                         null,
@@ -91,6 +97,7 @@
             require __DIR__ . '/../views/main3.php';
         }
 
+        // Carga los datos de perfil, historial de pedidos y favoritos solicitados.
         public function show() {
             $this->requireLogin();
 
@@ -104,6 +111,7 @@
             $filtroActivo = null;
             $ordenPedidos = 'fecha';
 
+            // El botón enviado determina cómo se ordena el historial.
             if (isset($_POST['filtroidpedido'])) {
                 $filtroActivo = 'id';
                 $ordenPedidos = 'id';
@@ -120,6 +128,7 @@
                 : [];
 
             $pedidodetalle = [];
+            // Carga los productos de cada pedido para que la vista pueda mostrar el historial.
             foreach ($pedidosUsuario as $pedido) {
                 $pedidodetalle[$pedido->getId()] = pedido_detalleDAO::selectByPedidoID($pedido->getId());
             }
@@ -135,6 +144,7 @@
             require __DIR__ . '/../views/main3.php';
         }
 
+        // Cierra la sesión y redirige al formulario de acceso.
         public function logout() {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 http_response_code(405);
@@ -152,6 +162,7 @@
             exit;
         }
 
+        // Redirige al acceso si no hay un usuario conectado.
         private function requireLogin() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
