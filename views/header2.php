@@ -1,3 +1,10 @@
+<?php
+    $cantidadCarrito = 0;
+    foreach ($_SESSION['carrito'] ?? [] as $item) {
+        $cantidadCarrito += (int) ($item['cantidad'] ?? 0);
+    }
+?>
+
 <header class="header-apple header-carta">
     <nav class="navbar navbar-expand-md custom-navbar">
         <div class="container-fluid max-w-apple">
@@ -21,8 +28,11 @@
                     <a href="<?= url ?>index.php?controller=usuario&action=show" class="icono-link">
                         <img src="<?= url ?>iconos/UsuarioNegro.svg" alt="Iniciar sesión" width="20" height="20" class="object-fit-contain">
                     </a>
-                    <a href="<?= url ?>index.php?controller=carrito" class="icono-link">
+                    <a href="<?= url ?>index.php?controller=carrito" class="icono-link position-relative">
                         <img src="<?= url ?>iconos/BolsaClara.svg" alt="Carrito de compra" width="20" height="20" class="object-fit-contain">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-primary">
+                            <?= $cantidadCarrito ?>
+                        </span>
                     </a>
                 </div>
             </div>

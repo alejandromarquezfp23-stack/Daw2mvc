@@ -88,5 +88,19 @@ class usuariosDAO {
         $conexion->close();
         return $fila;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $usuarios = [];
+        while ($fila = $consulta->fetch_object('usuarios')) {
+            $usuarios[] = $fila;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($usuarios);
+    }
 }
 ?>

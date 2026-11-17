@@ -71,5 +71,19 @@ class ingredientesDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, nombre, imagen,precio_extra, activo FROM ingredientes ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaIngredientes = [];
+        while ($ingrediente = $consulta->fetch_object('Ingredientes')) {
+            $listaIngredientes[] = $ingrediente;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaIngredientes);
+    }
 }
 ?>

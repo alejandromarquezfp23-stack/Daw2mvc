@@ -142,5 +142,19 @@ class pedidosDAO {
 
         return $pedidos;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, usuario_id, estado, fecha_pedido, subtotal, descuento, total, metodo_pago, estado_pago FROM pedidos ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaPedidos = [];
+        while ($pedido = $consulta->fetch_object('pedidos')) {
+            $listaPedidos[] = $pedido;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaPedidos);
+    }
 }
 ?>

@@ -158,5 +158,19 @@ require_once __DIR__ . '/../models/productos.php';
 
             return $productos;
         }
+
+        public static function selectAllJSON() {
+            $sql = 'SELECT * FROM productos';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $productos = [];
+            while ($producto = $consulta->fetch_object('productos')) {
+                $productos[] = $producto;
+            }
+            $consulta->close();
+            $conexion->close();
+
+            return json_encode($productos);
+        }
     } 
 ?>

@@ -73,5 +73,19 @@ class favoritosDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT producto_id, usuario_id FROM favoritos';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaRelaciones = [];
+        while ($relacion = $consulta->fetch_object('favoritos')) {
+            $listaRelaciones[] = $relacion;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaRelaciones);
+    }
 }
 ?>

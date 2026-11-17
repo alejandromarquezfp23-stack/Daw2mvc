@@ -74,5 +74,19 @@ require_once __DIR__ . '/../models/categorias.php';
             $conexion->close();
             return $resultado;
         }
+
+        public static function selectAllJSON() {
+            $sql = 'SELECT id, nombre, descripcion, activa, imagenes FROM categorias ORDER BY id';
+            $conexion = DataBase::connect();
+            $consulta = $conexion->query($sql);
+            $listaCategorias = [];
+            while ($categoria = $consulta->fetch_object('categorias')) {
+                $listaCategorias[] = $categoria;
+            }
+            $consulta->close();
+            $conexion->close();
+
+            return json_encode($listaCategorias);
+        }
     }
 ?>

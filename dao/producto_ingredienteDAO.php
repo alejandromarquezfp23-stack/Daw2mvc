@@ -99,5 +99,19 @@ class producto_ingredienteDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT producto_id, ingrediente_id, cantidad FROM producto_ingrediente ORDER BY producto_id, ingrediente_id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaRelaciones = [];
+        while ($relacion = $consulta->fetch_object('producto_ingrediente')) {
+            $listaRelaciones[] = $relacion;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaRelaciones);
+    }
 }
 ?>

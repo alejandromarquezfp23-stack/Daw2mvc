@@ -91,5 +91,19 @@ class ofertasDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, nombre, descripcion, tipo, valor, codigo, fecha_inicio, fecha_fin, activa FROM ofertas ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaOfertas = [];
+        while ($oferta = $consulta->fetch_object('ofertas')) {
+            $listaOfertas[] = $oferta;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaOfertas);
+    }
 }
 ?>

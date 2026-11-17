@@ -91,5 +91,19 @@ class pedido_detalleDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, pedido_id, producto_id, nombre_producto, precio_unitario, cantidad, subtotal FROM pedido_detalle ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaDetalles = [];
+        while ($detalle = $consulta->fetch_object('pedido_detalle')) {
+            $listaDetalles[] = $detalle;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaDetalles);
+    }
 }
 ?>

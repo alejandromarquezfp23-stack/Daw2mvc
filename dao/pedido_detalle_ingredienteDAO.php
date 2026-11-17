@@ -89,5 +89,19 @@ class pedido_detalle_ingredienteDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT id, pedido_detalle_id, ingrediente_id, nombre_ingrediente, precio_extra, accion FROM pedido_detalle_ingrediente ORDER BY id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaIngredientes = [];
+        while ($ingrediente = $consulta->fetch_object('pedido_detalle_ingrediente')) {
+            $listaIngredientes[] = $ingrediente;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaIngredientes);
+    }
 }
 ?>

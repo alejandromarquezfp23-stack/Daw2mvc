@@ -84,5 +84,19 @@ class oferta_productoDAO {
         $conexion->close();
         return $resultado;
     }
+
+    public static function selectAllJSON() {
+        $sql = 'SELECT oferta_id, producto_id FROM oferta_producto ORDER BY oferta_id, producto_id';
+        $conexion = DataBase::connect();
+        $consulta = $conexion->query($sql);
+        $listaRelaciones = [];
+        while ($relacion = $consulta->fetch_object('oferta_producto')) {
+            $listaRelaciones[] = $relacion;
+        }
+        $consulta->close();
+        $conexion->close();
+
+        return json_encode($listaRelaciones);
+    }
 }
 ?>
