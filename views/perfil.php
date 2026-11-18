@@ -3,9 +3,21 @@
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="fw-semibold">Cuenta</h5>
             <form method="post" action="<?= url ?>index.php?controller=usuario&action=logout">
-                <button type="submit" class="btn btn-secondary rounded-3">
-                    Cerrar sesión
-                </button>
+                <?php
+                    if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]->getRol() === 'admin'){
+                ?>
+                        <a href="<?= url ?>index.php?controller=admin" class="btn btn-danger rounded-3">
+                            Admin
+                        </a>
+                <?php
+                    } else {
+                ?>
+                        <button type="submit" class="btn btn-secondary rounded-3">
+                            Cerrar sesión
+                        </button>
+                <?php
+                    }
+                ?>
             </form>
         </div>
 

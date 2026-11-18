@@ -86,7 +86,22 @@ class usuariosDAO {
         $fila = $consulta->get_result()->fetch_object();
         $consulta->close();
         $conexion->close();
-        return $fila;
+        
+        if (!$fila) {
+            return null;
+        } else {
+            return new usuarios(
+                $fila->id,
+                $fila->nombre,
+                $fila->email,
+                $fila->password,
+                $fila->telefono,
+                $fila->direccion,
+                $fila->fecha_nacimiento,
+                $fila->rol,
+                $fila->fecha_registro
+            );
+        }
     }
 
     public static function selectAllJSON() {

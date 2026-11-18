@@ -1,6 +1,8 @@
 <?php
 include_once("config/parameters.php");
 
+require_once __DIR__ . '/models/usuarios.php';
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

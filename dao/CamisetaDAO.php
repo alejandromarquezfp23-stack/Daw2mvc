@@ -1,5 +1,5 @@
 <?php
-include_once("config/dataBase.php");
+include_once("config/DataBase.php");
 include_once("models/Camiseta.php");
 
 class CamisetaDAO

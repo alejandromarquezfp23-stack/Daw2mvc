@@ -29,7 +29,7 @@
 
                 $loginCorrecto = false;
 
-                if ($usuario && password_verify($password, $usuario->password)) {
+                if ($usuario && password_verify($password, $usuario->getPassword())) {
                     // Renueva el identificador de sesión tras autenticar al usuario.
                     session_regenerate_id(true);
                     $_SESSION['usuario'] = $usuario;
@@ -101,7 +101,7 @@
         public function show() {
             $this->requireLogin();
 
-            $usuarioID = $_SESSION['usuario']->id;
+            $usuarioID = $_SESSION['usuario']->getID();
             $usuario = usuariosDAO::selectByID($usuarioID);
 
             $gestionar_cuenta = isset($_POST['gestionar_cuenta']);

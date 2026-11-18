@@ -28,14 +28,13 @@
 
     class AdminController {
         public function index() {
-            // if (session_status() === PHP_SESSION_NONE) {
-            //     session_start();
-            // }
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
 
-            // if (!isset($_SESSION['usuario']->rol) || $_SESSION['usuario']->rol !== 'admin') {
-            //     http_response_code(403);
-            //     exit('No tienes permiso para acceder a esta página.');
-            // }
+            if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->getRol() !== 'admin') {
+                showError(403, 'No tienes permiso para acceder a esta página.');
+            }
 
             $productosJSON = productosDAO::selectAllJSON();
             $categoriasJSON = categoriasDAO::selectAllJSON();
