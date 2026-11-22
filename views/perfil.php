@@ -24,7 +24,7 @@
         <hr>
 
         <div>
-            <h2 class="fw-semibold">Hola, <?php echo htmlspecialchars($usuario->nombre, ENT_QUOTES, 'UTF-8'); ?></h2>
+            <h2 class="fw-semibold">Hola, <?php echo htmlspecialchars($usuario->getNombre(), ENT_QUOTES, 'UTF-8'); ?></h2>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
         <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
             <h2 class="fw-semibold">Tu cuenta de Appletito</h2>
             <p>Consulta tu cuenta de Appletito y tus datos privados, puedes modificarlos siempre que quieras, recuerda de los cambios que hagas siempre.</p>
-            <input type="submit" name="gestionar_saldo" value="Gestionar saldo" class="btn btn-outline-primary rounded-3">
+            <input type="submit" name="gestionar_cuenta" value="Gestionar cuenta" class="btn btn-outline-primary rounded-3">
         </form>
 
         <form method="POST" action="" id="divBlancos" class="rounded-3 m-md-3 p-3">
@@ -48,8 +48,114 @@
         </form>
     </div>
 
-    <?php if ($gestionar_cuenta): ?>
-        <!-- <div>Contenido de cuenta</div> -->
+    <?php if ($gestionar_cuenta): ?>  
+        <div class="container py-5">
+            <div class="card border-0 rounded-4 p-4 divPerfil">
+                <div class="row g-4">
+                    <!-- NOMBRE -->
+                    <form method="POST" class="col-md-6">
+                        <label class="form-label text-secondary">Nombre</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="text" name="nuevoNombre"
+                                class="form-control form-control-sm me-2"
+                                value="<?= htmlspecialchars($usuario->getNombre()) ?>">
+                            <input type="hidden" name="gestionar_cuenta" value="1">
+
+                            <button type="submit" name="guardarNombre"
+                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Guardar
+                            </button>
+                        </div>
+                        <hr>
+                    </form>
+
+                    <!-- CORREO ELECTRÓNICO -->
+                    <form method="POST" class="col-md-6">
+                        <label class="form-label text-secondary">Correo electrónico</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="email" name="nuevoEmail"
+                                class="form-control form-control-sm me-2"
+                                value="<?= htmlspecialchars($usuario->getEmail()) ?>">
+                            <input type="hidden" name="gestionar_cuenta" value="1">
+
+                            <button type="submit" name="guardarEmail"
+                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Guardar
+                            </button>
+                        </div>
+                        <hr>
+                    </form>
+
+                    <!-- TELÉFONO -->
+                    <form method="POST" class="col-md-6">
+                        <label class="form-label text-secondary">Teléfono</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="tel" name="nuevoTelefono"
+                                class="form-control form-control-sm me-2"
+                                value="<?= htmlspecialchars($usuario->getTelefono()) ?>">
+                            <input type="hidden" name="gestionar_cuenta" value="1">
+
+                            <button type="submit" name="guardarTelefono"
+                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Guardar
+                            </button>
+                        </div>
+                        <hr>
+                    </form>
+
+                    <!-- DIRECCIÓN -->
+                    <form method="POST" class="col-md-6">
+                        <label class="form-label text-secondary">Dirección</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="text" name="nuevaDireccion"
+                                class="form-control form-control-sm me-2"
+                                value="<?= htmlspecialchars($usuario->getDireccion()) ?>">
+                            <input type="hidden" name="gestionar_cuenta" value="1">
+
+                            <button type="submit" name="guardarDireccion"
+                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Guardar
+                            </button>
+                        </div>
+                        <hr>
+                    </form>
+
+                    <!-- FECHA DE NACIMIENTO -->
+                    <form method="POST" class="col-md-6">
+                        <label class="form-label text-secondary">Fecha de nacimiento</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="date" name="nuevaFecha"
+                                class="form-control form-control-sm me-2"
+                                value="<?= htmlspecialchars($usuario->getFechaNacimiento()) ?>">
+                            <input type="hidden" name="gestionar_cuenta" value="1">
+
+                            <button type="submit" name="guardarFecha"
+                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Guardar
+                            </button>
+                        </div>
+                        <hr>
+                    </form>
+
+                    <!-- ROL -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary">Rol</label>
+                        <p class="mb-0"><?= htmlspecialchars($usuario->getRol()) ?></p>
+                        <input type="hidden" name="gestionar_cuenta" value="1">
+                        <hr>
+                    </div>
+
+
+                    <!-- FECHA DE REGISTRO -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary">Fecha de registro</label>
+                        <p class="mb-0"><?= htmlspecialchars($usuario->getFechaRegistro()) ?></p>
+                        <input type="hidden" name="gestionar_cuenta" value="1">
+                    </div>
+
+                </div>
+            </div>
+        </div>
     <?php endif; ?>
 
     <?php if ($historial_pedidos): ?>

@@ -65,7 +65,7 @@ class CamisetaDAO
         $con->close();
     }
 
-    public static function getAllJSON()
+    public static function selectAllJSON()
     {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM camisetas");
@@ -73,13 +73,13 @@ class CamisetaDAO
         $result = $stmt->get_result();
 
         $productos = [];
-        while ($producto = $result->fetch_object("Camiseta")) {
+        while ($producto = $result->fetch_assoc()) {
             $productos[] = $producto;
         }
 
         $stmt->close();
         $con->close();
 
-        return json_encode($productos);
+        return $productos;
     }
 }

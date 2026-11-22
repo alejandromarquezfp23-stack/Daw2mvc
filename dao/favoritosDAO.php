@@ -79,13 +79,13 @@ class favoritosDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaRelaciones = [];
-        while ($relacion = $consulta->fetch_object('favoritos')) {
+        while ($relacion = $consulta->fetch_assoc()) {
             $listaRelaciones[] = $relacion;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaRelaciones);
+        return $listaRelaciones;
     }
 }
 ?>

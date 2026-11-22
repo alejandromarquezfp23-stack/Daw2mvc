@@ -77,13 +77,13 @@ class ingredientesDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaIngredientes = [];
-        while ($ingrediente = $consulta->fetch_object('Ingredientes')) {
+        while ($ingrediente = $consulta->fetch_assoc()) {
             $listaIngredientes[] = $ingrediente;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaIngredientes);
+        return $listaIngredientes;
     }
 }
 ?>

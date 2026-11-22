@@ -105,13 +105,13 @@ class producto_ingredienteDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaRelaciones = [];
-        while ($relacion = $consulta->fetch_object('producto_ingrediente')) {
+        while ($relacion = $consulta->fetch_assoc()) {
             $listaRelaciones[] = $relacion;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaRelaciones);
+        return $listaRelaciones;
     }
 }
 ?>

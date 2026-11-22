@@ -47,7 +47,7 @@
             $pedido_detalleJSON = pedido_detalleDAO::selectAllJSON();
             $pedido_detalle_ingredienteJSON = pedido_detalle_ingredienteDAO::selectAllJSON();
             $usuariosJSON = usuariosDAO::selectAllJSON();
-            $camisetasJSON = CamisetaDAO::getAllJSON();
+            $camisetasJSON = CamisetaDAO::selectAllJSON();
 
             $productos = productosDAO::selectAll();
             $categorias = categoriasDAO::selectAll();
@@ -67,6 +67,138 @@
             $js = 'admin.js';
 
             require __DIR__ . '/../views/main.php';
+        }
+
+        public function apiProducto() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $productos = productosDAO::selectAllJSON();
+                echo json_encode($productos);
+
+            } else if($metodo == 'POST') {
+                $productos = productosDAO::insert();
+                echo json_encode($productos);
+
+            } else if($metodo == 'PUT') {
+                $productos = productosDAO::update();
+                echo json_encode($productos);
+
+            } else if($metodo == 'DELETE') {
+                $productos = productosDAO::delete();
+                echo json_encode($productos);
+
+            }
+        }
+
+        public function apiCategoria() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $categorias = categoriasDAO::selectAllJSON();
+                echo json_encode($categorias);
+
+            } else if($metodo == 'POST') {
+                $categorias = categoriasDAO::insert();
+                echo json_encode($categorias);
+
+            } else if($metodo == 'PUT') {
+                $categorias = categoriasDAO::update();
+                echo json_encode($categorias);
+
+            } else if($metodo == 'DELETE') {
+                $categorias = categoriasDAO::delete();
+                echo json_encode($categorias);
+
+            }
+        }
+
+        public function apiIngrediente() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $ingredientes = ingredientesDAO::selectAllJSON();
+                echo json_encode($ingredientes);
+
+            } else if($metodo == 'POST') {
+                $ingredientes = ingredientesDAO::insert();
+                echo json_encode($ingredientes);
+
+            } else if($metodo == 'PUT') {
+                $ingredientes = ingredientesDAO::update();
+                echo json_encode($ingredientes);
+
+            } else if($metodo == 'DELETE') {
+                $ingredientes = ingredientesDAO::delete();
+                echo json_encode($ingredientes);
+
+            }
+        }
+
+        public function apiOferta() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $ofertas = ofertasDAO::selectAllJSON();
+                echo json_encode($ofertas);
+
+            } else if($metodo == 'POST') {
+                $ofertas = ofertasDAO::insert();
+                echo json_encode($ofertas);
+
+            } else if($metodo == 'PUT') {
+                $ofertas = ofertasDAO::update();
+                echo json_encode($ofertas);
+
+            } else if($metodo == 'DELETE') {
+                $ofertas = ofertasDAO::delete();
+                echo json_encode($ofertas);
+
+            }
+        }
+
+        public function apiPedido() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $pedidos = pedidosDAO::selectAllJSON();
+                echo json_encode($pedidos);
+
+            } else if($metodo == 'POST') {
+                $pedidos = pedidosDAO::insert();
+                echo json_encode($pedidos);
+
+            } else if($metodo == 'PUT') {
+                $pedidos = pedidosDAO::update();
+                echo json_encode($pedidos);
+
+            } else if($metodo == 'DELETE') {
+                $pedidos = pedidosDAO::delete();
+                echo json_encode($pedidos);
+
+            }
+        }
+
+        public function apiUsuario() {
+            $metodo = $_SERVER['REQUEST_METHOD'];
+
+            if($metodo == 'GET') {
+                $usuarios = usuariosDAO::selectAllJSON();
+                echo json_encode($usuarios);
+
+            } else if($metodo == 'POST') {
+                $usuarios = usuariosDAO::insert();
+                echo json_encode($usuarios);
+
+            } else if($metodo == 'PUT') {
+                $usuarios = usuariosDAO::update();
+                echo json_encode($usuarios);
+
+            } else if($metodo == 'DELETE') {
+                $usuarios = usuariosDAO::delete();
+                echo json_encode($usuarios);
+
+            }
         }
     }
 ?>

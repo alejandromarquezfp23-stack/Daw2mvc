@@ -23,7 +23,7 @@ class usuariosDAO {
         $consulta = $conexion->prepare($sql);
         $consulta->bind_param('i', $id);
         $consulta->execute();
-        $fila = $consulta->get_result()->fetch_object();
+        $fila = $consulta->get_result()->fetch_object('usuarios');
         $consulta->close();
         $conexion->close();
         return $fila ?: null;
@@ -105,17 +105,17 @@ class usuariosDAO {
     }
 
     public static function selectAllJSON() {
-        $sql = 'SELECT id, nombre, email, password, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
+        $sql = 'SELECT id, nombre, email, rol, fecha_registro FROM usuarios ORDER BY id';
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $usuarios = [];
-        while ($fila = $consulta->fetch_object('usuarios')) {
+        while ($fila = $consulta->fetch_assoc()) {
             $usuarios[] = $fila;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($usuarios);
+        return $usuarios;
     }
 }
 ?>

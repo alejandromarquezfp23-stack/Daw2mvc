@@ -80,13 +80,13 @@ require_once __DIR__ . '/../models/categorias.php';
             $conexion = DataBase::connect();
             $consulta = $conexion->query($sql);
             $listaCategorias = [];
-            while ($categoria = $consulta->fetch_object('categorias')) {
+            while ($categoria = $consulta->fetch_assoc()) {
                 $listaCategorias[] = $categoria;
             }
             $consulta->close();
             $conexion->close();
 
-            return json_encode($listaCategorias);
+            return $listaCategorias;
         }
     }
 ?>

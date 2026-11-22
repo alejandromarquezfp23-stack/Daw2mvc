@@ -108,6 +108,39 @@
             $historial_pedidos = isset($_POST['historial_pedidos']) || isset($_GET['historial_pedidos']);
             $ver_favoritos = isset($_POST['ver_favoritos']);
 
+            // ACTUALIZAR NOMBRE
+            if (isset($_POST['guardarNombre'])) {
+                $usuario->setNombre(trim($_POST['nuevoNombre']));
+                usuariosDAO::update($usuario);
+            }
+
+            // ACTUALIZAR EMAIL
+            if (isset($_POST['guardarEmail'])) {
+                $usuario->setEmail(trim($_POST['nuevoEmail']));
+                usuariosDAO::update($usuario);
+            }
+
+            // ACTUALIZAR TELÉFONO
+            if (isset($_POST['guardarTelefono'])) {
+                $usuario->setTelefono(trim($_POST['nuevoTelefono']));
+                usuariosDAO::update($usuario);
+            }
+
+            // ACTUALIZAR DIRECCIÓN
+            if (isset($_POST['guardarDireccion'])) {
+                $usuario->setDireccion(trim($_POST['nuevaDireccion']));
+                usuariosDAO::update($usuario);
+            }
+
+            // ACTUALIZAR FECHA DE NACIMIENTO
+            if (isset($_POST['guardarFecha'])) {
+                $usuario->setFechaNacimiento($_POST['nuevaFecha']);
+                usuariosDAO::update($usuario);
+            }
+
+            // Volver a cargar los datos actualizados
+            $usuario = usuariosDAO::selectByID($usuarioID);
+
             $filtroActivo = null;
             $ordenPedidos = 'fecha';
 

@@ -97,13 +97,13 @@ class pedido_detalleDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaDetalles = [];
-        while ($detalle = $consulta->fetch_object('pedido_detalle')) {
+        while ($detalle = $consulta->fetch_assoc()) {
             $listaDetalles[] = $detalle;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaDetalles);
+        return $listaDetalles;
     }
 }
 ?>

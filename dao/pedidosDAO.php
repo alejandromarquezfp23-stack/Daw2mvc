@@ -148,13 +148,13 @@ class pedidosDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaPedidos = [];
-        while ($pedido = $consulta->fetch_object('pedidos')) {
+        while ($pedido = $consulta->fetch_assoc()) {
             $listaPedidos[] = $pedido;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaPedidos);
+        return $listaPedidos;
     }
 }
 ?>

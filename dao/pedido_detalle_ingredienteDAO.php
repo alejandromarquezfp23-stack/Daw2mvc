@@ -95,13 +95,13 @@ class pedido_detalle_ingredienteDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaIngredientes = [];
-        while ($ingrediente = $consulta->fetch_object('pedido_detalle_ingrediente')) {
+        while ($ingrediente = $consulta->fetch_assoc()) {
             $listaIngredientes[] = $ingrediente;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaIngredientes);
+        return $listaIngredientes;
     }
 }
 ?>

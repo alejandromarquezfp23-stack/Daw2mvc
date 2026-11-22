@@ -97,13 +97,13 @@ class ofertasDAO {
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $listaOfertas = [];
-        while ($oferta = $consulta->fetch_object('ofertas')) {
+        while ($oferta = $consulta->fetch_assoc()) {
             $listaOfertas[] = $oferta;
         }
         $consulta->close();
         $conexion->close();
 
-        return json_encode($listaOfertas);
+        return $listaOfertas;
     }
 }
 ?>
