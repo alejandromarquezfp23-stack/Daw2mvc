@@ -9,6 +9,11 @@
                         <a href="<?= url ?>index.php?controller=admin" class="btn btn-danger rounded-3">
                             Admin
                         </a>
+
+                        <button type="submit" class="btn btn-secondary rounded-3">
+                            Cerrar sesión
+                        </button>
+                        
                 <?php
                     } else {
                 ?>
