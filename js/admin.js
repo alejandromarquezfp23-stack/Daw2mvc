@@ -5,6 +5,8 @@ class AdminVista {
 
     inicializar() {
         this.configurarPestanas();
+        this.configurarModalProducto();
+
         this.cargarProductos();
         this.cargarCategorias();
         this.cargarIngredientes();
@@ -71,10 +73,45 @@ class AdminVista {
                 modificarBtn.className = "btn btn-sm btn-outline-dark rounded-pill me-2";
                 modificarBtn.textContent = "Modificar";
 
+                modificarBtn.addEventListener("click", () => {
+                    document.getElementById("productoId").value = producto.id;
+                    document.getElementById("nombreProducto").value = producto.nombre;
+                    document.getElementById("precioProducto").value = producto.precio;
+                    document.getElementById("descripcionProducto").value = producto.descripcion;
+                    document.getElementById("categoriaProducto").value = producto.categoria_id;
+                    document.getElementById("imagenProducto").value = producto.imagen;
+                    document.getElementById("activoProducto").checked = Number(producto.activo) === 1;
+
+                    document.getElementById("tituloModalProducto").textContent = "Modificar producto";
+
+                    this.modalProducto.show();
+                });
+
                 const eliminarBtn = document.createElement("button");
                 eliminarBtn.type = "button";
                 eliminarBtn.className = "btn btn-sm btn-outline-danger rounded-pill";
                 eliminarBtn.textContent = "Eliminar";
+
+                eliminarBtn.addEventListener("click", () => {
+                    const datos = { id: producto.id };
+                    fetch("http://localhost/daw2mvc/index.php?controller=admin&action=apiProducto", {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(datos)
+                    })
+                    .then(respuesta => respuesta.json())
+                    .then(r => {
+                        if (r.success) {
+                            this.cargarProductos();
+                            console.log(r);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+                });
 
                 accionesTd.append(modificarBtn, eliminarBtn);
                 tr.append(productoTd, categoriaTd, precioTd, estadoTd, accionesTd);
@@ -88,6 +125,19 @@ class AdminVista {
         .then(respuesta => respuesta.json())
         .then(r => {
             this.categorias = r;
+
+            const selector = document.getElementById("categoriaProducto");
+            this.categorias.forEach(categoria => {
+                if (Number(categoria.activa) === 1) {
+                    const opcion = document.createElement("option");
+
+                    opcion.value = categoria.id;
+                    opcion.textContent = categoria.nombre;
+
+                    selector.append(opcion);
+                }
+            });
+
             const tablaCategorias = document.getElementById("categorias");
             tablaCategorias.replaceChildren();
 
@@ -314,6 +364,82 @@ class AdminVista {
             });
         })
     }
+
+    configurarModalProducto() {
+        this.modalProducto = new bootstrap.Modal(
+            document.getElementById("modalProducto")
+        );
+
+        const formulario = document.getElementById("formProducto");
+
+        document.getElementById("btnAnadirProducto").addEventListener("click", () => {
+            formulario.reset();
+            document.getElementById("productoId").value = "";
+            document.getElementById("tituloModalProducto").textContent = "Añadir producto";
+
+            this.modalProducto.show();
+        });
+
+        formulario.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+            
+            const datos = {
+                id: Number(document.getElementById("productoId").value),
+                categoria_id: Number(document.getElementById("categoriaProducto").value),
+                nombre: document.getElementById("nombreProducto").value,
+                descripcion: document.getElementById("descripcionProducto").value,
+                precio: Number(document.getElementById("precioProducto").value),
+                imagen: document.getElementById("imagenProducto").value,
+                activo: document.getElementById("activoProducto").checked ? 1 : 0
+            };
+            
+            const id = document.getElementById("productoId").value;
+
+            if(id !== "") {
+                fetch("http://localhost/daw2mvc/index.php?controller=admin&action=apiProducto", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                })
+                .then(respuesta => respuesta.json())
+                .then(r => {
+                    if (r.success) {
+                        this.modalProducto.hide();
+                        formulario.reset();
+                        this.cargarProductos();
+                        console.log(r);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+
+            } else {
+                fetch("http://localhost/daw2mvc/index.php?controller=admin&action=apiProducto", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                })
+                .then(respuesta => respuesta.json())
+                .then(r => {
+                    if (r.success) {
+                        this.modalProducto.hide();
+                        formulario.reset();
+                        this.cargarProductos();
+                        console.log(r);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }
+        });
+    }
+
 }
 
 new AdminVista();

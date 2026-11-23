@@ -67,7 +67,7 @@
                             <input type="hidden" name="gestionar_cuenta" value="1">
 
                             <button type="submit" name="guardarNombre"
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    class="btn btn-outline-primary btn-sm rounded-3 px-3">
                                 Guardar
                             </button>
                         </div>
@@ -84,7 +84,7 @@
                             <input type="hidden" name="gestionar_cuenta" value="1">
 
                             <button type="submit" name="guardarEmail"
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    class="btn btn-outline-primary btn-sm rounded-3 px-3">
                                 Guardar
                             </button>
                         </div>
@@ -101,7 +101,7 @@
                             <input type="hidden" name="gestionar_cuenta" value="1">
 
                             <button type="submit" name="guardarTelefono"
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    class="btn btn-outline-primary btn-sm rounded-3 px-3">
                                 Guardar
                             </button>
                         </div>
@@ -118,7 +118,7 @@
                             <input type="hidden" name="gestionar_cuenta" value="1">
 
                             <button type="submit" name="guardarDireccion"
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    class="btn btn-outline-primary btn-sm rounded-3 px-3">
                                 Guardar
                             </button>
                         </div>
@@ -135,7 +135,7 @@
                             <input type="hidden" name="gestionar_cuenta" value="1">
 
                             <button type="submit" name="guardarFecha"
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    class="btn btn-outline-primary btn-sm rounded-3 px-3">
                                 Guardar
                             </button>
                         </div>

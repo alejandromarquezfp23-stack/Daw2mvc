@@ -102,26 +102,6 @@
             require __DIR__ . '/../views/main3.php';
         }
 
-        public function create() {
-
-        }
-
-        public function store() {
-
-        }
-
-        public function edit() {
-
-        }
-
-        public function update() {
-
-        }
-
-        public function destroy() {
-
-        }
-
         // Devuelve solo los ingredientes activos asociados al producto.
         private function obtenerIngredientesActivos(int $productoId): array {
             $ingredientes = ingredientesDAO::selectAll();

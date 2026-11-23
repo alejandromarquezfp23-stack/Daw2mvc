@@ -35,32 +35,6 @@
             if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->getRol() !== 'admin') {
                 showError(403, 'No tienes permiso para acceder a esta página.');
             }
-
-            $productosJSON = productosDAO::selectAllJSON();
-            $categoriasJSON = categoriasDAO::selectAllJSON();
-            $ingredientesJSON = ingredientesDAO::selectAllJSON();
-            $producto_ingredienteJSON = producto_ingredienteDAO::selectAllJSON();
-            $favoritosJSON = favoritosDAO::selectAllJSON();
-            $ofertasJSON = ofertasDAO::selectAllJSON();
-            $oferta_productoJSON =oferta_productoDAO::selectAllJSON();
-            $pedidosJSON = pedidosDAO::selectAllJSON();
-            $pedido_detalleJSON = pedido_detalleDAO::selectAllJSON();
-            $pedido_detalle_ingredienteJSON = pedido_detalle_ingredienteDAO::selectAllJSON();
-            $usuariosJSON = usuariosDAO::selectAllJSON();
-            $camisetasJSON = CamisetaDAO::selectAllJSON();
-
-            $productos = productosDAO::selectAll();
-            $categorias = categoriasDAO::selectAll();
-            $ingredientes = ingredientesDAO::selectAll();
-            $productoIngredientes = producto_ingredienteDAO::selectAll();
-            $favoritos = favoritosDAO::selectAll();
-            $ofertas = ofertasDAO::selectAll();
-            $ofertaProductos = oferta_productoDAO::selectAll();
-            $pedidos = pedidosDAO::selectAll();
-            $pedidoDetalles = pedido_detalleDAO::selectAll();
-            $pedidoDetalleIngredientes = pedido_detalle_ingredienteDAO::selectAll();
-            $usuarios = usuariosDAO::selectAll();
-            $camisetas = CamisetaDAO::getAll();
         
             $view = __DIR__ . '/../views/admin.php';
             $titulo = 'Panel de Administrador Appletito';
@@ -77,17 +51,39 @@
                 echo json_encode($productos);
 
             } else if($metodo == 'POST') {
-                $productos = productosDAO::insert();
-                echo json_encode($productos);
+                $datos = json_decode(file_get_contents('php://input'), true);
+                $producto = new productos(
+                    null,
+                    $datos['categoria_id'],
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['precio'],
+                    $datos['imagen'],
+                    $datos['activo']
+                );
+
+                $id = productosDAO::insert($producto);
+                echo json_encode(['success' => $id > 0, 'id' => $id]);
 
             } else if($metodo == 'PUT') {
-                $productos = productosDAO::update();
-                echo json_encode($productos);
+                $datos = json_decode(file_get_contents('php://input'), true);
+                $producto = new productos(
+                    $datos['id'],
+                    $datos['categoria_id'],
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['precio'],
+                    $datos['imagen'],
+                    $datos['activo']
+                );
+
+                $resultado = productosDAO::update($producto);
+                echo json_encode(['success' => $resultado]);
 
             } else if($metodo == 'DELETE') {
-                $productos = productosDAO::delete();
-                echo json_encode($productos);
-
+                $datos = json_decode(file_get_contents('php://input'), true);
+                $resultado = productosDAO::delete($datos['id']);
+                echo json_encode(['success' => $resultado]);
             }
         }
 
