@@ -122,7 +122,7 @@
                 exit;
             }
 
-            $usuarioID = (int) $_SESSION['usuario']->id;
+            $usuarioID = (int) $_SESSION['usuario']->getId();
             $subtotalCentimos = 0;
             $subtotal = 0;
             $descuento = 0;
