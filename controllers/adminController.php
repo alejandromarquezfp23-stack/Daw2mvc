@@ -27,6 +27,7 @@
     require_once __DIR__ . '/../dao/usuariosDAO.php';
 
     class AdminController {
+
         public function index() {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -35,7 +36,7 @@
             if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->getRol() !== 'admin') {
                 showError(403, 'No tienes permiso para acceder a esta página.');
             }
-        
+
             $view = __DIR__ . '/../views/admin.php';
             $titulo = 'Panel de Administrador Appletito';
             $js = 'admin.js';
@@ -46,12 +47,13 @@
         public function apiProducto() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $productos = productosDAO::selectAllJSON();
                 echo json_encode($productos);
 
-            } else if($metodo == 'POST') {
+            } else if ($metodo == 'POST') {
                 $datos = json_decode(file_get_contents('php://input'), true);
+
                 $producto = new productos(
                     null,
                     $datos['categoria_id'],
@@ -65,8 +67,9 @@
                 $id = productosDAO::insert($producto);
                 echo json_encode(['success' => $id > 0, 'id' => $id]);
 
-            } else if($metodo == 'PUT') {
+            } else if ($metodo == 'PUT') {
                 $datos = json_decode(file_get_contents('php://input'), true);
+
                 $producto = new productos(
                     $datos['id'],
                     $datos['categoria_id'],
@@ -80,8 +83,9 @@
                 $resultado = productosDAO::update($producto);
                 echo json_encode(['success' => $resultado]);
 
-            } else if($metodo == 'DELETE') {
+            } else if ($metodo == 'DELETE') {
                 $datos = json_decode(file_get_contents('php://input'), true);
+
                 $resultado = productosDAO::delete($datos['id']);
                 echo json_encode(['success' => $resultado]);
             }
@@ -90,110 +94,189 @@
         public function apiCategoria() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $categorias = categoriasDAO::selectAllJSON();
                 echo json_encode($categorias);
 
-            } else if($metodo == 'POST') {
-                $categorias = categoriasDAO::insert();
-                echo json_encode($categorias);
+            } else if ($metodo == 'POST') {
+                $datos = json_decode(file_get_contents('php://input'), true);
 
-            } else if($metodo == 'PUT') {
-                $categorias = categoriasDAO::update();
-                echo json_encode($categorias);
+                $categoria = new categorias(
+                    null,
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['imagen'],
+                    $datos['activo']
+                );
 
-            } else if($metodo == 'DELETE') {
-                $categorias = categoriasDAO::delete();
-                echo json_encode($categorias);
+                $id = categoriasDAO::insert($categoria);
+                echo json_encode(['success' => $id > 0, 'id' => $id]);
 
+            } else if ($metodo == 'PUT') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $categoria = new categorias(
+                    $datos['id'],
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['imagen'],
+                    $datos['activo']
+                );
+
+                $resultado = categoriasDAO::update($categoria);
+                echo json_encode(['success' => $resultado]);
+
+            } else if ($metodo == 'DELETE') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $resultado = categoriasDAO::delete($datos['id']);
+                echo json_encode(['success' => $resultado]);
             }
         }
 
         public function apiIngrediente() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $ingredientes = ingredientesDAO::selectAllJSON();
                 echo json_encode($ingredientes);
 
-            } else if($metodo == 'POST') {
-                $ingredientes = ingredientesDAO::insert();
-                echo json_encode($ingredientes);
+            } else if ($metodo == 'POST') {
+                $datos = json_decode(file_get_contents('php://input'), true);
 
-            } else if($metodo == 'PUT') {
-                $ingredientes = ingredientesDAO::update();
-                echo json_encode($ingredientes);
+                $ingrediente = new ingredientes(
+                    null,
+                    $datos['nombre'],
+                    $datos['imagen'],
+                    $datos['precio_extra'],
+                    $datos['activo']
+                );
 
-            } else if($metodo == 'DELETE') {
-                $ingredientes = ingredientesDAO::delete();
-                echo json_encode($ingredientes);
+                $id = ingredientesDAO::insert($ingrediente);
+                echo json_encode(['success' => $id > 0, 'id' => $id]);
 
+            } else if ($metodo == 'PUT') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $ingrediente = new ingredientes(
+                    $datos['id'],
+                    $datos['nombre'],
+                    $datos['imagen'],
+                    $datos['precio_extra'],
+                    $datos['activo']
+                );
+
+                $resultado = ingredientesDAO::update($ingrediente);
+                echo json_encode(['success' => $resultado]);
+
+            } else if ($metodo == 'DELETE') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $resultado = ingredientesDAO::delete($datos['id']);
+                echo json_encode(['success' => $resultado]);
             }
         }
 
         public function apiOferta() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $ofertas = ofertasDAO::selectAllJSON();
                 echo json_encode($ofertas);
 
-            } else if($metodo == 'POST') {
-                $ofertas = ofertasDAO::insert();
-                echo json_encode($ofertas);
+            } else if ($metodo == 'POST') {
+                $datos = json_decode(file_get_contents('php://input'), true);
 
-            } else if($metodo == 'PUT') {
-                $ofertas = ofertasDAO::update();
-                echo json_encode($ofertas);
+                $oferta = new ofertas(
+                    null,
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['tipo'],
+                    $datos['valor'],
+                    $datos['codigo'],
+                    $datos['fecha_inicio'],
+                    $datos['fecha_fin'],
+                    $datos['activa']
+                );
 
-            } else if($metodo == 'DELETE') {
-                $ofertas = ofertasDAO::delete();
-                echo json_encode($ofertas);
+                $id = ofertasDAO::insert($oferta);
+                echo json_encode(['success' => $id > 0, 'id' => $id]);
 
+            } else if ($metodo == 'PUT') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $oferta = new ofertas(
+                    $datos['id'],
+                    $datos['nombre'],
+                    $datos['descripcion'],
+                    $datos['tipo'],
+                    $datos['valor'],
+                    $datos['codigo'],
+                    $datos['fecha_inicio'],
+                    $datos['fecha_fin'],
+                    $datos['activa']
+                );
+
+                $resultado = ofertasDAO::update($oferta);
+                echo json_encode(['success' => $resultado]);
+
+            } else if ($metodo == 'DELETE') {
+                $datos = json_decode(file_get_contents('php://input'), true);
+
+                $resultado = ofertasDAO::delete($datos['id']);
+                echo json_encode(['success' => $resultado]);
             }
         }
 
         public function apiPedido() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $pedidos = pedidosDAO::selectAllJSON();
                 echo json_encode($pedidos);
 
-            } else if($metodo == 'POST') {
-                $pedidos = pedidosDAO::insert();
-                echo json_encode($pedidos);
+            } else if ($metodo == 'PUT') {
+                $datos = json_decode(file_get_contents('php://input'), true);
 
-            } else if($metodo == 'PUT') {
-                $pedidos = pedidosDAO::update();
-                echo json_encode($pedidos);
+                $pedido = pedidosDAO::selectByID($datos['id']);
 
-            } else if($metodo == 'DELETE') {
-                $pedidos = pedidosDAO::delete();
-                echo json_encode($pedidos);
+                if ($pedido != null) {
+                    $pedido->setEstado($datos['estado']);
+                    $pedido->setEstadoPago($datos['estado_pago']);
 
+                    $resultado = pedidosDAO::update($pedido);
+                    echo json_encode(['success' => $resultado]);
+                } else {
+                    echo json_encode(['success' => false]);
+                }
             }
         }
 
         public function apiUsuario() {
             $metodo = $_SERVER['REQUEST_METHOD'];
 
-            if($metodo == 'GET') {
+            if ($metodo == 'GET') {
                 $usuarios = usuariosDAO::selectAllJSON();
                 echo json_encode($usuarios);
 
-            } else if($metodo == 'POST') {
-                $usuarios = usuariosDAO::insert();
-                echo json_encode($usuarios);
+            } else if ($metodo == 'PUT') {
+                $datos = json_decode(file_get_contents('php://input'), true);
 
-            } else if($metodo == 'PUT') {
-                $usuarios = usuariosDAO::update();
-                echo json_encode($usuarios);
+                $usuario = usuariosDAO::selectByID($datos['id']);
 
-            } else if($metodo == 'DELETE') {
-                $usuarios = usuariosDAO::delete();
-                echo json_encode($usuarios);
+                if ($usuario != null) {
+                    $usuario->setNombre($datos['nombre']);
+                    $usuario->setEmail($datos['email']);
+                    $usuario->setTelefono($datos['telefono']);
+                    $usuario->setDireccion($datos['direccion']);
+                    $usuario->setFechaNacimiento($datos['fecha_nacimiento']);
+                    $usuario->setRol($datos['rol']);
 
+                    $resultado = usuariosDAO::update($usuario);
+                    echo json_encode(['success' => $resultado]);
+                } else {
+                    echo json_encode(['success' => false]);
+                }
             }
         }
     }

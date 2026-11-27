@@ -105,13 +105,15 @@ class usuariosDAO {
     }
 
     public static function selectAllJSON() {
-        $sql = 'SELECT id, nombre, email, rol, fecha_registro FROM usuarios ORDER BY id';
+        $sql = 'SELECT id, nombre, email, telefono, direccion, fecha_nacimiento, rol, fecha_registro FROM usuarios ORDER BY id';
         $conexion = DataBase::connect();
         $consulta = $conexion->query($sql);
         $usuarios = [];
+
         while ($fila = $consulta->fetch_assoc()) {
             $usuarios[] = $fila;
         }
+
         $consulta->close();
         $conexion->close();
 

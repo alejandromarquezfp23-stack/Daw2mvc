@@ -54,7 +54,7 @@ class ingredientesDAO {
         $precioExtra = $ingrediente->getPrecioExtra();
         $activo = $ingrediente->getActivo();
         $id = $ingrediente->getId();
-        $consulta->bind_param('ssdi', $nombre, $imagen, $precioExtra, $activo, $id);
+        $consulta->bind_param('ssdii', $nombre, $imagen, $precioExtra, $activo, $id);
         $resultado = $consulta->execute();
         $consulta->close();
         $conexion->close();
